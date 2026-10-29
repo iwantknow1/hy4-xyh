@@ -1,0 +1,184 @@
+{
+  "2L": {
+    "path": "/models/Hy4-2L",
+    "config": {
+      "architectures": [
+        "HYV4VLForConditionalGeneration"
+      ],
+      "model_type": "hy_v4_vl",
+      "num_hidden_layers": 2,
+      "hidden_size": 6144,
+      "num_attention_heads": 64,
+      "num_key_value_heads": 8,
+      "head_dim": 64,
+      "q_lora_rank": 2048,
+      "kv_lora_rank": 512,
+      "index_n_heads": 32,
+      "index_topk": 2048,
+      "indexer_types": [
+        "full",
+        "full"
+      ],
+      "layer_types": [
+        "deepseek_sparse_attention",
+        "deepseek_sparse_attention"
+      ],
+      "mlp_layer_types": [
+        "dense",
+        "sparse"
+      ],
+      "n_routed_experts": 256,
+      "num_experts_per_tok": 8,
+      "num_nextn_predict_layers": 0,
+      "learnable_sink": true,
+      "gated_mla": true,
+      "enable_ihc": true,
+      "rope_parameters": {
+        "rope_theta": 10000000,
+        "rope_type": "default",
+        "mrope_interleaved": true,
+        "mrope_section": [
+          12,
+          10,
+          10
+        ]
+      },
+      "vocab_size": 120832
+    },
+    "tensor_count": 709,
+    "shard_count": 4,
+    "config_sha256": "61500138054addf47b80d73f9a0ffe209f6797ac797f1875987d612b01e2b7cb",
+    "index_sha256": "328102a28b49e901f60103417bff14e96bacdabc04f6cec721bda8901c36c167",
+    "vision_config": {
+      "add_patchemb_bias": true,
+      "attention_dropout": 0.0,
+      "cat_extra_token": 0,
+      "hidden_act": "gelu",
+      "hidden_dropout": 0.0,
+      "hidden_size": 1536,
+      "img_max_token_num": 4096,
+      "intermediate_size": 6144,
+      "interpolate_mode": "bilinear",
+      "max_image_size": 2048,
+      "max_vit_seq_len": 16384,
+      "num_attention_heads": 16,
+      "num_channels": 3,
+      "num_hidden_layers": 40,
+      "out_hidden_size": 6144,
+      "patch_size": 16,
+      "rms_norm_eps": 1e-05,
+      "temporal_patch_size": 1,
+      "spatial_patch_size": 1,
+      "spatial_merge_size": 2,
+      "perceive_post_norm": false,
+      "video_spatial_compression": false,
+      "video_temporal_compression": false,
+      "projector_type": "rmsnorm_mlp_adapter"
+    }
+  },
+  "6L": {
+    "path": "/models/Hy4-6L",
+    "config": {
+      "architectures": [
+        "HYV4VLForConditionalGeneration"
+      ],
+      "model_type": "hy_v4_vl",
+      "num_hidden_layers": 6,
+      "hidden_size": 6144,
+      "num_attention_heads": 64,
+      "num_key_value_heads": 8,
+      "head_dim": 64,
+      "q_lora_rank": 2048,
+      "kv_lora_rank": 512,
+      "index_n_heads": 32,
+      "index_topk": 2048,
+      "indexer_types": [
+        "full",
+        "full",
+        "shared",
+        "shared",
+        "shared",
+        "full"
+      ],
+      "layer_types": [
+        "deepseek_sparse_attention",
+        "deepseek_sparse_attention",
+        "deepseek_sparse_attention",
+        "deepseek_sparse_attention",
+        "deepseek_sparse_attention",
+        "deepseek_sparse_attention"
+      ],
+      "mlp_layer_types": [
+        "dense",
+        "sparse",
+        "sparse",
+        "sparse",
+        "sparse",
+        "sparse"
+      ],
+      "n_routed_experts": 256,
+      "num_experts_per_tok": 8,
+      "num_nextn_predict_layers": 0,
+      "learnable_sink": true,
+      "gated_mla": true,
+      "enable_ihc": true,
+      "rope_parameters": {
+        "rope_theta": 10000000,
+        "rope_type": "default",
+        "mrope_interleaved": true,
+        "mrope_section": [
+          12,
+          10,
+          10
+        ]
+      },
+      "vocab_size": 120832
+    },
+    "tensor_count": 810,
+    "shard_count": 12,
+    "config_sha256": "82a72ffe18a3f009e3fd7165651b94edca28e5855e4ce204a53aff6b924c73ec",
+    "index_sha256": "a14f2aa89fbad9ec08145f0acd12d0a1f8a5c3ffedbb2c3ae3a0a59a84ef88f5",
+    "vision_config": {
+      "add_patchemb_bias": true,
+      "attention_dropout": 0.0,
+      "cat_extra_token": 0,
+      "hidden_act": "gelu",
+      "hidden_dropout": 0.0,
+      "hidden_size": 1536,
+      "img_max_token_num": 4096,
+      "intermediate_size": 6144,
+      "interpolate_mode": "bilinear",
+      "max_image_size": 2048,
+      "max_vit_seq_len": 16384,
+      "num_attention_heads": 16,
+      "num_channels": 3,
+      "num_hidden_layers": 40,
+      "out_hidden_size": 6144,
+      "patch_size": 16,
+      "rms_norm_eps": 1e-05,
+      "temporal_patch_size": 1,
+      "spatial_patch_size": 1,
+      "spatial_merge_size": 2,
+      "perceive_post_norm": false,
+      "video_spatial_compression": false,
+      "video_temporal_compression": false,
+      "projector_type": "rmsnorm_mlp_adapter"
+    }
+  },
+  "2L+MTP": {
+    "validation_scope": "functional_smoke",
+    "backbone": "/models/Hy4-2L",
+    "mtp_source": "/models/Hy4-32L-MTP",
+    "mtp_tensor_count": 27,
+    "mtp_shards": [
+      "model-00070-of-00072.safetensors",
+      "model-00071-of-00072.safetensors",
+      "model-00072-of-00072.safetensors"
+    ],
+    "total_tensor_bytes": 46736294324,
+    "backbone_config_sha256": "61500138054addf47b80d73f9a0ffe209f6797ac797f1875987d612b01e2b7cb",
+    "mtp_source_index_sha256": "b0d6e392a416c446369f827487bdc8f497b162d23509bbbcb22fabf89c5054b2",
+    "output_index_sha256": "20ec6bb8a95506bec5161928154b43ae7656471874ce0480f7e00abc44e3c613",
+    "note": "Independent reduced backbone plus existing real MTP weights; original assets unchanged."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "path": "/mnt/share/z30059446/hy4_safetensors",
+  "layers": 78,
+  "architecture": [
+    "HYV4VLForConditionalGeneration"
+  ],
+  "dtype": "bfloat16",
+  "shards": 246,
+  "tensors": 2655,
+  "payload_bytes": 1562453830516,
+  "file_bytes": 1562454136204,
+  "metadata_size_basis": "file_bytes_including_headers",
+  "expected_bytes": 1562454136204,
+  "dtypes": {
+    "BF16": 1562330647552,
+    "F32": 123182964
+  },
+  "missing": [],
+  "mismatches": [],
+  "index_sha256": "605941bd325eec75ffe918932217e526b687f96f78cfe78eb2b5ae188779f863",
+  "vision_tensors": 649
+}

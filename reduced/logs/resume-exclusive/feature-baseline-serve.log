@@ -1,0 +1,287 @@
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+INFO 10-27 13:12:59 [__init__.py:52] Available plugins for group vllm.platform_plugins:
+INFO 10-27 13:12:59 [__init__.py:54] - ascend -> vllm_ascend:register
+INFO 10-27 13:12:59 [__init__.py:57] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 10-27 13:12:59 [__init__.py:272] Platform plugin ascend is activated
+INFO 10-27 13:12:59 [platform.py:74] Breakable CUDAGraph on Ascend is opt-in; using VLLM_USE_BREAKABLE_CUDAGRAPH=0.
+2026-10-27 13:13:05,297 - 12 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1
+INFO 10-27 13:13:12 [patch_indexer_kv_dtype.py:102] Patched AttentionConfig.indexer_kv_dtype to accept 'int8' (DeepSeek V4 Ascend indexer K cache dtype).
+INFO 10-27 13:13:12 [patch_kv_cache_dtype.py:117] Patched CacheConfig.cache_dtype to accept 'int8' and 'mxfp8' (Ascend KV cache dtypes).
+INFO 10-27 13:13:12 [__init__.py:112] Registered model loader `<class 'vllm_ascend.model_loader.netloader.netloader.ModelNetLoaderElastic'>` with load format `netloader`
+INFO 10-27 13:13:12 [__init__.py:112] Registered model loader `<class 'vllm_ascend.model_loader.rfork.rfork_loader.RForkModelLoader'>` with load format `rfork`
+WARNING 10-27 13:13:13 [indexer_topk.py:29] Failed to import the DeepSelect extension (vllm._deepselect_C): No module named 'vllm._deepselect_C'
+(APIServer pid=12) INFO 10-27 13:13:13 [api_utils.py:347] 
+(APIServer pid=12) INFO 10-27 13:13:13 [api_utils.py:347]        █     █     █▄   ▄█
+(APIServer pid=12) INFO 10-27 13:13:13 [api_utils.py:347]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.30.0
+(APIServer pid=12) INFO 10-27 13:13:13 [api_utils.py:347]   █▄█▀ █     █     █     █  model   /models/Hy4-2L
+(APIServer pid=12) INFO 10-27 13:13:13 [api_utils.py:347]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=12) INFO 10-27 13:13:13 [api_utils.py:347] 
+(APIServer pid=12) INFO 10-27 13:13:13 [api_utils.py:286] non-default args: {'model_tag': '/models/Hy4-2L', 'port': 18081, 'model': '/models/Hy4-2L', 'trust_remote_code': True, 'max_model_len': 2048, 'served_model_name': ['hy4-codex'], 'enable_sleep_mode': True, 'tensor_parallel_size': 2, 'enable_expert_parallel': True, 'gpu_memory_utilization': 0.85, 'kv_cache_memory_bytes': 8589934592, 'max_num_seqs': 8, 'compilation_config': {'mode': None, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'vllm_ascend.compilation.compiler_interface.AscendCompiler', 'custom_ops': [], 'ir_enable_torch_wrap': None, 'splitting_ops': None, 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': None, 'compile_ranges_endpoints': None, 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_DECODE_ONLY: (2, 0)>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [1, 2, 4, 8], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': None, 'pass_config': {}, 'max_cudagraph_capture_size': None, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': None, 'static_all_moe_layers': []}, 'additional_config': {'rl_config': {'enabled': True}}}
+(APIServer pid=12) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=12) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=12) INFO 10-27 13:13:24 [model.py:692] Resolved architecture: HYV4VLForConditionalGeneration
+(APIServer pid=12) INFO 10-27 13:13:24 [model.py:2030] Using max model len 2048
+(APIServer pid=12) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=12) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=12) INFO 10-27 13:13:38 [scheduler.py:288] Chunked prefill is enabled with max_num_batched_tokens=8192.
+(APIServer pid=12) INFO 10-27 13:13:38 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'], gelu_and_mul_sparse=['native'])
+(APIServer pid=12) INFO 10-27 13:13:38 [utils.py:226] No quantization signature detected from model files for "/models/Hy4-2L". The model will be loaded as float. To force a quantization method, pass "--quantization <method>" explicitly.
+(APIServer pid=12) WARNING 10-27 13:13:38 [platform.py:730] GPU-specific parameter is not supported on Ascend. parameter=disable_cascade_attn, value=True, action: resetting to False.
+(APIServer pid=12) INFO 10-27 13:13:38 [platform.py:944] The timeout interval of the HCCL operator is 1836s. Timeout in seconds for execute_model RPC calls in multiprocessing must be greater than 1836s, Set VLLM_EXECUTE_MODEL_TIMEOUT_SECONDS=3000
+(APIServer pid=12) INFO 10-27 13:13:38 [ascend_config.py:331] Dynamic EPLB is False
+(APIServer pid=12) INFO 10-27 13:13:38 [ascend_config.py:332] The number of redundant experts is 0
+(APIServer pid=12) INFO 10-27 13:13:38 [ascend_config.py:761] FlashComm1 is disabled. Using flashinfer_all2allv as the all2all backend.
+(APIServer pid=12) WARNING 10-27 13:13:38 [ascend_config.py:379] RL config requires weight_nz_mode=0; overriding AscendConfig.weight_nz_mode from 1 to 0.
+(APIServer pid=12) INFO 10-27 13:13:38 [utils.py:1461] Block size is set to 128 if prefix cache or chunked prefill is enabled.
+(APIServer pid=12) INFO 10-27 13:13:38 [compilation.py:336] Enabled custom fusions: norm_quant, act_quant
+(APIServer pid=12) INFO 10-27 13:13:39 [base.py:261] Multi-modal warmup completed in 0.149s
+(APIServer pid=12) INFO 10-27 13:13:40 [base.py:261] Readonly multi-modal warmup completed in 0.090s
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+INFO 10-27 13:13:43 [__init__.py:52] Available plugins for group vllm.platform_plugins:
+INFO 10-27 13:13:43 [__init__.py:54] - ascend -> vllm_ascend:register
+INFO 10-27 13:13:43 [__init__.py:57] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 10-27 13:13:43 [__init__.py:272] Platform plugin ascend is activated
+INFO 10-27 13:13:43 [platform.py:74] Breakable CUDAGraph on Ascend is opt-in; using VLLM_USE_BREAKABLE_CUDAGRAPH=0.
+INFO 10-27 13:13:48 [patch_indexer_kv_dtype.py:102] Patched AttentionConfig.indexer_kv_dtype to accept 'int8' (DeepSeek V4 Ascend indexer K cache dtype).
+INFO 10-27 13:13:48 [patch_kv_cache_dtype.py:117] Patched CacheConfig.cache_dtype to accept 'int8' and 'mxfp8' (Ascend KV cache dtypes).
+INFO 10-27 13:13:48 [ascend_config.py:331] Dynamic EPLB is False
+INFO 10-27 13:13:48 [ascend_config.py:332] The number of redundant experts is 0
+INFO 10-27 13:13:48 [ascend_config.py:761] FlashComm1 is disabled. Using flashinfer_all2allv as the all2all backend.
+WARNING 10-27 13:13:48 [ascend_config.py:379] RL config requires weight_nz_mode=0; overriding AscendConfig.weight_nz_mode from 1 to 0.
+(EngineCore pid=153) 2026-10-27 13:13:48,787 - 153 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1
+(EngineCore pid=153) INFO 10-27 13:13:48 [__init__.py:112] Registered model loader `<class 'vllm_ascend.model_loader.netloader.netloader.ModelNetLoaderElastic'>` with load format `netloader`
+(EngineCore pid=153) INFO 10-27 13:13:48 [__init__.py:112] Registered model loader `<class 'vllm_ascend.model_loader.rfork.rfork_loader.RForkModelLoader'>` with load format `rfork`
+(EngineCore pid=153) INFO 10-27 13:13:48 [core.py:123] Initializing a V1 LLM engine (v0.30.0) with config: model='/models/Hy4-2L', speculative_config=None, tokenizer='/models/Hy4-2L', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=2048, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=True, quantization=None, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=npu, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=hy4-codex, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'vllm_ascend.compilation.compiler_interface.AscendCompiler', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_DECODE_ONLY: (2, 0)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 8, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': True, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'], gelu_and_mul_sparse=['native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_jit_warmup=True, moe_backend='auto', sparse_indexer_topk_backend='auto', linear_backend='auto', linear_backend_per_quant=None)
+(EngineCore pid=153) INFO 10-27 13:13:48 [multiproc_executor.py:153] DP group leader: node_rank=0, node_rank_within_dp=0, master_addr=127.0.0.1, mq_connect_ip=177.8.21.1 (local), world_size=2, local_world_size=2
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+INFO 10-27 13:13:52 [__init__.py:52] Available plugins for group vllm.platform_plugins:
+INFO 10-27 13:13:52 [__init__.py:54] - ascend -> vllm_ascend:register
+INFO 10-27 13:13:52 [__init__.py:57] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 10-27 13:13:52 [__init__.py:52] Available plugins for group vllm.platform_plugins:
+INFO 10-27 13:13:52 [__init__.py:54] - ascend -> vllm_ascend:register
+INFO 10-27 13:13:52 [__init__.py:57] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 10-27 13:13:52 [__init__.py:272] Platform plugin ascend is activated
+INFO 10-27 13:13:52 [__init__.py:272] Platform plugin ascend is activated
+INFO 10-27 13:13:52 [platform.py:74] Breakable CUDAGraph on Ascend is opt-in; using VLLM_USE_BREAKABLE_CUDAGRAPH=0.
+INFO 10-27 13:13:52 [platform.py:74] Breakable CUDAGraph on Ascend is opt-in; using VLLM_USE_BREAKABLE_CUDAGRAPH=0.
+2026-10-27 13:13:56,972 - 567 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1
+2026-10-27 13:13:56,980 - 568 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1
+INFO 10-27 13:13:58 [patch_indexer_kv_dtype.py:102] Patched AttentionConfig.indexer_kv_dtype to accept 'int8' (DeepSeek V4 Ascend indexer K cache dtype).
+INFO 10-27 13:13:58 [patch_indexer_kv_dtype.py:102] Patched AttentionConfig.indexer_kv_dtype to accept 'int8' (DeepSeek V4 Ascend indexer K cache dtype).
+INFO 10-27 13:13:58 [patch_kv_cache_dtype.py:117] Patched CacheConfig.cache_dtype to accept 'int8' and 'mxfp8' (Ascend KV cache dtypes).
+INFO 10-27 13:13:58 [patch_kv_cache_dtype.py:117] Patched CacheConfig.cache_dtype to accept 'int8' and 'mxfp8' (Ascend KV cache dtypes).
+INFO 10-27 13:13:58 [__init__.py:112] Registered model loader `<class 'vllm_ascend.model_loader.netloader.netloader.ModelNetLoaderElastic'>` with load format `netloader`
+INFO 10-27 13:13:58 [__init__.py:112] Registered model loader `<class 'vllm_ascend.model_loader.netloader.netloader.ModelNetLoaderElastic'>` with load format `netloader`
+INFO 10-27 13:13:58 [__init__.py:112] Registered model loader `<class 'vllm_ascend.model_loader.rfork.rfork_loader.RForkModelLoader'>` with load format `rfork`
+INFO 10-27 13:13:58 [__init__.py:112] Registered model loader `<class 'vllm_ascend.model_loader.rfork.rfork_loader.RForkModelLoader'>` with load format `rfork`
+WARNING 10-27 13:13:58 [indexer_topk.py:29] Failed to import the DeepSelect extension (vllm._deepselect_C): No module named 'vllm._deepselect_C'
+WARNING 10-27 13:13:58 [indexer_topk.py:29] Failed to import the DeepSelect extension (vllm._deepselect_C): No module named 'vllm._deepselect_C'
+[W1027 13:13:59.003452580 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())
+[W1027 13:13:59.003514850 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+WARNING 10-27 13:14:00 [patch_triton.py:332] NPU Triton causal_conv1d_update is unavailable (cannot import name 'causal_conv1d_update_npu' from 'vllm_ascend.ops.triton.mamba.causal_conv1d' (/vllm-workspace/vllm-ascend/vllm_ascend/ops/triton/mamba/causal_conv1d.py)); falling back to the PyTorch implementation, which syncs per request and therefore stalls ACL graph capture at decode-FULL.
+WARNING 10-27 13:14:00 [patch_triton.py:332] NPU Triton causal_conv1d_update is unavailable (cannot import name 'causal_conv1d_update_npu' from 'vllm_ascend.ops.triton.mamba.causal_conv1d' (/vllm-workspace/vllm-ascend/vllm_ascend/ops/triton/mamba/causal_conv1d.py)); falling back to the PyTorch implementation, which syncs per request and therefore stalls ACL graph capture at decode-FULL.
+INFO 10-27 13:14:01 [ascend_config.py:331] Dynamic EPLB is False
+INFO 10-27 13:14:01 [ascend_config.py:332] The number of redundant experts is 0
+INFO 10-27 13:14:01 [ascend_config.py:761] FlashComm1 is disabled. Using flashinfer_all2allv as the all2all backend.
+WARNING 10-27 13:14:01 [ascend_config.py:379] RL config requires weight_nz_mode=0; overriding AscendConfig.weight_nz_mode from 1 to 0.
+INFO 10-27 13:14:01 [ascend_config.py:331] Dynamic EPLB is False
+INFO 10-27 13:14:01 [ascend_config.py:332] The number of redundant experts is 0
+INFO 10-27 13:14:01 [ascend_config.py:761] FlashComm1 is disabled. Using flashinfer_all2allv as the all2all backend.
+WARNING 10-27 13:14:01 [ascend_config.py:379] RL config requires weight_nz_mode=0; overriding AscendConfig.weight_nz_mode from 1 to 0.
+(Worker pid=567) INFO 10-27 13:14:02 [parallel_state.py:1827] world_size=2 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_b6bdae3fb8ba4350be3f1761908feae7 backend=hccl
+(Worker pid=568) INFO 10-27 13:14:15 [parallel_state.py:1827] world_size=2 rank=1 local_rank=1 distributed_init_method=file:///tmp/vllm_dist_b6bdae3fb8ba4350be3f1761908feae7 backend=hccl
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+(Worker pid=567) INFO 10-27 13:14:15 [parallel_state.py:2267] rank 0 in world size 2 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank 0, EPLB rank N/A
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+(Worker pid=568) INFO 10-27 13:14:15 [platform.py:1485] FA3 will not be enabled when rl_config.enable_training_consistency is false. Note that Ascend NPU will use its registered plugin backend instead.
+(Worker pid=567) INFO 10-27 13:14:15 [platform.py:1485] FA3 will not be enabled when rl_config.enable_training_consistency is false. Note that Ascend NPU will use its registered plugin backend instead.
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:15 [model_runner_v1.py:4393] Starting to load model /models/Hy4-2L...
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:15 [model_runner_v1.py:4393] Starting to load model /models/Hy4-2L...
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:15 [interface.py:414] Using default backend AttentionBackendEnum.TORCH_SDPA for vit attention
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:15 [mm_encoder_attention.py:372] Using AttentionBackendEnum.TORCH_SDPA for MMEncoderAttention.
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:16 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'], gelu_and_mul_sparse=['native'])
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:16 [utils.py:226] No quantization signature detected from model files for "/models/Hy4-2L". The model will be loaded as float. To force a quantization method, pass "--quantization <method>" explicitly.
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:16 [platform.py:944] The timeout interval of the HCCL operator is 1836s. Timeout in seconds for execute_model RPC calls in multiprocessing must be greater than 1836s, Set VLLM_EXECUTE_MODEL_TIMEOUT_SECONDS=3000
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:16 [ascend_config.py:331] Dynamic EPLB is False
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:16 [ascend_config.py:332] The number of redundant experts is 0
+(Worker_TP1_EP1 pid=568) WARNING 10-27 13:14:16 [ascend_config.py:379] RL config requires weight_nz_mode=0; overriding AscendConfig.weight_nz_mode from 1 to 0.
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:16 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'], gelu_and_mul_sparse=['native'])
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:16 [utils.py:226] No quantization signature detected from model files for "/models/Hy4-2L". The model will be loaded as float. To force a quantization method, pass "--quantization <method>" explicitly.
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:16 [platform.py:944] The timeout interval of the HCCL operator is 1836s. Timeout in seconds for execute_model RPC calls in multiprocessing must be greater than 1836s, Set VLLM_EXECUTE_MODEL_TIMEOUT_SECONDS=3000
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:16 [ascend_config.py:331] Dynamic EPLB is False
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:16 [ascend_config.py:332] The number of redundant experts is 0
+(Worker_TP0_EP0 pid=567) WARNING 10-27 13:14:16 [ascend_config.py:379] RL config requires weight_nz_mode=0; overriding AscendConfig.weight_nz_mode from 1 to 0.
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:16 [platform.py:1485] FA3 will not be enabled when rl_config.enable_training_consistency is false. Note that Ascend NPU will use its registered plugin backend instead.
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:16 [compilation.py:336] Enabled custom fusions: norm_quant, act_quant
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:16 [platform.py:1485] FA3 will not be enabled when rl_config.enable_training_consistency is false. Note that Ascend NPU will use its registered plugin backend instead.
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:16 [expert_map_manager.py:245] [EP Rank 0/2] Expert parallelism is enabled. Expert placement strategy: linear. Local/global number of experts: 128/256. Experts local to global index map: 0->0, 1->1, 2->2, 3->3, 4->4, 5->5, 6->6, 7->7, 8->8, 9->9, 10->10, 11->11, 12->12, 13->13, 14->14, 15->15, 16->16, 17->17, 18->18, 19->19, 20->20, 21->21, 22->22, 23->23, 24->24, 25->25, 26->26, 27->27, 28->28, 29->29, 30->30, 31->31, 32->32, 33->33, 34->34, 35->35, 36->36, 37->37, 38->38, 39->39, 40->40, 41->41, 42->42, 43->43, 44->44, 45->45, 46->46, 47->47, 48->48, 49->49, 50->50, 51->51, 52->52, 53->53, 54->54, 55->55, 56->56, 57->57, 58->58, 59->59, 60->60, 61->61, 62->62, 63->63, 64->64, 65->65, 66->66, 67->67, 68->68, 69->69, 70->70, 71->71, 72->72, 73->73, 74->74, 75->75, 76->76, 77->77, 78->78, 79->79, 80->80, 81->81, 82->82, 83->83, 84->84, 85->85, 86->86, 87->87, 88->88, 89->89, 90->90, 91->91, 92->92, 93->93, 94->94, 95->95, 96->96, 97->97, 98->98, 99->99, 100->100, 101->101, 102->102, 103->103, 104->104, 105->105, 106->106, 107->107, 108->108, 109->109, 110->110, 111->111, 112->112, 113->113, 114->114, 115->115, 116->116, 117->117, 118->118, 119->119, 120->120, 121->121, 122->122, 123->123, 124->124, 125->125, 126->126, 127->127.
+(Worker_TP1_EP1 pid=568) WARNING 10-27 13:14:17 [vllm.py:3328] `torch.compile` is turned on, but the model /models/Hy4-2L does not support it. Please open an issue on GitHub if you want it to be supported.
+(Worker_TP0_EP0 pid=567) WARNING 10-27 13:14:17 [vllm.py:3328] `torch.compile` is turned on, but the model /models/Hy4-2L does not support it. Please open an issue on GitHub if you want it to be supported.
+(Worker_TP1_EP1 pid=568) WARNING 10-27 13:14:17 [vllm.py:3328] `torch.compile` is turned on, but the model /models/Hy4-2L does not support it. Please open an issue on GitHub if you want it to be supported.
+(Worker_TP0_EP0 pid=567) WARNING 10-27 13:14:17 [vllm.py:3328] `torch.compile` is turned on, but the model /models/Hy4-2L does not support it. Please open an issue on GitHub if you want it to be supported.
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:17 [weight_utils.py:895] Filesystem type for checkpoints: EXT4. Checkpoint size: 24.80 GiB. Available RAM: 1805.87 GiB.
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:17 [weight_utils.py:918] Auto-prefetch is disabled because the filesystem (EXT4) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(Worker_TP0_EP0 pid=567) Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+(Worker_TP0_EP0 pid=567) Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:01<00:03,  1.26s/it]
+(Worker_TP0_EP0 pid=567) Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:02<00:02,  1.07s/it]
+(Worker_TP0_EP0 pid=567) Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:03<00:01,  1.01s/it]
+(Worker_TP0_EP0 pid=567) Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:03<00:00,  1.49it/s]
+(Worker_TP0_EP0 pid=567) Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:03<00:00,  1.22it/s]
+(Worker_TP0_EP0 pid=567) 
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:21 [default_loader.py:430] Loading weights took 3.29 seconds
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:21 [model_runner_v1.py:4480] Loading model weights took 14.1866 GB
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:21 [model_runner_v1.py:4567] Model runner load_model total time: 6.20 seconds
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:21 [interface.py:635] Setting kv cache block size to 128 for ASCEND_SFA_INDEXER backend.
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:21 [model_runner_v1.py:4480] Loading model weights took 14.1866 GB
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:21 [model_runner_v1.py:4567] Model runner load_model total time: 6.26 seconds
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:21 [interface.py:635] Setting kv cache block size to 128 for ASCEND_SFA_INDEXER backend.
+(EngineCore pid=153) INFO 10-27 13:14:21 [utils.py:320] Using LBNHC KV cache layout.
+[rank1]:[W1027 13:14:32.218227320 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+[rank0]:[W1027 13:14:32.218241200 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:37 [gpu_model_runner.py:6496] Encoder cache will be initialized with a budget of 242048 tokens, and profiled with 1 video items of the maximum feature size.
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:38 [worker.py:580] Initial free memory 91.08 GiB, reserved 8.00 GiB for KV Cache as specified by kv_cache_memory_bytes, skipping memory profiling. This does not respect the gpu_memory_utilization config. Only use kv_cache_memory_bytes when you want manual control of KV cache memory size. If OOM'ed, check the difference of initial free memory between the current run and the previous run where kv_cache_memory_bytes is suggested and update it correspondingly.
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:38 [worker.py:580] Initial free memory 90.82 GiB, reserved 8.00 GiB for KV Cache as specified by kv_cache_memory_bytes, skipping memory profiling. This does not respect the gpu_memory_utilization config. Only use kv_cache_memory_bytes when you want manual control of KV cache memory size. If OOM'ed, check the difference of initial free memory between the current run and the previous run where kv_cache_memory_bytes is suggested and update it correspondingly.
+(EngineCore pid=153) INFO 10-27 13:14:38 [kv_cache_utils.py:2395] NPU KV cache size: 3,050,368 tokens, Maximum concurrency for 2,048 tokens per request: 1489.44x
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:38 [kernel_warmup.py:44] Starting Triton kernel warmup.
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:38 [kernel_warmup.py:44] Starting Triton kernel warmup.
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:38 [kernel_warmup.py:36] rejection_sampler Triton warmup complete in 0.000s.
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:38 [kernel_warmup.py:36] rejection_sampler Triton warmup complete in 0.000s.
+(Worker_TP1_EP1 pid=568) [WARNING] AutoBlockify disabled for kernel 'token_bin_counts_and_mask_kernel'. Unsafe ops: atomic operations. Enabling may cause correctness issues. The compiler keeps AutoBlockify disabled for this kernel.
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:48 [kernel_warmup.py:36] penalties Triton warmup complete in 9.416s.
+(Worker_TP0_EP0 pid=567) [WARNING] AutoBlockify disabled for kernel 'token_bin_counts_and_mask_kernel'. Unsafe ops: atomic operations. Enabling may cause correctness issues. The compiler keeps AutoBlockify disabled for this kernel.
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:48 [kernel_warmup.py:36] penalties Triton warmup complete in 9.416s.
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:48 [kernel_warmup.py:36] rms Triton warmup complete in 0.000s.
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:48 [kernel_warmup.py:36] rms Triton warmup complete in 0.000s.
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:48 [kernel_warmup.py:36] indexer Triton warmup complete in 0.000s.
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:48 [kernel_warmup.py:36] indexer Triton warmup complete in 0.000s.
+(Worker_TP1_EP1 pid=568) INFO 10-27 13:14:48 [kernel_warmup.py:53] Triton kernel warmup finished in 9.416s.
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:48 [kernel_warmup.py:53] Triton kernel warmup finished in 9.416s.
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:14:48 [gpu_model_runner.py:6883] Rank 0: Torch profiler disabled for CUDA graph capture
+(Worker_TP0_EP0 pid=567) Capturing CUDA graphs (decode, FULL):   0%|          | 0/4 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):  25%|██▌       | 1/4 [00:08<00:25,  8.58s/it]Capturing CUDA graphs (decode, FULL): 100%|██████████| 4/4 [00:17<00:00,  3.94s/it]Capturing CUDA graphs (decode, FULL): 100%|██████████| 4/4 [00:17<00:00,  4.29s/it]
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:15:05 [gpu_model_runner.py:6929] Graph capturing finished in 18 secs, took 0.17 GiB
+(Worker_TP0_EP0 pid=567) WARNING 10-27 13:15:05 [worker.py:960] Bind cpus failed in rank0: [Errno 2] No such file or directory: 'npu-smi' Skip binding cpu.
+(Worker_TP1_EP1 pid=568) WARNING 10-27 13:15:05 [worker.py:960] Bind cpus failed in rank1: [Errno 2] No such file or directory: 'npu-smi' Skip binding cpu.
+(EngineCore pid=153) INFO 10-27 13:15:05 [core.py:379] init engine (profile, create kv cache, warmup model) took 43.78 s
+(EngineCore pid=153) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=153) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+(EngineCore pid=153) WARNING 10-27 13:15:06 [indexer_topk.py:29] Failed to import the DeepSelect extension (vllm._deepselect_C): No module named 'vllm._deepselect_C'
+(EngineCore pid=153) INFO 10-27 13:15:06 [ascend_config.py:331] Dynamic EPLB is False
+(EngineCore pid=153) INFO 10-27 13:15:06 [ascend_config.py:332] The number of redundant experts is 0
+(EngineCore pid=153) WARNING 10-27 13:15:06 [ascend_config.py:379] RL config requires weight_nz_mode=0; overriding AscendConfig.weight_nz_mode from 1 to 0.
+(EngineCore pid=153) INFO 10-27 13:15:06 [kernel.py:416] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'], gelu_and_mul_sparse=['native'])
+(EngineCore pid=153) INFO 10-27 13:15:07 [utils.py:226] No quantization signature detected from model files for "/models/Hy4-2L". The model will be loaded as float. To force a quantization method, pass "--quantization <method>" explicitly.
+(EngineCore pid=153) INFO 10-27 13:15:07 [platform.py:944] The timeout interval of the HCCL operator is 1836s. Timeout in seconds for execute_model RPC calls in multiprocessing must be greater than 1836s, Set VLLM_EXECUTE_MODEL_TIMEOUT_SECONDS=3000
+(EngineCore pid=153) INFO 10-27 13:15:07 [ascend_config.py:331] Dynamic EPLB is False
+(EngineCore pid=153) INFO 10-27 13:15:07 [ascend_config.py:332] The number of redundant experts is 0
+(EngineCore pid=153) WARNING 10-27 13:15:07 [ascend_config.py:379] RL config requires weight_nz_mode=0; overriding AscendConfig.weight_nz_mode from 1 to 0.
+(EngineCore pid=153) INFO 10-27 13:15:07 [compilation.py:336] Enabled custom fusions: norm_quant, act_quant
+(APIServer pid=12) INFO 10-27 13:15:07 [entry.py:135] Supported tasks: ['generate']
+(APIServer pid=12) WARNING 10-27 13:15:07 [__init__.py:44] SECURITY WARNING: Development endpoints are enabled! This should NOT be used in production!
+(APIServer pid=12) INFO 10-27 13:15:07 [factories.py:76] Scale-out endpoints are disabled. Set --enable-scale-out to enable them.
+(APIServer pid=12) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=12) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=12) INFO 10-27 13:15:08 [hf.py:642] Detected the chat template content format to be 'openai'. You can set `--chat-template-content-format` to override this.
+(APIServer pid=12) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=12) WARNING 10-27 13:15:08 [model.py:1772] Default vLLM sampling parameters have been overridden by the model's `generation_config.json`: `{'temperature': 0.9, 'top_k': -1, 'top_p': 1}`. If this is not intended, please relaunch vLLM instance with `--generation-config vllm`.
+(APIServer pid=12) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=12) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=12) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=12) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=12) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=12) INFO 10-27 13:15:08 [entry.py:139] Starting vLLM server on http://0.0.0.0:18081
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:61] Available routes are:
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /openapi.json, Methods: GET, HEAD
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /docs, Methods: GET, HEAD
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /docs/oauth2-redirect, Methods: GET, HEAD
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /redoc, Methods: GET, HEAD
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /load, Methods: GET
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /version, Methods: GET
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /health, Methods: GET
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /metrics, Methods: GET
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /tokenize, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /detokenize, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /v1/models, Methods: GET
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /ping, Methods: GET
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /ping, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /invocations, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /reset_prefix_cache, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /reset_mm_cache, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /reset_encoder_cache, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /pause, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /resume, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /abort_requests, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /is_paused, Methods: GET
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /init_weight_transfer_engine, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /start_weight_update, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /start_draft_weight_update, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /update_weights, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /finish_weight_update, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /update_weight_version, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /weight_info, Methods: GET
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /get_world_size, Methods: GET
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /collective_rpc, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /server_info, Methods: GET
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /sleep, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /wake_up, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /is_sleeping, Methods: GET
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /v1/chat/completions, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /v1/chat/completions/batch, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /v1/responses, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /v1/responses/{response_id}, Methods: GET
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /v1/responses/{response_id}/cancel, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /v1/completions, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /v1/messages, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /v1/messages/count_tokens, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /generative_scoring, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /scale_elastic_ep, Methods: POST
+(APIServer pid=12) INFO 10-27 13:15:08 [launcher.py:70] Route: /is_scaling_elastic_ep, Methods: POST
+(APIServer pid=12) INFO:     Started server process [12]
+(APIServer pid=12) INFO:     Waiting for application startup.
+(APIServer pid=12) INFO:     Application startup complete.
+(APIServer pid=12) INFO:     127.0.0.1:41884 - "GET /health HTTP/1.1" 200 OK
+(Worker_TP0_EP0 pid=567) INFO 10-27 13:15:15 [acl_graph.py:301] ACL graph replay is active (logged once).
+(APIServer pid=12) INFO:     127.0.0.1:41896 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=12) INFO:     127.0.0.1:60816 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=12) INFO:     127.0.0.1:60830 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=12) INFO:     127.0.0.1:60838 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=12) INFO 10-27 13:15:18 [loggers.py:315] Engine 000: Avg prompt throughput: 6.2 tokens/s, Avg generation throughput: 5.5 tokens/s, Running: 0 reqs, Waiting: 0 reqs, NPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+(APIServer pid=12) INFO 10-27 13:15:28 [loggers.py:315] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, NPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%

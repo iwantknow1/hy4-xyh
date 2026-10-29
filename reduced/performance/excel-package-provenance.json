@@ -1,0 +1,14 @@
+[
+  {
+    "name": "xlsx",
+    "version": "0.18.5",
+    "integrity": "sha512-dmg3LCjBPHZnQp5/F/+nnTa+miPJxUXB6vtk42YjBBKayDNagxGEeIdWApkYPOf3Z3pm3k62Knjzp7lMeTEtFQ==",
+    "tarball": "https://registry.npmjs.org/xlsx/-/xlsx-0.18.5.tgz"
+  },
+  {
+    "name": "xlsx-calc",
+    "version": "0.9.2",
+    "integrity": "sha512-tp6ASfuqFP1QIcNgsB6fjeFMNCWii8jbqhcg/7w6XVRQb5H24RB8HOHA3SbJD+rUqmIqhnd7v0h4XE+LvullnA==",
+    "tarball": "https://registry.npmjs.org/xlsx-calc/-/xlsx-calc-0.9.2.tgz"
+  }
+]

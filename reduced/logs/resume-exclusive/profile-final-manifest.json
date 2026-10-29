@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-27T13:40:03Z",
+  "tag": "hy4-2l-middle",
+  "host": "177.8.21.1",
+  "model": "/models/Hy4-2L",
+  "served_model_name": "hy4-codex",
+  "tp": 2,
+  "dp": 1,
+  "mode": "full_decode_only",
+  "enable_expert_parallel": true,
+  "api_server_count": 1,
+  "torch_profiler_with_stack": false,
+  "torch_profiler_dir": "/codex/profiles/hy4-2l-middle/hy4-2l-middle",
+  "profile_phase": "middle",
+  "delay_iterations": 2048,
+  "max_iterations": 10,
+  "ignore_frontend": true,
+  "random_input_len": 32768,
+  "random_output_len": 4096,
+  "workload_kind": "multimodal",
+  "random_range_ratio": 0.0,
+  "mm_input_token_overhead": 95,
+  "image_height": 256,
+  "image_width": 256,
+  "num_prompts": 1,
+  "max_concurrency": 1,
+  "metric_percentiles": "50,90,99",
+  "expected_ranks": 2,
+  "run_dir": "/codex/tooling/.workspace-local/ascend-profiling-collection/runs/20261027_134003_hy4-2l-middle_177.8.21.1_339_6edbde38",
+  "connection_mode": "docker",
+  "devices": "2,3",
+  "serve_args": [
+    "--host",
+    "177.8.21.1",
+    "--key-file",
+    "/codex/tools/profile-ssh/id_ed25519",
+    "--container",
+    "x00951564-hy4-codex-oldhost-features",
+    "--model",
+    "/models/Hy4-2L",
+    "--served-model-name",
+    "hy4-codex",
+    "--tp",
+    "2",
+    "--extra-env",
+    "ASCEND_RT_VISIBLE_DEVICES=2,3",
+    "--extra-env",
+    "PYTORCH_NPU_ALLOC_CONF=expandable_segments:True",
+    "--extra-env",
+    "PATH=/codex/.venv/bin:/codex/tools:/usr/local/Ascend/cann-9.1.0/bin:/usr/local/Ascend/cann-9.1.0/tools/ccec_compiler/bin:/usr/local/Ascend/cann-9.1.0/tools/profiler/bin:/usr/local/Ascend/cann-9.1.0/tools/ascend_system_advisor/asys:/usr/local/Ascend/cann-9.1.0/tools/show_kernel_debug_data:/usr/local/Ascend/cann-9.1.0/tools/msobjdump:/root/.cargo/bin:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/bin:/usr/local/Ascend/ascend-toolkit/latest/bin:/usr/local/Ascend/ascend-toolkit/latest/compiler/ccec_compiler/bin:/usr/local/Ascend/ascend-toolkit/latest/tools/ccec_compiler/bin:/usr/local/python3.12.13/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "--extra-env",
+    "LD_LIBRARY_PATH=/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/cann-9.1.0/lib64:/usr/local/Ascend/cann-9.1.0/lib64/plugin/opskernel:/usr/local/Ascend/cann-9.1.0/lib64/plugin/nnengine:/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling:",
+    "--extra-env",
+    "VLLM_USE_V2_MODEL_RUNNER=0",
+    "--extra-env",
+    "HCCL_NPU_SOCKET_PORT_RANGE=62700-62799",
+    "--extra-env",
+    "HCCL_HOST_SOCKET_PORT_RANGE=62700-62799",
+    "--",
+    "--max-model-len",
+    "36864",
+    "--trust-remote-code",
+    "--gpu-memory-utilization",
+    "0.85",
+    "--max-num-seqs",
+    "1",
+    "--api-server-count",
+    "1",
+    "--profiler-config",
+    "{\"profiler\":\"torch\",\"delay_iterations\":2048,\"max_iterations\":10,\"torch_profiler_dir\":\"/codex/profiles/hy4-2l-middle/hy4-2l-middle\",\"torch_profiler_with_stack\":false,\"ignore_frontend\":true}",
+    "--enable-expert-parallel",
+    "--trust-remote-code",
+    "--load-format",
+    "auto",
+    "--enable-sleep-mode",
+    "--kv-cache-memory-bytes",
+    "8589934592",
+    "--additional-config",
+    "{\"rl_config\":{\"enabled\":true}}",
+    "--compilation-config",
+    "{\"cudagraph_capture_sizes\":[1],\"cudagraph_mode\":\"FULL_DECODE_ONLY\"}"
+  ],
+  "analyse_all_ranks": true,
+  "service_result": {
+    "status": "ready",
+    "machine": "177.8.21.1",
+    "mode": "direct",
+    "base_url": "http://177.8.21.1:53783",
+    "container_ip": "177.8.21.1",
+    "port": 53783,
+    "pid": 2415,
+    "served_model_name": "hy4-codex",
+    "model": "/models/Hy4-2L",
+    "tp": 2,
+    "dp": null,
+    "log_stdout": "/home/vllm/.workspace-runtime/serving/20261027_134010_177.8.21.1/stdout.log",
+    "log_stderr": "/home/vllm/.workspace-runtime/serving/20261027_134010_177.8.21.1/stderr.log",
+    "runtime_dir": "/home/vllm/.workspace-runtime/serving/20261027_134010_177.8.21.1",
+    "readiness": {
+      "ready": true,
+      "alive": true,
+      "elapsed_seconds": 51.2
+    },
+    "env": {
+      "ASCEND_RT_VISIBLE_DEVICES": "2,3",
+      "PYTORCH_NPU_ALLOC_CONF": "expandable_segments:True",
+      "PATH": "/codex/.venv/bin:/codex/tools:/usr/local/Ascend/cann-9.1.0/bin:/usr/local/Ascend/cann-9.1.0/tools/ccec_compiler/bin:/usr/local/Ascend/cann-9.1.0/tools/profiler/bin:/usr/local/Ascend/cann-9.1.0/tools/ascend_system_advisor/asys:/usr/local/Ascend/cann-9.1.0/tools/show_kernel_debug_data:/usr/local/Ascend/cann-9.1.0/tools/msobjdump:/root/.cargo/bin:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/bin:/usr/local/Ascend/ascend-toolkit/latest/bin:/usr/local/Ascend/ascend-toolkit/latest/compiler/ccec_compiler/bin:/usr/local/Ascend/ascend-toolkit/latest/tools/ccec_compiler/bin:/usr/local/python3.12.13/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "LD_LIBRARY_PATH": "/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/cann-9.1.0/lib64:/usr/local/Ascend/cann-9.1.0/lib64/plugin/opskernel:/usr/local/Ascend/cann-9.1.0/lib64/plugin/nnengine:/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling:",
+      "VLLM_USE_V2_MODEL_RUNNER": "0",
+      "HCCL_NPU_SOCKET_PORT_RANGE": "62700-62799",
+      "HCCL_HOST_SOCKET_PORT_RANGE": "62700-62799"
+    },
+    "extra_args": [
+      "--max-model-len",
+      "36864",
+      "--trust-remote-code",
+      "--gpu-memory-utilization",
+      "0.85",
+      "--max-num-seqs",
+      "1",
+      "--api-server-count",
+      "1",
+      "--profiler-config",
+      "{\"profiler\":\"torch\",\"delay_iterations\":2048,\"max_iterations\":10,\"torch_profiler_dir\":\"/codex/profiles/hy4-2l-middle/hy4-2l-middle\",\"torch_profiler_with_stack\":false,\"ignore_frontend\":true}",
+      "--enable-expert-parallel",
+      "--trust-remote-code",
+      "--load-format",
+      "auto",
+      "--enable-sleep-mode",
+      "--kv-cache-memory-bytes",
+      "8589934592",
+      "--additional-config",
+      "{\"rl_config\":{\"enabled\":true}}",
+      "--compilation-config",
+      "{\"cudagraph_capture_sizes\":[1],\"cudagraph_mode\":\"FULL_DECODE_ONLY\"}"
+    ]
+  },
+  "request_tunnel": {
+    "local_port": 52973,
+    "base_url": "http://127.0.0.1:52973"
+  },
+  "start_profile": {
+    "ok": true,
+    "status": 200,
+    "body": ""
+  },
+  "benchmark_result": {
+    "returncode": 0,
+    "stdout_log": "/codex/tooling/.workspace-local/ascend-profiling-collection/runs/20261027_134003_hy4-2l-middle_177.8.21.1_339_6edbde38/benchmark.stdout.log",
+    "stderr_log": "/codex/tooling/.workspace-local/ascend-profiling-collection/runs/20261027_134003_hy4-2l-middle_177.8.21.1_339_6edbde38/benchmark.stderr.log",
+    "stdout": "0.0, random_mm_limit_mm_per_prompt={'image': 1, 'video': 0}, random_mm_bucket_config={(256, 256, 1): 1.0}, hf_subset=None, hf_split=None, hf_name=None, hf_output_len=None, bfcl_categories=None, prefix_repetition_prefix_len=256, prefix_repetition_suffix_len=256, prefix_repetition_num_prefixes=10, prefix_repetition_output_len=128, speed_bench_dataset_subset='qualitative', speed_bench_output_len=4096, speed_bench_category=None, label=None, backend='openai-chat', base_url='http://127.0.0.1:53783', host='127.0.0.1', port=8000, endpoint='/v1/chat/completions', header=None, max_concurrency=1, model='hy4-codex', input_len=None, output_len=None, tokenizer='/models/Hy4-2L', tokenizer_mode='auto', use_beam_search=False, logprobs=None, request_rate=inf, burstiness=1.0, probe_request_rate=0.0, disable_tqdm=False, num_warmups=0, profile=False, save_result=False, save_detailed=False, append_result=False, metadata=None, result_dir=None, result_filename=None, ignore_eos=True, self_timed=None, percentile_metrics=None, metric_percentiles='50,90,99', goodput=None, request_id_prefix='bench-5104e62f-', top_p=None, top_k=None, min_p=None, temperature=None, frequency_penalty=None, presence_penalty=None, repetition_penalty=None, served_model_name=None, lora_modules=None, lora_assignment='random', ramp_up_strategy=None, ramp_up_start_rps=None, ramp_up_end_rps=None, ready_check_timeout_sec=0, chat_template_kwargs=None, extra_body=None, skip_tokenizer_init=False, insecure=False, plot_timeline=False, timeline_itl_thresholds='25,50', plot_dataset_stats=False)\nINFO 10-27 13:41:36 [utils.py:90] Sampling input_len from [32673, 32673] and output_len from [4096, 4096]\nINFO 10-27 13:41:36 [datasets.py:1095] Normalized bucket config: {(256, 256, 1): 1.0}\nINFO 10-27 13:41:36 [datasets.py:1107] Updated mm-limit-per-prompt: {'image': 1}\nINFO 10-27 13:41:36 [datasets.py:1129] Sampling number of multimodal items from [1, 1]\nWARNING: vllm bench serve no longer sets temperature==0 (greedy) in requests by default. The default will be determined on the server side and can be model/API specific. For the old behavior, include --temperature=0.\nStarting initial single prompt test run...\nSkipping endpoint ready check.\nStarting main benchmark run...\nTraffic request rate: inf\nBurstiness factor: 1.0 (Poisson process)\nMaximum request concurrency: 1\ntip: install termplotlib and gnuplot to plot the metrics\n============ Serving Benchmark Result ============\nSuccessful requests:                     1         \nFailed requests:                         0         \nMaximum request concurrency:             1         \nBenchmark duration (s):                  16.09     \nTotal input tokens:                      32768     \nTotal generated tokens:                  4096      \nRequest throughput (req/s):              0.06      \nOutput token throughput (tok/s):         254.57    \nPeak output token throughput (tok/s):    286.00    \nPeak concurrent requests:                1.00      \nTotal token throughput (tok/s):          2291.16   \n---------------Time to First Token----------------\nMean TTFT (ms):                          759.34    \nMedian TTFT (ms):                        759.34    \nP50 TTFT (ms):                           759.34    \nP90 TTFT (ms):                           759.34    \nP99 TTFT (ms):                           759.34    \n-----Time per Output Token (excl. 1st token)------\nMean TPOT (ms):                          3.74      \nMedian TPOT (ms):                        3.74      \nP50 TPOT (ms):                           3.74      \nP90 TPOT (ms):                           3.74      \nP99 TPOT (ms):                           3.74      \n---------------Inter-token Latency----------------\nMean ITL (ms):                           3.75      \nMedian ITL (ms):                         3.54      \nP50 ITL (ms):                            3.54      \nP90 ITL (ms):                            3.62      \nP99 ITL (ms):                            4.27      \n==================================================\n",
+    "stderr": "/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.\n  @_deprecated(replacement=\"triton.language.extra.cann.libdevice.atan2\")\n/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.\n  @_deprecated(replacement=\"triton.language.extra.cann.libdevice.isfinited\")\n/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.\n  @_deprecated(replacement=\"triton.language.extra.cann.libdevice.finitef\")\n/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.\n  @_deprecated(replacement=\"triton.language.extra.cann.libdevice.atan2\")\n/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.\n  @_deprecated(replacement=\"triton.language.extra.cann.libdevice.isfinited\")\n/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.\n  @_deprecated(replacement=\"triton.language.extra.cann.libdevice.finitef\")\n2026-10-27 13:41:34,461 - 3993 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}\n\n  0%|          | 0/1 [00:00<?, ?it/s]\n100%|██████████| 1/1 [00:16<00:00, 16.09s/it]\n100%|██████████| 1/1 [00:16<00:00, 16.09s/it]\n"
+  },
+  "workload_status": {
+    "status": "ok"
+  },
+  "stop_profile": {
+    "ok": true,
+    "status": 200,
+    "body": ""
+  },
+  "stop_result": {
+    "status": "stopped",
+    "machine": "177.8.21.1",
+    "mode": "direct",
+    "pid": 2415,
+    "stopped": true
+  },
+  "remote_profile_root": "/codex/profiles/hy4-2l-middle/hy4-2l-middle",
+  "remote_profile_dirs": [
+    {
+      "path": "/codex/profiles/hy4-2l-middle/hy4-2l-middle/dp0_pp0_tp0_dcp0_ep0_rank0_2907_20261027134145133_ascend_pt",
+      "outputs": {
+        "kernel_details_csv": {
+          "path": "/codex/profiles/hy4-2l-middle/hy4-2l-middle/dp0_pp0_tp0_dcp0_ep0_rank0_2907_20261027134145133_ascend_pt/ASCEND_PROFILER_OUTPUT/kernel_details.csv",
+          "exists": true
+        },
+        "op_statistic_csv": {
+          "path": "/codex/profiles/hy4-2l-middle/hy4-2l-middle/dp0_pp0_tp0_dcp0_ep0_rank0_2907_20261027134145133_ascend_pt/ASCEND_PROFILER_OUTPUT/op_statistic.csv",
+          "exists": true
+        },
+        "trace_view_json": {
+          "path": "/codex/profiles/hy4-2l-middle/hy4-2l-middle/dp0_pp0_tp0_dcp0_ep0_rank0_2907_20261027134145133_ascend_pt/ASCEND_PROFILER_OUTPUT/trace_view.json",
+          "exists": true
+        }
+      },
+      "analysis_status": "ok"
+    },
+    {
+      "path": "/codex/profiles/hy4-2l-middle/hy4-2l-middle/dp0_pp0_tp1_dcp0_ep1_rank1_2908_20261027134145133_ascend_pt",
+      "outputs": {
+        "kernel_details_csv": {
+          "path": "/codex/profiles/hy4-2l-middle/hy4-2l-middle/dp0_pp0_tp1_dcp0_ep1_rank1_2908_20261027134145133_ascend_pt/ASCEND_PROFILER_OUTPUT/kernel_details.csv",
+          "exists": true
+        },
+        "op_statistic_csv": {
+          "path": "/codex/profiles/hy4-2l-middle/hy4-2l-middle/dp0_pp0_tp1_dcp0_ep1_rank1_2908_20261027134145133_ascend_pt/ASCEND_PROFILER_OUTPUT/op_statistic.csv",
+          "exists": true
+        },
+        "trace_view_json": {
+          "path": "/codex/profiles/hy4-2l-middle/hy4-2l-middle/dp0_pp0_tp1_dcp0_ep1_rank1_2908_20261027134145133_ascend_pt/ASCEND_PROFILER_OUTPUT/trace_view.json",
+          "exists": true
+        }
+      },
+      "analysis_status": "ok"
+    }
+  ],
+  "rank_count": 2,
+  "analysis_status": "ok",
+  "completed_at": "2026-10-27T13:43:28Z",
+  "status": "ok"
+}

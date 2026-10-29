@@ -1,0 +1,26 @@
+# hccl-6l-eager-cachefix (verification_command)
+/codex/.venv/bin/python scripts/skill-scripts/weight-update/test_hccl_packed_cpu_stage.py --server-url http://127.0.0.1:18080 --served-model-name hy4-codex --checkpoint /models/Hy4-6L --device 0 --master-address 127.0.0.1 --master-port 29635 --prompts-json /codex/scripts/prompts.json --max-tokens 16 --timeout 600 --report /codex/logs/resume-exclusive/hccl-6l-eager-cachefix.json
+
+# hccl-6l-graph-cachefix (verification_command)
+/codex/.venv/bin/python scripts/skill-scripts/weight-update/test_hccl_packed_cpu_stage.py --server-url http://127.0.0.1:18080 --served-model-name hy4-codex --checkpoint /models/Hy4-6L --device 0 --master-address 127.0.0.1 --master-port 29636 --prompts-json /codex/scripts/prompts.json --max-tokens 16 --timeout 600 --report /codex/logs/resume-exclusive/hccl-6l-graph-cachefix.json
+
+# hccl-graph (verification_command)
+/codex/.venv/bin/python scripts/skill-scripts/weight-update/test_hccl_packed_persistent.py --server-url http://127.0.0.1:18080 --served-model-name hy4-codex --checkpoint /models/Hy4-2L --device 0 --master-address 127.0.0.1 --master-port 29577 --prompts-json /codex/scripts/prompts.json --max-tokens 16 --timeout 600 --report /codex/logs/resume-exclusive/hccl-graph.json
+
+# hccl-reinit-1 (verification_command)
+/codex/.venv/bin/python scripts/skill-scripts/weight-update/test_hccl_packed_cpu_stage.py --server-url http://127.0.0.1:18080 --served-model-name hy4-codex --checkpoint /models/Hy4-2L --device 0 --master-address 127.0.0.1 --master-port 29611 --prompts-json /codex/scripts/prompts.json --max-tokens 16 --timeout 600 --report /codex/logs/resume-exclusive/hccl-reinit-1.json
+
+# hccl-reinit-2 (verification_command)
+/codex/.venv/bin/python scripts/skill-scripts/weight-update/test_hccl_packed_cpu_stage.py --server-url http://127.0.0.1:18080 --served-model-name hy4-codex --checkpoint /models/Hy4-2L --device 0 --master-address 127.0.0.1 --master-port 29612 --prompts-json /codex/scripts/prompts.json --max-tokens 16 --timeout 600 --report /codex/logs/resume-exclusive/hccl-reinit-2.json
+
+# hccl-reinit-3 (verification_command)
+/codex/.venv/bin/python scripts/skill-scripts/weight-update/test_hccl_packed_cpu_stage.py --server-url http://127.0.0.1:18080 --served-model-name hy4-codex --checkpoint /models/Hy4-2L --device 0 --master-address 127.0.0.1 --master-port 29613 --prompts-json /codex/scripts/prompts.json --max-tokens 16 --timeout 600 --report /codex/logs/resume-exclusive/hccl-reinit-3.json
+
+# hccl-unpacked-staged (verification_command)
+/codex/.venv/bin/python scripts/skill-scripts/weight-update/test_hccl_cpu_stage.py --server-url http://127.0.0.1:18080 --served-model-name hy4-codex --checkpoint /models/Hy4-2L --device 0 --master-address 127.0.0.1 --master-port 29573 --prompts-json /codex/scripts/prompts.json --max-tokens 16 --timeout 600 --report /codex/logs/resume-exclusive/hccl-unpacked-staged.json
+
+# ipc-6l-tp4-graph (verification_command)
+/codex/.venv/bin/python scripts/skill-scripts/weight-update/test_npu_ipc_cpu_stage.py --server-url http://127.0.0.1:18080 --served-model-name hy4-codex --checkpoint /models/Hy4-6L --devices 0,1,2,3 --prompts-json /codex/scripts/prompts.json --max-tokens 16 --packed-buffer-mb 12288 --timeout 600 --report /codex/logs/resume-exclusive/ipc-6l-tp4-graph.json
+
+# ipc-graph (verification_command)
+/codex/.venv/bin/python scripts/skill-scripts/weight-update/test_npu_ipc_cpu_stage.py --server-url http://127.0.0.1:18080 --served-model-name hy4-codex --checkpoint /models/Hy4-2L --devices 0,1 --prompts-json /codex/scripts/prompts.json --max-tokens 16 --packed-buffer-mb 12288 --timeout 600 --report /codex/logs/resume-exclusive/ipc-graph.json

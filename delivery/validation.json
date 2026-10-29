@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "created_utc": "2026-10-29T07:02:21.628Z",
+  "checks": {
+    "final_report_complete": true,
+    "judge_2258_complete": true,
+    "hallusion_generation_complete": true,
+    "source_hashes_match_validated_report": true,
+    "patch_applies_to_before": true,
+    "excel_hash_matches_validation": true,
+    "image_record_consistent": true,
+    "new_document_links_resolve": true,
+    "successful_cases_only": true,
+    "no_credentials_and_size_limit": true
+  },
+  "limitations": [
+    "Archive validation only; no new inference, source tests or NPU deployment performed during publishing.",
+    "Only successful run data is archived; original generated README success sections are retained. Failure history is described in prose.",
+    "Online judge revision not frozen; model weights differ from reference."
+  ]
+}

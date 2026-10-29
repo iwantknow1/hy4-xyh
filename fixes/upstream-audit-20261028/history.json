@@ -1,0 +1,330 @@
+[
+  {
+    "sha": "19aba3e4d59baf0bc1c1433cea3ccb3065ed00c9",
+    "node_id": "C_kwDOI7xeftoAKDE5YWJhM2U0ZDU5YmFmMGJjMWMxNDMzY2VhM2NjYjMwNjVlZDAwYzk",
+    "commit": {
+      "author": {
+        "name": "Ronald",
+        "email": "ronaldautomobile@163.com",
+        "date": "2026-10-14T10:17:58Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-10-14T10:17:58Z"
+      },
+      "message": "[Bugfix][RL] Load attention sinks through weight_loader for layerwise reload (#57797)\n\nSigned-off-by: Ronald1995 <ronaldautomobile@163.com>\nCo-authored-by: aoshen02 <aoshen@inferact.ai>",
+      "tree": {
+        "sha": "05a47c73434f48a4a5ca3198e1e1f03aea693c59",
+        "url": "https://api.github.com/repos/vllm-project/vllm/git/trees/05a47c73434f48a4a5ca3198e1e1f03aea693c59"
+      },
+      "url": "https://api.github.com/repos/vllm-project/vllm/git/commits/19aba3e4d59baf0bc1c1433cea3ccb3065ed00c9",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqz1bWCRC1aQ7uu5UhlAAAFHYQAFCyZQ73sU9FeZfWaSCe0dgn\n4unWX3vOs8WrAYYEy6IrdZq5BfT1FH79qe6NrgC3RCp9Da6uiHne+Dsfy5w0VhXp\ny+d1U+LZGNws+xMvYBvuxPWKd9FxIIcS1Jv7Rpu+gNs+tY78qfdMvh51opSeC3No\n7NPk7gxpW9tw4b61/i8H6/nxdOkbleKUFZKMmiPoMF40dQ+3GvLcRCCql+uEH5Pf\nBsBjDRspafiwaxsbR7rco11EfheHyGCnnwv1s8dvl2maS+GJaiJ7VqAHlONxtAob\nN91RCEBAb95SVFevbvGb8wa8VEiOhInKxFpfyqcUJwpkiIfqkQas4TeVAsXWhB29\nVuJh+kbDnP+etwhcJl+WPedko5lSQ9VZsnhmB4UN7N4gFM+QVuWVrvNGmAbHh675\nU2jtJeeKVwEbCy/h5a9WtjYpZQirPwP7169RFFHv1jXZsS5beAO0D6KVBwmHFeYb\nZGDwqYeEGwo3Hc5x9fVx8S2UjMapo8TKIxYWQArKB8mFEz3ek+lb3fdqQC4kKin9\nDLO9JspGYwTC/z+eg+zWCLpspB3xFq8aAx9OOrV2VYMNpK9evlvErKhGhvgnNLaX\n5/QSFitsIXLEvKqviCnZUbppPKgfC6iAIDWz4kusoyted6NyFQ6kxMb+ANkNz8Yq\nPC8feWYe0cgpJS4vGmrq\n=jEA5\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 05a47c73434f48a4a5ca3198e1e1f03aea693c59\nparent f9b65c30c7b518600b622d4b683c9f2f1eb04370\nauthor Ronald <ronaldautomobile@163.com> 1791973078 +0800\ncommitter GitHub <noreply@github.com> 1791973078 +0000\n\n[Bugfix][RL] Load attention sinks through weight_loader for layerwise reload (#57797)\n\nSigned-off-by: Ronald1995 <ronaldautomobile@163.com>\nCo-authored-by: aoshen02 <aoshen@inferact.ai>",
+        "verified_at": "2026-10-14T10:17:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/vllm-project/vllm/commits/19aba3e4d59baf0bc1c1433cea3ccb3065ed00c9",
+    "html_url": "https://github.com/vllm-project/vllm/commit/19aba3e4d59baf0bc1c1433cea3ccb3065ed00c9",
+    "comments_url": "https://api.github.com/repos/vllm-project/vllm/commits/19aba3e4d59baf0bc1c1433cea3ccb3065ed00c9/comments",
+    "author": {
+      "login": "Ronald1995",
+      "id": 54357592,
+      "node_id": "MDQ6VXNlcjU0MzU3NTky",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54357592?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Ronald1995",
+      "html_url": "https://github.com/Ronald1995",
+      "followers_url": "https://api.github.com/users/Ronald1995/followers",
+      "following_url": "https://api.github.com/users/Ronald1995/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Ronald1995/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Ronald1995/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Ronald1995/subscriptions",
+      "organizations_url": "https://api.github.com/users/Ronald1995/orgs",
+      "repos_url": "https://api.github.com/users/Ronald1995/repos",
+      "events_url": "https://api.github.com/users/Ronald1995/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Ronald1995/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "f9b65c30c7b518600b622d4b683c9f2f1eb04370",
+        "url": "https://api.github.com/repos/vllm-project/vllm/commits/f9b65c30c7b518600b622d4b683c9f2f1eb04370",
+        "html_url": "https://github.com/vllm-project/vllm/commit/f9b65c30c7b518600b622d4b683c9f2f1eb04370"
+      }
+    ]
+  },
+  {
+    "sha": "d881812500b49bc77c8e1106664c75ffee16958e",
+    "node_id": "C_kwDOI7xeftoAKGQ4ODE4MTI1MDBiNDliYzc3YzhlMTEwNjY2NGM3NWZmZWUxNjk1OGU",
+    "commit": {
+      "author": {
+        "name": "Harry Mellor",
+        "email": "19981378+hmellor@users.noreply.github.com",
+        "date": "2026-09-24T14:14:10Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-09-24T14:14:10Z"
+      },
+      "message": "[Chore] Use Transformers v5 names and drop redundant processor `use_fast` (#58550)\n\nSigned-off-by: Harry Mellor <19981378+hmellor@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 (1M context) <noreply@anthropic.com>",
+      "tree": {
+        "sha": "c5beb85d2439fea6473929a1e45c99450b2514cb",
+        "url": "https://api.github.com/repos/vllm-project/vllm/git/trees/c5beb85d2439fea6473929a1e45c99450b2514cb"
+      },
+      "url": "https://api.github.com/repos/vllm-project/vllm/git/commits/d881812500b49bc77c8e1106664c75ffee16958e",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqtTAyCRC1aQ7uu5UhlAAA7r8QAG8XzN/O76x0W3n3f/Q3M2JM\npWZ4RKQfwi9Pu2rG7L0Cy0AqFbcr4gcVqM4ACzE301b2S8xS6l93DwNYwYVUtdjS\nHUlfIebGkDGEzXxZHFGZclTALZF77I7p6qncEpjKXnLZpZgAZsFqm1gXrsIS4Jnv\nLe5ZRoZy1wljmpMcjLNQWjXD/gLkNhR5u7YbNiuCKtWSgteIqX/YOr5YGH8vgpVy\nqSr6O59xj1+kAjPxIEtTft+MsWKgP4iKZLswT9AI9A518Y/AcLAv01ZY0LGLBmm2\nJEA4J++kQddI5x2lVWXPcNOThIP2+jzW+mjFUPkYYcTjHKSgPy/obOa96f5IvDo6\n/j0CIwdfwacRui1/yb442fk7BiOXaA8hyghtyZNblQGBKKiSCPBxR3tzX0ytcS9B\n8nRggJoq7zm1Obo4xN7c3HgUA1Rd+1TVsdkXdLcLxTd8LAOrZtH+bFCkIVfvgSAS\n6MyimIHZeANIHu+nllcfcf6bhUCMl30mBFQPysyoiqrlruWuavo29X29U9VaMRJL\nhzPl6bEGHZRQ5cBN/CIOPi/SbV9pZ+EC0eD5M16EfqHWx7VT4gYHoPfQigs92dQ+\nvxYKVfem1F9+sxqqrJ/dWHld2Yd3MZxAevCu2smy41hec4Xz6gJ3heQsTBbU9fz1\nV5Jn5HXhElPSHv1zSQoN\n=FbWX\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree c5beb85d2439fea6473929a1e45c99450b2514cb\nparent 484c211fe80d003b0ae03dee7676767bac753d8a\nauthor Harry Mellor <19981378+hmellor@users.noreply.github.com> 1790259250 +0200\ncommitter GitHub <noreply@github.com> 1790259250 +0000\n\n[Chore] Use Transformers v5 names and drop redundant processor `use_fast` (#58550)\n\nSigned-off-by: Harry Mellor <19981378+hmellor@users.noreply.github.com>\nCo-authored-by: Claude Opus 5.5 (1M context) <noreply@anthropic.com>",
+        "verified_at": "2026-09-24T14:14:11Z"
+      }
+    },
+    "url": "https://api.github.com/repos/vllm-project/vllm/commits/d881812500b49bc77c8e1106664c75ffee16958e",
+    "html_url": "https://github.com/vllm-project/vllm/commit/d881812500b49bc77c8e1106664c75ffee16958e",
+    "comments_url": "https://api.github.com/repos/vllm-project/vllm/commits/d881812500b49bc77c8e1106664c75ffee16958e/comments",
+    "author": {
+      "login": "hmellor",
+      "id": 19981378,
+      "node_id": "MDQ6VXNlcjE5OTgxMzc4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19981378?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hmellor",
+      "html_url": "https://github.com/hmellor",
+      "followers_url": "https://api.github.com/users/hmellor/followers",
+      "following_url": "https://api.github.com/users/hmellor/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hmellor/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/hmellor/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hmellor/subscriptions",
+      "organizations_url": "https://api.github.com/users/hmellor/orgs",
+      "repos_url": "https://api.github.com/users/hmellor/repos",
+      "events_url": "https://api.github.com/users/hmellor/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/hmellor/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "484c211fe80d003b0ae03dee7676767bac753d8a",
+        "url": "https://api.github.com/repos/vllm-project/vllm/commits/484c211fe80d003b0ae03dee7676767bac753d8a",
+        "html_url": "https://github.com/vllm-project/vllm/commit/484c211fe80d003b0ae03dee7676767bac753d8a"
+      }
+    ]
+  },
+  {
+    "sha": "8c1557a79c539ffe82d004d2a0c8d7b5e71159ce",
+    "node_id": "C_kwDOI7xeftoAKDhjMTU1N2E3OWM1MzlmZmU4MmQwMDRkMmEwYzhkN2I1ZTcxMTU5Y2U",
+    "commit": {
+      "author": {
+        "name": "Harry Mellor",
+        "email": "19981378+hmellor@users.noreply.github.com",
+        "date": "2026-09-16T16:44:29Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-09-16T16:44:29Z"
+      },
+      "message": "Add `pydocstyle` to the `ruff` rules (#52136)\n\nSigned-off-by: Harry Mellor <19981378+hmellor@users.noreply.github.com>\nSigned-off-by: Harry Mellor <hej.mellor@gmail.com>\nCo-authored-by: Claude Opus 5 (1M context) <noreply@anthropic.com>",
+      "tree": {
+        "sha": "910b49a000a5d7a36b60aa1a258cd9c2e57ae31d",
+        "url": "https://api.github.com/repos/vllm-project/vllm/git/trees/910b49a000a5d7a36b60aa1a258cd9c2e57ae31d"
+      },
+      "url": "https://api.github.com/repos/vllm-project/vllm/git/commits/8c1557a79c539ffe82d004d2a0c8d7b5e71159ce",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqqsdtCRC1aQ7uu5UhlAAA/NkQAK9NEnP8LRTbKhPScw4C1mTS\nGoSMcZg5VvR+YxGfxfrXwTEf3qCLMlwUU/ob4iRontpG+9TDxT8i5dffBCHkHXJ7\nzzCBatTujjxGOc+NWI7SiNOJT2i17pBWkyQJYKXuVUhFvge3jNmZx3GVi+RzdiaS\n2RSdH1PeXRmLmxSWjjntfvTp85wYxM26gNCP7W1EL0XOAXGVOCdY2AOl/AAD98sN\nDoOObt8WUFtkmgp0ZYUuIVWhiS175vk+nySE2rPrrhEwfp1BMaWHWUd+jUqtoUeI\nzLKfrTo1+RMwQjvAquw6+xQG4IIwQHCZPbx0vgmRS5m+RhXcoGUSHgVszH0skCo2\n6Wb+bkBrn3o1+6iEF8om/21gekfHBQG9DlyDH6WtqYCB2/ph1721QdEWxCdNFYc/\nN9o6BBH6j8Rr7dF7F0BGf0VVpFusQ+b5LjKSRdIDcKCbVI9mfLo62h23CzIdn8bi\nr21ADlGLaUbXZOCNgMAUuA0FP7tkMzH6lw4R1UgZyorC63BNgjkAE7g8YL7S+/2Q\nH7aZoJMjC1TllUAnYiJA/dETwlNBhms5xisvVmGNPjL5//NZB3F+Qb/iapHWQzwz\nfCWig6ytLsRLu5E+tORwnnqK3hwBkfdUICZPrEYbOHdXdeHgiuu999DM1fMS/NN+\nSYmZ1G8Y3ghy5ZOXHdv0\n=Ig5Y\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 910b49a000a5d7a36b60aa1a258cd9c2e57ae31d\nparent 804e5377aa0b0cea9544061beb2ebff162543c72\nauthor Harry Mellor <19981378+hmellor@users.noreply.github.com> 1789577069 +0100\ncommitter GitHub <noreply@github.com> 1789577069 +0000\n\nAdd `pydocstyle` to the `ruff` rules (#52136)\n\nSigned-off-by: Harry Mellor <19981378+hmellor@users.noreply.github.com>\nSigned-off-by: Harry Mellor <hej.mellor@gmail.com>\nCo-authored-by: Claude Opus 5 (1M context) <noreply@anthropic.com>",
+        "verified_at": "2026-09-16T16:44:29Z"
+      }
+    },
+    "url": "https://api.github.com/repos/vllm-project/vllm/commits/8c1557a79c539ffe82d004d2a0c8d7b5e71159ce",
+    "html_url": "https://github.com/vllm-project/vllm/commit/8c1557a79c539ffe82d004d2a0c8d7b5e71159ce",
+    "comments_url": "https://api.github.com/repos/vllm-project/vllm/commits/8c1557a79c539ffe82d004d2a0c8d7b5e71159ce/comments",
+    "author": {
+      "login": "hmellor",
+      "id": 19981378,
+      "node_id": "MDQ6VXNlcjE5OTgxMzc4",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19981378?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hmellor",
+      "html_url": "https://github.com/hmellor",
+      "followers_url": "https://api.github.com/users/hmellor/followers",
+      "following_url": "https://api.github.com/users/hmellor/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hmellor/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/hmellor/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hmellor/subscriptions",
+      "organizations_url": "https://api.github.com/users/hmellor/orgs",
+      "repos_url": "https://api.github.com/users/hmellor/repos",
+      "events_url": "https://api.github.com/users/hmellor/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/hmellor/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "804e5377aa0b0cea9544061beb2ebff162543c72",
+        "url": "https://api.github.com/repos/vllm-project/vllm/commits/804e5377aa0b0cea9544061beb2ebff162543c72",
+        "html_url": "https://github.com/vllm-project/vllm/commit/804e5377aa0b0cea9544061beb2ebff162543c72"
+      }
+    ]
+  },
+  {
+    "sha": "b2f685834a6456197e7033966fdef52a23f1abcd",
+    "node_id": "C_kwDOI7xeftoAKGIyZjY4NTgzNGE2NDU2MTk3ZTcwMzM5NjZmZGVmNTJhMjNmMWFiY2Q",
+    "commit": {
+      "author": {
+        "name": "Cheng Jiang",
+        "email": "thisjiang@qq.com",
+        "date": "2026-08-29T04:07:28Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-08-29T04:07:28Z"
+      },
+      "message": "[Hy4] support Hy4-preview model (#54160)\n\nSigned-off-by: chengvjiang <chengvjiang@tencent.com>\nSigned-off-by: Jee Jee Li <jeejeelee@inferact.ai>\nSigned-off-by: Bugen Zhao <i@bugenzhao.com>\nSigned-off-by: Jee Jee Li <pandaleefree@gmail.com>\nCo-authored-by: chengvjiang <chengvjiang@tencent.com>\nCo-authored-by: Jee Jee Li <jeejeelee@inferact.ai>\nCo-authored-by: Bugen Zhao <i@bugenzhao.com>\nCo-authored-by: russellfeng <russellfeng@tencent.com>\nCo-authored-by: Jee Jee Li <pandaleefree@gmail.com>",
+      "tree": {
+        "sha": "f58a7cc60070422a03f31f38c2cc02b8aa140502",
+        "url": "https://api.github.com/repos/vllm-project/vllm/git/trees/f58a7cc60070422a03f31f38c2cc02b8aa140502"
+      },
+      "url": "https://api.github.com/repos/vllm-project/vllm/git/commits/b2f685834a6456197e7033966fdef52a23f1abcd",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqklsACRC1aQ7uu5UhlAAAAqAQAJX4O5scK8wmc2VWgymdIv6c\n+zHBIFqsKLkR7GgVNRdh16OcTfUIiWOxsKqy6aG3OkAalqin+K50qxSpy0PTkDVY\nD7boNt1kuZXwJ//Oel4l1GRZwXAtHa2NHezcFcA42Wua6YYbpqvz/nxTgsPT0juV\nB25XYC/jOtedn24UQhha/kkrvobVXYnl7bH2dQtoMTHpdt00HzWx3lFVr7PH9oKH\nDHU7JysgiEqY8KtL7yjWJe0KvmCa0nm7dxPQ91ixR/IwdwlseqwFp00nTco3XFMN\nUeHIMutBzB8KiFtP5tp8HfELqGUs/Pxh1v6HL068KfC9Tjbr1eXnpJv+KPASLsSu\n9/23GNpyQ+gIGZC4z5+eVmK4sb7ahSjJYOdBAT51VAN5OIykrmw/kjGBa1CyDfRh\nCzZ/ZvY+rOekkHS9n1BqZ9L0QBTmQtTSxUrJPcyZVjPuyS2ebzJbOBNIuygRpmbY\nbI/R5cpTR1Fl2QFgtfyxDQr+wzR03MzxIHUeLDt8Y2vB8FZaiZP4m0QLZ2Xr+BUz\ncn1iKjBMJ1C33S5IjAx6zK88WYDzDGMTImAGy6FcAB9e++dkOySCPCH20Q4oqLlu\nfC4BepI0ARBrsa3B1SqzKUP6Q3CbSsIcGDGExswfvq7QUlz0Z7Od/DnpaRO4lNYv\nCqItNx+/wATfvAUDGFo3\n=MsAk\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree f58a7cc60070422a03f31f38c2cc02b8aa140502\nparent 6c18a5464852d9ddf4c59df8ec278ce1683a917e\nauthor Cheng Jiang <thisjiang@qq.com> 1787976448 +0800\ncommitter GitHub <noreply@github.com> 1787976448 +0800\n\n[Hy4] support Hy4-preview model (#54160)\n\nSigned-off-by: chengvjiang <chengvjiang@tencent.com>\nSigned-off-by: Jee Jee Li <jeejeelee@inferact.ai>\nSigned-off-by: Bugen Zhao <i@bugenzhao.com>\nSigned-off-by: Jee Jee Li <pandaleefree@gmail.com>\nCo-authored-by: chengvjiang <chengvjiang@tencent.com>\nCo-authored-by: Jee Jee Li <jeejeelee@inferact.ai>\nCo-authored-by: Bugen Zhao <i@bugenzhao.com>\nCo-authored-by: russellfeng <russellfeng@tencent.com>\nCo-authored-by: Jee Jee Li <pandaleefree@gmail.com>",
+        "verified_at": "2026-08-29T04:07:28Z"
+      }
+    },
+    "url": "https://api.github.com/repos/vllm-project/vllm/commits/b2f685834a6456197e7033966fdef52a23f1abcd",
+    "html_url": "https://github.com/vllm-project/vllm/commit/b2f685834a6456197e7033966fdef52a23f1abcd",
+    "comments_url": "https://api.github.com/repos/vllm-project/vllm/commits/b2f685834a6456197e7033966fdef52a23f1abcd/comments",
+    "author": {
+      "login": "thisjiang",
+      "id": 31386411,
+      "node_id": "MDQ6VXNlcjMxMzg2NDEx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/31386411?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/thisjiang",
+      "html_url": "https://github.com/thisjiang",
+      "followers_url": "https://api.github.com/users/thisjiang/followers",
+      "following_url": "https://api.github.com/users/thisjiang/following{/other_user}",
+      "gists_url": "https://api.github.com/users/thisjiang/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/thisjiang/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/thisjiang/subscriptions",
+      "organizations_url": "https://api.github.com/users/thisjiang/orgs",
+      "repos_url": "https://api.github.com/users/thisjiang/repos",
+      "events_url": "https://api.github.com/users/thisjiang/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/thisjiang/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "6c18a5464852d9ddf4c59df8ec278ce1683a917e",
+        "url": "https://api.github.com/repos/vllm-project/vllm/commits/6c18a5464852d9ddf4c59df8ec278ce1683a917e",
+        "html_url": "https://github.com/vllm-project/vllm/commit/6c18a5464852d9ddf4c59df8ec278ce1683a917e"
+      }
+    ]
+  }
+]

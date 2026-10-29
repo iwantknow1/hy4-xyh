@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "script_hashes": {
+    "evaluation.py": {
+      "reference_sha256": "bcc5db10c61f1c20e7a94ae2414e104b937bf877b1a44c62005c434f3dad9eea",
+      "actual_sha256": "bcc5db10c61f1c20e7a94ae2414e104b937bf877b1a44c62005c434f3dad9eea"
+    },
+    "utils.py": {
+      "reference_sha256": "46cabcb1b935d9c291e58fc93f40ad5812c80b014575eb0046690affc5f14479",
+      "actual_sha256": "46cabcb1b935d9c291e58fc93f40ad5812c80b014575eb0046690affc5f14479"
+    }
+  },
+  "actual_judge_configuration": {
+    "HALLUSION_JUDGE_BASE_URL": "https://api.deepseek.com",
+    "HALLUSION_JUDGE_MODEL": "deepseek-flash"
+  },
+  "judge_input_matches_our_generated_output": true,
+  "judge_input_sha256": "22668582d5d76f479f8103712b88e93f072b02553b5a1a54120f04bfd67386da",
+  "question_count": 1129,
+  "logical_judge_calls": 2258,
+  "phases": {
+    "VD_correctness": 591,
+    "VD_consistency": 591,
+    "VS_correctness": 538,
+    "VS_consistency": 538
+  },
+  "scheduling": "original_sequential",
+  "prompts_and_statistics": "unchanged_original",
+  "online_model_revision_frozen": false
+}

@@ -1,0 +1,8 @@
+set -e
+source /codex/scripts/env.sh
+export ASCEND_RT_VISIBLE_DEVICES=6
+exec .venv/bin/python -m vllm.entrypoints.cli.main serve /models/Hy4-2L \
+  --served-model-name hy4-codex --trust-remote-code --tensor-parallel-size 1 \
+  --enable-sleep-mode --enable-expert-parallel --load-format auto --weight-transfer-config '{"backend":"hccl"}' --gpu-memory-utilization 0.85 \
+  --additional-config '{"rl_config":{"enabled":true}}' \
+  --kv-cache-memory-bytes 8589934592 --max-model-len 2048 --max-num-seqs 8 --enforce-eager --port 18080

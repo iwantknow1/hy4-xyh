@@ -1,0 +1,30 @@
+{
+  "feature": "hardware_efficiency_excel",
+  "status": "passed",
+  "validation_scope": "functional_smoke",
+  "original_exporter": "Original exporter unavailable; see process narrative. Only successful fallback export evidence is included.",
+  "fallback_libraries": {
+    "xlsx": "0.18.5",
+    "xlsx-calc": "0.9.2"
+  },
+  "workbook": "/codex/performance/hardware_efficiency.xlsx",
+  "workbook_sha256": "74edde27e5b74b997b064aa111ceb92a7f0d24b067efacf79d0d9a95bc9b21ce",
+  "source_csv_sha256": "9f611d8095dc83b256c66b1c38edad540bb115943fb48cf65e7d0e9857e1d514",
+  "physical_device": "2",
+  "compute_calls": 2250,
+  "excluded_calls": 130,
+  "weighted_attainment": 1.0972280024166783,
+  "checks": {
+    "all_kernel_formulas_match_json": true,
+    "summary_formulas_match_json": true,
+    "editable_parameter_recalculation": true,
+    "restored_defaults_match": true,
+    "saved_workbook_reopened_and_recalculated": true
+  },
+  "parameter_change_probe": {
+    "ceiling": 0.9,
+    "short_kernel_us": 12,
+    "weighted_attainment": 0.999004114014798
+  },
+  "note": "计算算子耗时加权的经验达成率；未计通信、空闲和重叠，不等同端到端吞吐或加速比。"
+}

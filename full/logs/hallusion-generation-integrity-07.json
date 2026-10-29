@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "samples": 1129,
+  "nonempty_final_answers": 1129,
+  "unique_ordered_response_indices": 1129,
+  "dataset_and_order_match_reference": true,
+  "dataset_sha256": "ca6e0fb677dd56e5fb0e2700d06c58d01f8a6ae66e0f1773b2ac48c0a095d051",
+  "length_truncated": 2,
+  "truncated_question_numbers": [
+    998,
+    1033
+  ],
+  "visual_input_counts": {
+    "0": 178,
+    "1": 447,
+    "2": 504
+  },
+  "category_counts": {
+    "VS": 538,
+    "VD": 591
+  },
+  "judge_status": "running",
+  "accuracy_not_yet_available": true
+}

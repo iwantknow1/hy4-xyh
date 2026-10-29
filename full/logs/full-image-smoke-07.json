@@ -1,0 +1,40 @@
+{
+  "id": "chatcmpl-af43e46bc7a9069f",
+  "object": "chat.completion",
+  "created": 1793212763,
+  "model": "hy4",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Looking at the image, I observe that the entire image consists of a single solid color filling the whole frame. The color is a vivid, bright red — a pure red tone with no other colors, gradients, or objects present.\n\nTherefore, the dominant (and only) color of this image is red.</think:opensource>The dominant color of this image is **red** — a bright, solid red fills the entire frame.",
+        "refusal": null,
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "reasoning": null
+      },
+      "logprobs": null,
+      "finish_reason": "stop",
+      "stop_reason": null,
+      "token_ids": null,
+      "routed_experts": null
+    }
+  ],
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.30.0-tp8-dp4-ep-e6609f73",
+  "usage": {
+    "prompt_tokens": 107,
+    "total_tokens": 192,
+    "completion_tokens": 85,
+    "prompt_tokens_details": null,
+    "completion_tokens_details": null
+  },
+  "prompt_logprobs": null,
+  "prompt_token_ids": null,
+  "prompt_text": null,
+  "kv_transfer_params": null,
+  "ec_transfer_params": null,
+  "metrics": null
+}

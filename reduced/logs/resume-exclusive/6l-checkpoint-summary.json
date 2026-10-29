@@ -1,0 +1,11 @@
+{
+  "path": "/models/Hy4-6L",
+  "format": "safetensors",
+  "file_count": 12,
+  "total_file_bytes": 106403824884,
+  "tensor_count": 810,
+  "total_tensor_bytes": 106403732980,
+  "max_tensor_name": "model.layers.1.mlp.experts.gate_up_proj",
+  "max_tensor_bytes": 12884901888,
+  "manifest_sha256": "93e8d554c12a57ca6c39dc8b372a53ced4de8fc060daae57e33129e82288c970"
+}

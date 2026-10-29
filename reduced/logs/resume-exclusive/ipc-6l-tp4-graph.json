@@ -1,0 +1,386 @@
+{
+  "mode": "checkpoint_native_npu_ipc_weight_update",
+  "rank": 0,
+  "server_url": "http://127.0.0.1:18080",
+  "served_model_name": "hy4-codex",
+  "checkpoint_path": "/models/Hy4-6L",
+  "packed": true,
+  "packed_buffer_mb": 12288,
+  "weight_update_acceptance": "real_checkpoint_outputs_identical",
+  "checks": {
+    "both_generation_endpoints_baseline": true,
+    "checkpoint_manifest_consistent": true,
+    "sleep_level2": true,
+    "wake_weights": true,
+    "checkpoint_stream_transfer": true,
+    "wake_kv_cache": true,
+    "both_generation_endpoints_post_update": true,
+    "post_update_available": true,
+    "outputs_identical": true
+  },
+  "status": "passed",
+  "verification_command": "/codex/.venv/bin/python scripts/skill-scripts/weight-update/test_npu_ipc_cpu_stage.py --server-url http://127.0.0.1:18080 --served-model-name hy4-codex --checkpoint /models/Hy4-6L --devices 0,1,2,3 --prompts-json /codex/scripts/prompts.json --max-tokens 16 --packed-buffer-mb 12288 --timeout 600 --report /codex/logs/resume-exclusive/ipc-6l-tp4-graph.json",
+  "world_size": 4,
+  "local_world_size": 4,
+  "multi_node": false,
+  "devices": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "prompts": [
+    "What is 2 + 2?",
+    "Write one word about the sky."
+  ],
+  "inference_world_size": 4,
+  "baseline_by_endpoint": {
+    "/v1/completions": [
+      {
+        "text": "notifycationicMirrorrorsrorsystematicsaticsityyyy恥辱 foldings",
+        "tokens": [
+          "notify",
+          "cation",
+          "ic",
+          "Mirror",
+          "rors",
+          "rors",
+          "ystem",
+          "atics",
+          "atics",
+          "ity",
+          "yyy",
+          "",
+          "恥",
+          "辱",
+          " fold",
+          "ings"
+        ],
+        "token_logprobs": [
+          -5.360567092895508,
+          -0.3389008045196533,
+          -3.1034607887268066,
+          -4.827348232269287,
+          -1.1965020895004272,
+          -3.7663943767547607,
+          -4.772518157958984,
+          -0.05083649605512619,
+          -1.906234860420227,
+          -3.4789764881134033,
+          -3.45255970954895,
+          -3.138021230697632,
+          -3.4823691844940186,
+          -0.01160348393023014,
+          -4.4107584953308105,
+          -2.178901433944702
+        ]
+      },
+      {
+        "text": " unintentionalitycroftballooning正视版的的确确凿无误 indexedaurusmith",
+        "tokens": [
+          " unint",
+          "entional",
+          "ity",
+          "croft",
+          "ball",
+          "oon",
+          "ing",
+          "正视",
+          "版的",
+          "的确",
+          "确",
+          "凿",
+          "无误",
+          " indexed",
+          "aurus",
+          "mith"
+        ],
+        "token_logprobs": [
+          -5.375425815582275,
+          -0.38397422432899475,
+          -0.015736328437924385,
+          -4.546814918518066,
+          -4.085587978363037,
+          -0.17184263467788696,
+          -3.459044933319092,
+          -4.9710283279418945,
+          -4.235241889953613,
+          -2.9630022048950195,
+          -0.14097866415977478,
+          -0.9365131258964539,
+          -4.218170642852783,
+          -4.9072418212890625,
+          -3.6625869274139404,
+          -3.3739211559295654
+        ]
+      }
+    ],
+    "/v1/chat/completions": [
+      {
+        "text": "letsgooseberryhillockscreenwriters strikeoutcomes-orientedtowards honourably",
+        "tokens": [
+          "lets",
+          "go",
+          "ose",
+          "berry",
+          "hill",
+          "ocks",
+          "creen",
+          "writers",
+          " strike",
+          "out",
+          "comes",
+          "-oriented",
+          "tow",
+          "ards",
+          " honour",
+          "ably"
+        ],
+        "token_logprobs": [
+          -4.027641773223877,
+          -2.415673017501831,
+          -1.642442226409912,
+          -1.3981924057006836,
+          -0.5214635133743286,
+          -0.22058385610580444,
+          -2.4921875,
+          -3.1606853008270264,
+          -4.1022820472717285,
+          -3.966041326522827,
+          -3.050283670425415,
+          -3.8000874519348145,
+          -3.705132246017456,
+          -0.2910059988498688,
+          -4.410585403442383,
+          -0.5954542756080627
+        ]
+      },
+      {
+        "text": "lets go aheadquartersboro sheddershayyyy恷澈的默认值的都比不上",
+        "tokens": [
+          "lets",
+          " go",
+          " ahead",
+          "quarters",
+          "boro",
+          " shed",
+          "ders",
+          "hay",
+          "yyy",
+          "",
+          "恷",
+          "澈",
+          "的默认",
+          "值的",
+          "都比",
+          "不上"
+        ],
+        "token_logprobs": [
+          -4.017858028411865,
+          -2.596029043197632,
+          -2.920264482498169,
+          -4.415066719055176,
+          -4.810184478759766,
+          -5.1250319480896,
+          -1.8196038007736206,
+          -4.872066497802734,
+          -2.3682165145874023,
+          -4.954002857208252,
+          -3.4595391750335693,
+          -4.6801066398620605,
+          -4.496678829193115,
+          -3.4543418884277344,
+          -5.0495781898498535,
+          -0.6087235808372498
+        ]
+      }
+    ]
+  },
+  "checkpoint": {
+    "path": "/models/Hy4-6L",
+    "format": "safetensors",
+    "file_count": 12,
+    "total_file_bytes": 106403824884,
+    "tensor_count": 810,
+    "total_tensor_bytes": 106403732980,
+    "max_tensor_name": "model.layers.1.mlp.experts.gate_up_proj",
+    "max_tensor_bytes": 12884901888,
+    "manifest_sha256": "93e8d554c12a57ca6c39dc8b372a53ced4de8fc060daae57e33129e82288c970"
+  },
+  "post_update_by_endpoint": {
+    "/v1/completions": [
+      {
+        "text": "notifycationicMirrorrorsrorsystematicsaticsityyyy恥辱 foldings",
+        "tokens": [
+          "notify",
+          "cation",
+          "ic",
+          "Mirror",
+          "rors",
+          "rors",
+          "ystem",
+          "atics",
+          "atics",
+          "ity",
+          "yyy",
+          "",
+          "恥",
+          "辱",
+          " fold",
+          "ings"
+        ],
+        "token_logprobs": [
+          -5.360567092895508,
+          -0.3389008045196533,
+          -3.1034607887268066,
+          -4.827348232269287,
+          -1.1965020895004272,
+          -3.7663943767547607,
+          -4.772518157958984,
+          -0.05083649605512619,
+          -1.906234860420227,
+          -3.4789764881134033,
+          -3.45255970954895,
+          -3.138021230697632,
+          -3.4823691844940186,
+          -0.01160348393023014,
+          -4.4107584953308105,
+          -2.178901433944702
+        ]
+      },
+      {
+        "text": " unintentionalitycroftballooning正视版的的确确凿无误 indexedaurusmith",
+        "tokens": [
+          " unint",
+          "entional",
+          "ity",
+          "croft",
+          "ball",
+          "oon",
+          "ing",
+          "正视",
+          "版的",
+          "的确",
+          "确",
+          "凿",
+          "无误",
+          " indexed",
+          "aurus",
+          "mith"
+        ],
+        "token_logprobs": [
+          -5.375425815582275,
+          -0.38397422432899475,
+          -0.015736328437924385,
+          -4.546814918518066,
+          -4.085587978363037,
+          -0.17184263467788696,
+          -3.459044933319092,
+          -4.9710283279418945,
+          -4.235241889953613,
+          -2.9630022048950195,
+          -0.14097866415977478,
+          -0.9365131258964539,
+          -4.218170642852783,
+          -4.9072418212890625,
+          -3.6625869274139404,
+          -3.3739211559295654
+        ]
+      }
+    ],
+    "/v1/chat/completions": [
+      {
+        "text": "letsgooseberryhillockscreenwriters strikeoutcomes-orientedtowards honourably",
+        "tokens": [
+          "lets",
+          "go",
+          "ose",
+          "berry",
+          "hill",
+          "ocks",
+          "creen",
+          "writers",
+          " strike",
+          "out",
+          "comes",
+          "-oriented",
+          "tow",
+          "ards",
+          " honour",
+          "ably"
+        ],
+        "token_logprobs": [
+          -4.027641773223877,
+          -2.415673017501831,
+          -1.642442226409912,
+          -1.3981924057006836,
+          -0.5214635133743286,
+          -0.22058385610580444,
+          -2.4921875,
+          -3.1606853008270264,
+          -4.1022820472717285,
+          -3.966041326522827,
+          -3.050283670425415,
+          -3.8000874519348145,
+          -3.705132246017456,
+          -0.2910059988498688,
+          -4.410585403442383,
+          -0.5954542756080627
+        ]
+      },
+      {
+        "text": "lets go aheadquartersboro sheddershayyyy恷澈的默认值的都比不上",
+        "tokens": [
+          "lets",
+          " go",
+          " ahead",
+          "quarters",
+          "boro",
+          " shed",
+          "ders",
+          "hay",
+          "yyy",
+          "",
+          "恷",
+          "澈",
+          "的默认",
+          "值的",
+          "都比",
+          "不上"
+        ],
+        "token_logprobs": [
+          -4.017858028411865,
+          -2.596029043197632,
+          -2.920264482498169,
+          -4.415066719055176,
+          -4.810184478759766,
+          -5.1250319480896,
+          -1.8196038007736206,
+          -4.872066497802734,
+          -2.3682165145874023,
+          -4.954002857208252,
+          -3.4595391750335693,
+          -4.6801066398620605,
+          -4.496678829193115,
+          -3.4543418884277344,
+          -5.0495781898498535,
+          -0.6087235808372498
+        ]
+      }
+    ]
+  },
+  "outputs_identical_by_endpoint": {
+    "/v1/completions": [
+      true,
+      true
+    ],
+    "/v1/chat/completions": [
+      true,
+      true
+    ]
+  },
+  "endpoint_checks": {
+    "/v1/completions": true,
+    "/v1/chat/completions": true
+  }
+}

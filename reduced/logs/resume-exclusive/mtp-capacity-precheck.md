@@ -1,0 +1,1 @@
+MTP TP2 capacity: 2L checkpoint 24.8 GiB plus MTP 18.72 GiB. TP2 live model/draft estimate below 30 GiB/card; allow 24 GiB staging and conversion, 8 GiB fixed KV, 4 GiB runtime, 1 GiB graph/spec workspace, total below 67 GiB/card versus 91.75 GiB usable. Functional smoke only; compare with identical 2L+MTP checkpoint with speculation disabled.

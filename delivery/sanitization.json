@@ -1,0 +1,21 @@
+{
+  "redacted_files": [
+    "workflow/model-rl-case-guard/references/ssh-login-troubleshooting.md"
+  ],
+  "omitted_files": [
+    "reduced/scripts/skill-scripts/common/__pycache__",
+    "reduced/scripts/skill-scripts/weight-update/common/__pycache__",
+    "history/initial/scripts/skill-scripts/common/__pycache__",
+    "history/initial/scripts/skill-scripts/weight-update/common/__pycache__",
+    "full/logs/node25/guard-ds-pd-p2.log",
+    "full/logs/node25/guard-ds-pd-p2.pid",
+    "full/logs/node25/guard-ds-while-hy4.log",
+    "full/logs/node25/guard-ds-while-hy4.pid",
+    "full/logs/node27/guard-ds-pd-d.log",
+    "full/logs/node27/guard-ds-pd-d.pid",
+    "full/logs/node27/guard-ds-while-hy4.log",
+    "full/logs/node27/guard-ds-while-hy4.pid"
+  ],
+  "policy": "Only credential values are redacted. Measurements and predictions retained. No model weights, private keys, API keys, container images, memory core dumps, or unrelated workload control scripts included.",
+  "archive_policy": "Only successful run artifacts are delivered. Failure history and unsupported scope are described in prose. Failed/incomplete raw outputs, reports and logs are excluded."
+}

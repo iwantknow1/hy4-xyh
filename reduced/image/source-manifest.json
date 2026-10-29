@@ -1,0 +1,50 @@
+{
+  "base_image_id": "sha256:1ba11fc501306b7ef44b2dcbb7e1fea69a33bc18ca0a7a48c1ede76874a3d6cf",
+  "source_files": {
+    "vllm/vllm/models/hy_v4/nvidia/model.py": {
+      "sha256": "bd0d31316c596dd58faf33966ac1fdd0de5974fa3bd3e3aef24e2a7cc001929f",
+      "reference_sha256": "bd0d31316c596dd58faf33966ac1fdd0de5974fa3bd3e3aef24e2a7cc001929f"
+    },
+    "vllm-ascend/vllm_ascend/patch/worker/patch_hy4_reload.py": {
+      "sha256": "73e9c256f6122a03b941a539999686ac451c43ba5136a4151379ccd25fe09005",
+      "reference_sha256": "73e9c256f6122a03b941a539999686ac451c43ba5136a4151379ccd25fe09005"
+    },
+    "vllm-ascend/vllm_ascend/distributed/weight_transfer/hccl_engine.py": {
+      "sha256": "08e60dd09cee42ecb8d03107c3cb88dadafd1336564f93adbdcc00d24cf81ecb",
+      "reference_sha256": "9f57afc8fb28df42763370ae2efdaeca99464aae479f84496f42d7f5f9fff03f"
+    },
+    "vllm-ascend/vllm_ascend/distributed/weight_transfer/npu_ipc_engine.py": {
+      "sha256": "fc51a52a9c928af956186134d45084bdeb0f96c1ed5fc66001c4e4b7eacc2473",
+      "reference_sha256": "fc51a52a9c928af956186134d45084bdeb0f96c1ed5fc66001c4e4b7eacc2473"
+    },
+    "vllm-ascend/vllm_ascend/distributed/weight_transfer/packed_tensor.py": {
+      "sha256": "fa655feb33e9fb4a08b009e12c83691b20f97ecaf75d53b72860d58ac89619a8",
+      "reference_sha256": "fa655feb33e9fb4a08b009e12c83691b20f97ecaf75d53b72860d58ac89619a8"
+    },
+    "vllm-ascend/tests/ut/models/test_hy_v4.py": {
+      "sha256": "942d8193eea485c15465e0af5c541ffb7dc2e3d421708a28be6da3ab5b348b35",
+      "reference_sha256": "942d8193eea485c15465e0af5c541ffb7dc2e3d421708a28be6da3ab5b348b35"
+    },
+    "vllm-ascend/tests/ut/distributed/weight_transfer/test_hccl_engine.py": {
+      "sha256": "5f57cc49fd516280e16828f75b34afdfdcf9c9ce394af4ef245e18884ab047b5",
+      "reference_sha256": "cfafc848d8c8f9382974b98c33fdd01c7eb143b54dab3693594eba4eee15c7d3"
+    },
+    "vllm-ascend/tests/ut/distributed/weight_transfer/test_npu_ipc_engine.py": {
+      "sha256": "6479c83da1c84c4692c56854f92323202d84b30bee4721a0aa57aeff64e992c5",
+      "reference_sha256": "6479c83da1c84c4692c56854f92323202d84b30bee4721a0aa57aeff64e992c5"
+    },
+    "vllm-ascend/tests/ut/distributed/weight_transfer/test_packed_tensor.py": {
+      "sha256": "c603f7b1237d094124b0af762c3c41a62871b907252984c71af32924663f4eb0",
+      "reference_sha256": "c603f7b1237d094124b0af762c3c41a62871b907252984c71af32924663f4eb0"
+    }
+  },
+  "environment": {
+    "base_image_id": "sha256:1ba11fc501306b7ef44b2dcbb7e1fea69a33bc18ca0a7a48c1ede76874a3d6cf",
+    "local_repairs": "nine source/test files; no PR opened",
+    "cann": "9.1",
+    "torch": "2.10.0+cpu",
+    "torch_npu": "2.10.0.post4",
+    "triton_ascend": "3.6.0"
+  },
+  "validation_scope": "functional_smoke"
+}

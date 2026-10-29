@@ -1,0 +1,55 @@
+{
+  "status": "evaluation_finished",
+  "judge": "completed",
+  "run": "07",
+  "phases": {
+    "full-text-smoke": {
+      "status": "passed",
+      "final_answer": "2",
+      "elapsed_seconds": 0.7567647802643478,
+      "usage": {
+        "prompt_tokens": 35,
+        "total_tokens": 49,
+        "completion_tokens": 14,
+        "prompt_tokens_details": null,
+        "completion_tokens_details": null
+      }
+    },
+    "full-image-smoke": {
+      "status": "passed",
+      "final_answer": "The dominant color of this image is **red** \u2014 a bright, solid red fills the entire frame.",
+      "elapsed_seconds": 2.219996319618076,
+      "usage": {
+        "prompt_tokens": 107,
+        "total_tokens": 192,
+        "completion_tokens": 85,
+        "prompt_tokens_details": null,
+        "completion_tokens_details": null
+      }
+    },
+    "gpqa-full-07": {
+      "exit_code": 0,
+      "status": "completed",
+      "log": "/task/logs/gpqa-full-07.log"
+    },
+    "gpqa_integrity": {
+      "predictions": 198,
+      "successful_nonempty": 198,
+      "unique_ids": 198,
+      "failed": 0,
+      "status": "passed"
+    },
+    "hallusion-full-07": {
+      "exit_code": 0,
+      "status": "completed",
+      "log": "/task/logs/hallusion-full-07.log"
+    },
+    "hallusion-judge-07": {
+      "exit_code": 0,
+      "status": "completed",
+      "log": "/task/logs/hallusion-judge-07.log"
+    }
+  },
+  "resumed_after_gpqa": true,
+  "updated_utc": "2026-10-29T04:33:37.916272+00:00"
+}

@@ -1,0 +1,21 @@
+{
+  "feature": "full_model_serving",
+  "status": "passed",
+  "checks": {
+    "full_78_layer_checkpoint": true,
+    "all_four_nodes_loaded": true,
+    "text_smoke": true,
+    "image_smoke": true,
+    "gpqa_198": true,
+    "hallusion_1129": true
+  },
+  "endpoint_checks": {
+    "/v1/completions": null,
+    "/v1/chat/completions": true
+  },
+  "outputs": [
+    "2",
+    "The dominant color of this image is **red** — a bright, solid red fills the entire frame."
+  ],
+  "note": "Four-node accuracy scope. Full-model reload/CP/PP cases were not rerun; reduced functional evidence remains separate."
+}

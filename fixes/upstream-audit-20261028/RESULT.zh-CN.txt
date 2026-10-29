@@ -1,0 +1,27 @@
+2026-10-28 官方 vLLM 主干 HY4 sink reload 核查
+
+结论：历史上确有相同 bug；当前主干已修复，不应重复提交 PR。
+核查主干：ebaa8124755b10b956dc0b69082d9a94c12285d6。
+实时 GitHub REST API 与该 SHA 的 raw 源码已保存于本目录；网页缓存显示旧状态，未采信。
+
+PR #57797 已于 2026-10-14T10:17:59Z 合并。
+合并提交：19aba3e4d59baf0bc1c1433cea3ccb3065ed00c9。
+https://github.com/vllm-project/vllm/pull/57797
+
+最终实现：
+attention.py 499 行 make_attention_sink 创建参数；
+weight_utils.py 1584 行 make_attention_sink 注册 load_attention_sink 为参数 loader；
+weight_utils.py 1568 行 load_attention_sink 在 loader 内完成 TP 切片及 padding；
+model.py 590 行附近通用分支取当前 param.weight_loader 并调用。
+HY4 model.py 已无原 learnable_sink_param 专用直接 copy_ 分支。
+
+早期独立 HY4 PR #57803 已关闭、未单独合并；同类改动由 #57797 统一解决。
+https://github.com/vllm-project/vllm/pull/57803
+
+与本地验证分支的区别：本地 donor 保留旧实现，修复在调用 loader 前做 TP 切片；
+主干则把 TP 切片放在 sink loader 内。移植时不可叠加两者，避免二次 TP 切片。
+本次只读核查，未升级运行环境、未修改已验证源码、未创建 PR 或发布评论。
+
+PR checklist：设计上已有上游通用实现；重复工作检查命中已合并同类修复；
+不再准备重复补丁、测试或 PR。后续个人分支可评估 backport 与 Ascend 兼容性，
+主干源码已修复不等于当前 Ascend 补丁已兼容最新主干，仍需回归验证。

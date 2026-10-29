@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "gpqa_accuracy": 93.43434343434343,
+  "hallusion": {
+    "qAcc": 54.9451,
+    "fAcc": 62.4277,
+    "easy_aAcc": 82.6374,
+    "hard_aAcc": 65.5814,
+    "aAcc": 79.1851
+  },
+  "image": "hy4-codex:a5-cann9.1-four-node-run07-20261029",
+  "readme": "/task/model_openbox/hy4/README.md",
+  "report": "/task/model_openbox/hy4/report.md",
+  "completed_utc": "2026-10-29T04:33:54.098571+00:00"
+}

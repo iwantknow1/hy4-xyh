@@ -1,0 +1,838 @@
+diff --git a/vllm-ascend/tests/ut/distributed/weight_transfer/test_hccl_engine.py b/vllm-ascend/tests/ut/distributed/weight_transfer/test_hccl_engine.py
+index b5383bd..7feddf6 100644
+--- a/vllm-ascend/tests/ut/distributed/weight_transfer/test_hccl_engine.py
++++ b/vllm-ascend/tests/ut/distributed/weight_transfer/test_hccl_engine.py
+@@ -1,10 +1,18 @@
+ # SPDX-License-Identifier: Apache-2.0
+ # SPDX-FileCopyrightText: Copyright contributors to the vLLM project
+ 
++from contextlib import nullcontext
+ from types import SimpleNamespace
+ from unittest.mock import MagicMock, patch
+ 
+-from vllm_ascend.distributed.weight_transfer.hccl_engine import HCCLWeightTransferEngine, HCCLWeightTransferInitInfo
++import pytest
++import torch
++
++from vllm_ascend.distributed.weight_transfer.hccl_engine import (
++    HCCLWeightTransferEngine,
++    HCCLWeightTransferInitInfo,
++    HCCLWeightTransferUpdateInfo,
++)
+ 
+ 
+ def _make_engine():
+@@ -24,9 +32,18 @@ def test_start_weight_update_initializes_layerwise_reload():
+ 
+ 
+ def test_finish_weight_update_finalizes_layerwise_reload():
++    """Deferred materialization must have room after transfer scratch is freed."""
+     engine = _make_engine()
++    scratch = [True]
++
++    def materialize(model, config):
++        if scratch[0]:
++            raise torch.OutOfMemoryError("transfer scratch occupies the budget")
+ 
+-    with patch("vllm.model_executor.model_loader.reload.finalize_layerwise_reload") as finalize:
++    with (
++        patch("vllm.model_executor.model_loader.reload.finalize_layerwise_reload", side_effect=materialize) as finalize,
++        patch("torch.npu.empty_cache", side_effect=lambda: scratch.__setitem__(0, False)),
++    ):
+         engine.finish_weight_update()
+ 
+     finalize.assert_called_once_with(engine.model, engine.model_config)
+@@ -62,3 +79,39 @@ def test_reinit_closes_previous_session_before_creating_next(_mock_device):
+ 
+     init.assert_called_once_with("127.0.0.1", 12345, 1, 2, device=0)
+     assert engine.model_update_group is not old_group
++
++
++@pytest.mark.parametrize("packed", [False, True])
++@pytest.mark.parametrize("cpu_staging", [False, True])
++def test_transfer_validates_the_complete_checkpoint(packed, cpu_staging):
++    """A model's completeness check must see the entire streamed update."""
++    engine = _make_engine()
++    engine.model_update_group = MagicMock()
++    info = HCCLWeightTransferUpdateInfo(
++        names=["visual.a", "visual.b"],
++        dtype_names=["float32", "float32"],
++        shapes=[[2], [3]],
++        packed=packed,
++        cpu_staging=cpu_staging,
++        packed_buffer_size_bytes=1,
++        packed_num_buffers=1,
++    )
++
++    def load(weights):
++        received = list(weights)
++        assert [name for name, _ in received] == info.names
++        assert [tuple(tensor.shape) for _, tensor in received] == [(2,), (3,)]
++
++    engine.model.load_weights.side_effect = load
++    with (
++        patch(
++            "vllm_ascend.distributed.weight_transfer.hccl_engine.torch.empty",
++            side_effect=lambda shape, dtype, device: torch.zeros(shape, dtype=dtype),
++        ),
++        patch("torch.npu.current_stream"),
++        patch("torch.npu.Stream"),
++        patch("torch.npu.stream", side_effect=lambda stream: nullcontext()),
++    ):
++        engine.receive_weights(info)
++    engine.model.load_weights.assert_called_once()
++    assert engine.model_update_group.broadcast.call_count == 2
+diff --git a/vllm-ascend/tests/ut/distributed/weight_transfer/test_npu_ipc_engine.py b/vllm-ascend/tests/ut/distributed/weight_transfer/test_npu_ipc_engine.py
+index d91755b..900ad27 100644
+--- a/vllm-ascend/tests/ut/distributed/weight_transfer/test_npu_ipc_engine.py
++++ b/vllm-ascend/tests/ut/distributed/weight_transfer/test_npu_ipc_engine.py
+@@ -40,6 +40,7 @@ import sys
+ import types
+ from unittest.mock import MagicMock, patch
+ 
++import pytest
+ import torch
+ 
+ from vllm_ascend.distributed.weight_transfer import npu_ipc_engine
+@@ -196,13 +197,14 @@ def test_finish_weight_update():
+     engine.model_config = MagicMock()
+     mock_finalize = MagicMock()
+ 
+-    with _patch_reload_module(finalize=mock_finalize):
++    with _patch_reload_module(finalize=mock_finalize), patch("torch.npu.empty_cache"):
+         engine.finish_weight_update()
+ 
+     mock_finalize.assert_called_once_with(engine.model, engine.model_config)
+ 
+ 
+-def test_receive_packed_weights_loads_model():
++@pytest.mark.parametrize("cpu_staging", [False, True])
++def test_receive_packed_weights_loads_model(cpu_staging):
+     packed_weights = [("model.weight", torch.tensor([1.0, 2.0, 3.0]))]
+     update_info = MagicMock(
+         tensor_sizes=[12],
+@@ -215,7 +217,9 @@ def test_receive_packed_weights_loads_model():
+     engine = object.__new__(NPUIPCWeightTransferEngine)
+     engine.model = MagicMock()
+     engine.device = MagicMock(index=0)
++    engine.model_config = MagicMock()
+     engine.packed = True
++    engine.cpu_staging = cpu_staging
+ 
+     with (
+         patch(f"{_MODULE}.npu_generate_uuid", return_value="node-0"),
+@@ -223,8 +227,12 @@ def test_receive_packed_weights_loads_model():
+             f"{_MODULE}.packed_npu_ipc_consumer",
+             return_value=packed_weights,
+         ) as mock_consumer,
++        _patch_reload_module(),
++        patch("torch.npu.empty_cache"),
+     ):
++        engine.start_weight_update()
+         engine.receive_weights(update_info)
++        engine.finish_weight_update()
+ 
+     mock_consumer.assert_called_once_with(
+         ipc_handle=update_info.ipc_handles,
+@@ -235,4 +243,42 @@ def test_receive_packed_weights_loads_model():
+         tensor_sizes=update_info.tensor_sizes,
+         device_index=0,
+     )
+-    engine.model.load_weights.assert_called_once_with(packed_weights)
++    engine.model.load_weights.assert_called_once()
++    received = list(engine.model.load_weights.call_args.args[0])
++    assert received[0][0] == packed_weights[0][0]
++    torch.testing.assert_close(received[0][1], packed_weights[0][1])
++
++
++def test_packed_update_validates_all_chunks_and_retains_values():
++    """A reused producer buffer must survive a whole-checkpoint validation."""
++    engine = object.__new__(NPUIPCWeightTransferEngine)
++    engine.model = MagicMock()
++    engine.model_config = MagicMock()
++    engine.device = torch.device("cpu")
++    engine.packed = True
++    engine.cpu_staging = True
++    storage = torch.tensor([1.0, 2.0])
++    seen = []
++
++    def load(weights):
++        values = dict(weights)
++        assert set(values) == {"visual.a", "visual.b"}
++        seen.append({name: value.clone() for name, value in values.items()})
++
++    engine.model.load_weights.side_effect = load
++    with (
++        _patch_reload_module(),
++        patch("torch.npu.empty_cache"),
++        patch(f"{_MODULE}.npu_generate_uuid", return_value="node-0"),
++        patch(f"{_MODULE}.packed_npu_ipc_consumer") as consumer,
++    ):
++        engine.start_weight_update()
++        for name, value in [("visual.a", 1.0), ("visual.b", 2.0)]:
++            storage.fill_(value)
++            consumer.return_value = [(name, storage)]
++            engine.receive_weights(MagicMock(tensor_sizes=[8], ipc_handles={}))
++        storage.zero_()
++        engine.finish_weight_update()
++    assert len(seen) == 1
++    torch.testing.assert_close(seen[0]["visual.a"], torch.ones(2))
++    torch.testing.assert_close(seen[0]["visual.b"], torch.full((2,), 2.0))
+diff --git a/vllm-ascend/tests/ut/distributed/weight_transfer/test_packed_tensor.py b/vllm-ascend/tests/ut/distributed/weight_transfer/test_packed_tensor.py
+index e94e7ac..4bb36fe 100644
+--- a/vllm-ascend/tests/ut/distributed/weight_transfer/test_packed_tensor.py
++++ b/vllm-ascend/tests/ut/distributed/weight_transfer/test_packed_tensor.py
+@@ -31,6 +31,7 @@ from unittest.mock import MagicMock, patch
+ import pytest
+ import torch
+ 
++from vllm_ascend.distributed.weight_transfer import packed_tensor as packed_module
+ from vllm_ascend.distributed.weight_transfer.packed_tensor import (
+     DEFAULT_PACKED_BUFFER_SIZE_BYTES,
+     packed_broadcast_consumer,
+@@ -383,31 +384,27 @@ def test_packed_npu_ipc_producer_empty_iterator():
+ 
+ 
+ def test_packed_npu_ipc_producer_splits_when_exceeding_buffer():
+-    """Tensors that don't fit together are split across multiple chunks."""
+-    patcher, args_sentinel = _install_fake_reduce_tensor()
+-    with patcher:
+-        tensors = [
+-            ("a", torch.full((4,), 1.0, dtype=torch.float32)),  # 16 bytes
+-            ("b", torch.full((4,), 2.0, dtype=torch.float32)),  # 16 bytes
+-        ]
++    """Reuse storage but export a fresh IPC reference counter for each send."""
++    exported = []
++
++    def export(buffer):
++        handle = (buffer.data_ptr(), len(exported))
++        exported.append(handle)
++        return "rebuild_func", handle
++
++    with patch(f"{_MODULE}.reduce_tensor", side_effect=export):
+         chunks = list(
+             packed_npu_ipc_producer(
+-                iterator=iter(tensors),
++                iterator=iter([("a", torch.ones(4)), ("b", torch.full((4,), 2.0))]),
+                 npu_uuid="node-0",
+                 post_iter_func=lambda item: item[1],
+-                buffer_size_bytes=20,  # Only one 16-byte tensor fits per chunk
++                buffer_size_bytes=20,
+             )
+         )
+-
+-    assert len(chunks) == 2
+-    # First chunk holds the first tensor only.
+-    assert chunks[0]["names"] == ["a"]
+-    assert chunks[0]["tensor_sizes"] == [16]
+-    # Second chunk holds the second tensor.
+-    assert chunks[1]["names"] == ["b"]
+-    assert chunks[1]["tensor_sizes"] == [16]
+-    # Every chunk carries the same IPC handle (reusable single buffer).
+-    assert all(c["ipc_handle"] == {"node-0": args_sentinel} for c in chunks)
++    assert [chunk["names"] for chunk in chunks] == [["a"], ["b"]]
++    handles = [chunk["ipc_handle"]["node-0"] for chunk in chunks]
++    assert handles[0][0] == handles[1][0]
++    assert handles[0][1] != handles[1][1]
+ 
+ 
+ def test_packed_npu_ipc_producer_raises_when_single_tensor_exceeds_buffer():
+@@ -889,3 +886,27 @@ def test_packed_npu_ipc_consumer_clones_each_slice_independently():
+ 
+     ptrs = [w[1].storage().data_ptr() for w in weights]
+     assert len(set(ptrs)) == 3, f"expected 3 distinct storage ptrs, got {ptrs}"
++
++
++@pytest.mark.parametrize("num_buffers", [1, 2])
++@pytest.mark.parametrize("cpu_staging", [False, True])
++def test_packed_iterator_preserves_earlier_batches(num_buffers, cpu_staging):
++    """Deferred loaders must retain intact tensors across packed batches."""
++    tensors = [(str(i), torch.arange(4, dtype=torch.float32) + i) for i in range(4)]
++    payloads = [torch.cat([t.view(torch.uint8) for _, t in tensors[i : i + 2]]) for i in (0, 2)]
++    pending = iter(payloads)
++    group = _make_group_mock()
++    group.broadcast.side_effect = lambda target, **kw: target.copy_(next(pending))
++    received = list(
++        packed_module.packed_broadcast_iterator(
++            iterator=iter((name, (list(t.shape), t.dtype)) for name, t in tensors),
++            group=group,
++            src=0,
++            buffer_size_bytes=16,
++            num_buffers=num_buffers,
++            cpu_staging=cpu_staging,
++        )
++    )
++    assert [name for name, _ in received] == [name for name, _ in tensors]
++    for (_, actual), (_, expected) in zip(received, tensors):
++        torch.testing.assert_close(actual, expected)
+diff --git a/vllm-ascend/tests/ut/models/test_hy_v4.py b/vllm-ascend/tests/ut/models/test_hy_v4.py
+index 8851321..c8cc0df 100644
+--- a/vllm-ascend/tests/ut/models/test_hy_v4.py
++++ b/vllm-ascend/tests/ut/models/test_hy_v4.py
+@@ -1,16 +1,24 @@
+ # SPDX-License-Identifier: Apache-2.0
+ # Copyright (c) 2026 Huawei Technologies Co., Ltd. All Rights Reserved.
+ 
++import inspect
+ from contextlib import ExitStack
+ from types import SimpleNamespace
+ from unittest.mock import Mock, patch
+ 
+ import pytest
+ import torch
++from vllm.model_executor.model_loader.reload.layerwise import (
++    finalize_layerwise_reload,
++    initialize_layerwise_reload,
++    record_metadata_for_reloading,
++)
++from vllm.model_executor.model_loader.reload.meta import get_numel_loaded
+ from vllm.models.hy_v4.nvidia import attention as native_attention
++from vllm.models.hy_v4.nvidia import model as native_model
+ from vllm.models.hy_v4.nvidia import mtp as native_mtp
+ 
+-from vllm_ascend.patch.worker import patch_hy_v4
++from vllm_ascend.patch.worker import patch_hy4_reload, patch_hy_v4
+ from vllm_ascend.patch.worker.patch_hy_v4 import AscendHYV4MLAAttention, HeadwiseGate
+ from vllm_ascend.quantization.configs.fp8_config import AscendFp8Config
+ from vllm_ascend.quantization.configs.modelopt_mxfp8_config import AscendModelOptMxFp8Config
+@@ -350,3 +358,51 @@ def test_mtp_pair_check_ignores_other_pipeline_stages(mtp_loader, monkeypatch):
+     monkeypatch.setattr(patch_hy_v4, "get_pp_missing_layer_names", lambda model: ["model.layers.78."])
+     weights = [("model.mtp_layers.0.self_attn.indexer.wk.weight", torch.zeros(8, 32).to(torch.float8_e4m3fn))]
+     assert list(patch_hy_v4._checked_mtp_weights(model, iter(weights))) == weights
++
++
++@pytest.mark.parametrize("tp_rank", [0, 1])
++def test_sink_reload_updates_runtime_parameter(monkeypatch, tp_rank):
++    """Checkpoint sink updates must reach the original runtime TP shard."""
++    monkeypatch.setattr(native_model, "get_tensor_model_parallel_world_size", lambda: 2)
++    monkeypatch.setattr(native_model, "get_tensor_model_parallel_rank", lambda: tp_rank)
++    monkeypatch.setattr(native_model, "get_pp_missing_layer_names", lambda model: [])
++    monkeypatch.setattr(native_model, "is_pp_missing_parameter", lambda name, model: False)
++    model = native_model.HYV4Model.__new__(native_model.HYV4Model)
++    torch.nn.Module.__init__(model)
++    model.config = SimpleNamespace(
++        num_hidden_layers=1,
++        num_attention_heads=4,
++        num_experts=0,
++        tie_word_embeddings=False,
++    )
++    model._cached_expert_params_mapping = []
++    layer = torch.nn.Module()
++    layer.self_attn = torch.nn.Module()
++    runtime_sink = torch.nn.Parameter(torch.zeros(2), requires_grad=False)
++    layer.self_attn.register_parameter("learnable_sink_param", runtime_sink)
++    model.layers = torch.nn.ModuleList([layer])
++    name = "layers.0.self_attn.learnable_sink_param"
++    record_metadata_for_reloading(model)
++    for offset in (10, 20):
++        initialize_layerwise_reload(model)
++        values = torch.arange(4, dtype=torch.float32) + offset
++        assert model.load_weights(iter([(name, values)])) == {name}
++        finalize_layerwise_reload(model, SimpleNamespace(dtype=torch.float32))
++        assert layer.self_attn.learnable_sink_param is runtime_sink
++        torch.testing.assert_close(runtime_sink, values[tp_rank * 2 : tp_rank * 2 + 2])
++
++
++def test_meta_expert_copy_is_counted_for_reload():
++    """Meta copies must contribute to layerwise accounting and replay."""
++
++    def copy_expert(self, expert_data, loaded_weight):
++        expert_data.copy_(loaded_weight)
++
++    copy = patch_hy4_reload._materialise_source(copy_expert)
++
++    def loader(param, loaded_weight):
++        copy(None, expert_data=param, loaded_weight=loaded_weight)
++
++    bound = inspect.signature(loader).bind(torch.empty((2, 3), device="meta"), torch.ones((2, 3)))
++    loaded, _ = get_numel_loaded(loader, bound)
++    assert loaded == 6
+diff --git a/vllm-ascend/vllm_ascend/distributed/weight_transfer/hccl_engine.py b/vllm-ascend/vllm_ascend/distributed/weight_transfer/hccl_engine.py
+index 827dca0..3f9c809 100644
+--- a/vllm-ascend/vllm_ascend/distributed/weight_transfer/hccl_engine.py
++++ b/vllm-ascend/vllm_ascend/distributed/weight_transfer/hccl_engine.py
+@@ -22,7 +22,7 @@ from vllm.distributed.weight_transfer.base import (
+ from vllm_ascend.distributed.weight_transfer.packed_tensor import (
+     DEFAULT_PACKED_BUFFER_SIZE_BYTES,
+     DEFAULT_PACKED_NUM_BUFFERS,
+-    packed_broadcast_consumer,
++    packed_broadcast_iterator,
+ )
+ 
+ 
+@@ -88,6 +88,9 @@ class HCCLWeightTransferUpdateInfo(WeightTransferUpdateInfo):
+     """Number of buffers for double/triple buffering during packed transfer.
+     Both producer and consumer must use the same value."""
+ 
++    cpu_staging: bool = False
++    """Stage received tensors on CPU during deferred checkpoint loading."""
++
+     def __post_init__(self):
+         """Validate that all lists have the same length."""
+         num_params = len(self.names)
+@@ -136,7 +139,11 @@ class HCCLWeightTransferEngine(WeightTransferEngine[HCCLWeightTransferInitInfo,
+             finalize_layerwise_reload,
+         )
+ 
++        # Deferred layers need room after transfer scratch is released.
++        torch.npu.empty_cache()
+         finalize_layerwise_reload(self.model, self.model_config)
++        # Release reload scratch buffers before the allocator restores KV cache.
++        torch.npu.empty_cache()
+ 
+     def init_transfer_engine(self, init_info: HCCLWeightTransferInitInfo) -> None:
+         """
+@@ -193,22 +200,31 @@ class HCCLWeightTransferEngine(WeightTransferEngine[HCCLWeightTransferInitInfo,
+                     dtype = getattr(torch, dtype_name)
+                     yield (name, (shape, dtype))
+ 
+-            packed_broadcast_consumer(
+-                iterator=state_dict_info_iterator(),
+-                group=self.model_update_group,
+-                src=0,
+-                post_unpack_func=self.model.load_weights,
+-                buffer_size_bytes=update_info.packed_buffer_size_bytes,
+-                num_buffers=update_info.packed_num_buffers,
++            self.model.load_weights(
++                packed_broadcast_iterator(
++                    iterator=state_dict_info_iterator(),
++                    group=self.model_update_group,
++                    src=0,
++                    buffer_size_bytes=update_info.packed_buffer_size_bytes,
++                    num_buffers=update_info.packed_num_buffers,
++                    cpu_staging=update_info.cpu_staging,
++                )
+             )
+         else:
+-            # Use simple one-by-one broadcasting
+-            for name, dtype_name, shape in zip(update_info.names, update_info.dtype_names, update_info.shapes):
+-                dtype = getattr(torch, dtype_name)
+-                weight = torch.empty(shape, dtype=dtype, device="npu")
+-                self.model_update_group.broadcast(weight, src=0, stream=torch.npu.current_stream())
+-                self.model.load_weights([(name, weight)])
+-                del weight
++
++            def received_weights():
++                for name, dtype_name, shape in zip(update_info.names, update_info.dtype_names, update_info.shapes):
++                    dtype = getattr(torch, dtype_name)
++                    weight = torch.empty(shape, dtype=dtype, device="npu")
++                    self.model_update_group.broadcast(weight, src=0, stream=torch.npu.current_stream())
++                    if update_info.cpu_staging:
++                        staged_weight = weight.cpu()
++                        del weight
++                        yield name, staged_weight
++                    else:
++                        yield name, weight
++
++            self.model.load_weights(received_weights())
+ 
+     def shutdown(self) -> None:
+         if self.model_update_group is not None:
+diff --git a/vllm-ascend/vllm_ascend/distributed/weight_transfer/npu_ipc_engine.py b/vllm-ascend/vllm_ascend/distributed/weight_transfer/npu_ipc_engine.py
+index f5e4780..4a45820 100644
+--- a/vllm-ascend/vllm_ascend/distributed/weight_transfer/npu_ipc_engine.py
++++ b/vllm-ascend/vllm_ascend/distributed/weight_transfer/npu_ipc_engine.py
+@@ -41,10 +41,12 @@ if TYPE_CHECKING:
+ class NPUIPCWeightTransferInitInfo(WeightTransferInitInfo):
+     """Initialization info for NPU IPC weight transfer backend.
+ 
+-    No initialization needed for NPU IPC.
++    Records packing and optional CPU staging; no rendezvous is needed.
+     """
+ 
+     packed: bool = False
++    cpu_staging: bool = False
++    """Buffer packed chunks on CPU and load the complete checkpoint at finish."""
+ 
+ 
+ @lru_cache(maxsize=1)
+@@ -92,12 +94,9 @@ def npu_generate_uuid(logical_device: int | None = None) -> str:
+ 
+ @dataclass
+ class NPUIPCTrainerInitInfo(IPCTrainerInitInfo):
+-    """NPU IPC trainer init info — overrides the backend key only.
++    """NPU IPC settings, including optional deferred checkpoint CPU staging."""
+ 
+-    ``IPCTrainerInitInfo`` already provides ``packed`` and
+-    ``packed_buffer_size_bytes``; this subclass only rebinds the
+-    factory ``backend`` from ``"ipc"`` to ``"npu_ipc"``.
+-    """
++    cpu_staging: bool = False
+ 
+     backend: ClassVar[str] = "npu_ipc"
+ 
+@@ -149,17 +148,21 @@ class NPUIPCWeightTransferEngine(  # type: ignore[no-redef]
+         # Set from the trainer-supplied init info at the handshake; defaults
+         # are only for the (unreachable) receive-before-init case.
+         self.packed = False
++        self.cpu_staging = False
++        self._pending_weights: list[tuple[str, torch.Tensor]] = []
+ 
+     def init_transfer_engine(self, init_info: NPUIPCWeightTransferInitInfo) -> None:
+         """Record the trainer-supplied wire params so the worker decodes
+         exactly as the trainer encoded."""
+         self.packed = init_info.packed
++        self.cpu_staging = init_info.cpu_staging
+ 
+     def start_weight_update(self) -> None:
+         from vllm.model_executor.model_loader.reload import (
+             initialize_layerwise_reload,
+         )
+ 
++        self._pending_weights = []
+         initialize_layerwise_reload(self.model)
+ 
+     def finish_weight_update(self) -> None:
+@@ -167,7 +170,11 @@ class NPUIPCWeightTransferEngine(  # type: ignore[no-redef]
+             finalize_layerwise_reload,
+         )
+ 
++        if getattr(self, "_pending_weights", None):
++            self.model.load_weights(iter(self._pending_weights))
+         finalize_layerwise_reload(self.model, self.model_config)
++        self._pending_weights = []
++        torch.npu.empty_cache()
+ 
+     def receive_weights(self, update_info: NPUIPCWeightTransferUpdateInfo) -> None:
+         """Receive weights from the trainer via NPU IPC handles.
+@@ -225,7 +232,12 @@ class NPUIPCWeightTransferEngine(  # type: ignore[no-redef]
+                 weight = rebuild_npu_tensor(*list_args)
+                 weights.append((name, weight))
+ 
+-        self.model.load_weights(weights)
++        if self.packed and self.cpu_staging:
++            # Packed RPCs are chunks of one checkpoint. Validate only at finish;
++            # CPU copies also outlive the producer's reusable IPC buffer.
++            self._pending_weights.extend((name, weight.to("cpu", copy=True)) for name, weight in weights)
++        else:
++            self.model.load_weights(weights)
+ 
+     def shutdown(self) -> None:
+         pass
+@@ -251,6 +263,7 @@ class NPUIPCTrainerWeightTransferEngine(IPCTrainerWeightTransferEngine):
+         source: "WeightSource",
+         is_sender: bool = True,
+         packed: bool = False,
++        cpu_staging: bool = False,
+         packed_buffer_size_bytes: int = DEFAULT_PACKED_BUFFER_SIZE_BYTES,
+     ) -> None:
+         TrainerWeightTransferEngine.__init__(
+@@ -260,6 +273,7 @@ class NPUIPCTrainerWeightTransferEngine(IPCTrainerWeightTransferEngine):
+             is_sender=is_sender,
+         )
+         self.packed = packed
++        self.cpu_staging = cpu_staging
+         self.packed_buffer_size_bytes = packed_buffer_size_bytes
+         self.device_index = torch.accelerator.current_device_index()
+         self.npu_uuid = npu_generate_uuid()
+@@ -277,12 +291,15 @@ class NPUIPCTrainerWeightTransferEngine(IPCTrainerWeightTransferEngine):
+             source=source,
+             is_sender=init_info.is_sender,
+             packed=init_info.packed,
++            cpu_staging=init_info.cpu_staging,
+             packed_buffer_size_bytes=init_info.packed_buffer_size_bytes,
+         )
+         # IPC needs no data-plane rendezvous. The sender ships the must-agree
+         # ``packed`` flag so the worker decodes exactly as this trainer encodes.
+         if engine.is_sender:
+-            engine.client.init_weight_transfer_engine({"packed": init_info.packed})
++            engine.client.init_weight_transfer_engine(
++                {"packed": init_info.packed, "cpu_staging": init_info.cpu_staging}
++            )
+         return engine
+ 
+     def send_weights(self) -> None:
+diff --git a/vllm-ascend/vllm_ascend/distributed/weight_transfer/packed_tensor.py b/vllm-ascend/vllm_ascend/distributed/weight_transfer/packed_tensor.py
+index a35d9af..fb5c264 100644
+--- a/vllm-ascend/vllm_ascend/distributed/weight_transfer/packed_tensor.py
++++ b/vllm-ascend/vllm_ascend/distributed/weight_transfer/packed_tensor.py
+@@ -39,6 +39,7 @@ def packed_broadcast_producer(
+     target_packed_tensor_size = buffer_size_bytes
+ 
+     streams = [torch.npu.Stream() for _ in range(num_buffers)]
++    default_stream = torch.npu.current_stream()
+     buffer_idx = 0
+ 
+     packing_tensor_list: list[list[torch.Tensor]] = [[] for _ in range(num_buffers)]
+@@ -79,7 +80,7 @@ def packed_broadcast_producer(
+         # torch.cat runs on the custom stream.  Synchronize before
+         # broadcasting on the default stream so the packed data is ready.
+         streams[buffer_idx].synchronize()
+-        group.broadcast(packed_tensors[buffer_idx], src=src)
++        group.broadcast(packed_tensors[buffer_idx], src=src, stream=default_stream)
+ 
+         # Move to the next buffer
+         buffer_idx = (buffer_idx + 1) % num_buffers
+@@ -111,6 +112,46 @@ def packed_broadcast_consumer(
+                     Both producer and consumer must use the same value.
+     """
+ 
++    for _ in _packed_broadcast_batches(iterator, group, src, post_unpack_func, buffer_size_bytes, num_buffers):
++        pass
++
++
++def packed_broadcast_iterator(
++    iterator: Iterator[tuple[str, tuple[list[int], torch.dtype]]],
++    group: Any,
++    src: int,
++    buffer_size_bytes: int = DEFAULT_PACKED_BUFFER_SIZE_BYTES,
++    num_buffers: int = DEFAULT_PACKED_NUM_BUFFERS,
++    cpu_staging: bool = False,
++) -> Iterator[tuple[str, torch.Tensor]]:
++    """Yield a complete weight stream across received packed batches."""
++    for batch in _packed_broadcast_batches(iterator, group, src, None, buffer_size_bytes, num_buffers, cpu_staging):
++        yield from batch
++
++
++def _packed_broadcast_batches(
++    iterator: Iterator[tuple[str, tuple[list[int], torch.dtype]]],
++    group: Any,
++    src: int,
++    post_unpack_func: Callable[[list[tuple[str, torch.Tensor]]], None] | None,
++    buffer_size_bytes: int = DEFAULT_PACKED_BUFFER_SIZE_BYTES,
++    num_buffers: int = DEFAULT_PACKED_NUM_BUFFERS,
++    cpu_staging: bool = False,
++) -> Iterator[list[tuple[str, torch.Tensor]]]:
++    """Consume packed tensors and unpack them into a list of tensors.
++
++    Args:
++        iterator: Iterator of parameter metadata. Returns (name, (shape, dtype))
++        group: Process group (PyHcclCommunicator)
++        src: Source rank (0 in current implementation)
++        post_unpack_func: Function to apply to each list of (name, tensor) after
++                         unpacking
++        buffer_size_bytes: Size in bytes for each packed tensor buffer.
++                          Both producer and consumer must use the same value.
++        num_buffers: Number of buffers for double/triple buffering.
++                    Both producer and consumer must use the same value.
++    """
++
+     def unpack_tensor(
+         packed_tensor: torch.Tensor,
+         names: list[str],
+@@ -167,7 +208,7 @@ def packed_broadcast_consumer(
+             break
+ 
+         # Broadcast on the default stream.
+-        group.broadcast(packed_tensors[buffer_idx], src=src)
++        group.broadcast(packed_tensors[buffer_idx], src=src, stream=default_stream)
+ 
+         # Synchronize the default stream so broadcast completes before
+         # load_weights (running on the custom stream) reads the data.
+@@ -176,15 +217,22 @@ def packed_broadcast_consumer(
+         # Unpack and load weights on the custom stream
+         with torch.npu.stream(streams[buffer_idx]):
+             names, shapes, dtypes, tensor_sizes = zip(*packing_tensor_meta_data[buffer_idx])
+-            post_unpack_func(
+-                unpack_tensor(
+-                    packed_tensors[buffer_idx],
+-                    list(names),
+-                    list(shapes),
+-                    list(dtypes),
+-                    list(tensor_sizes),
+-                )
++            batch = unpack_tensor(
++                packed_tensors[buffer_idx],
++                list(names),
++                list(shapes),
++                list(dtypes),
++                list(tensor_sizes),
+             )
++            if post_unpack_func is not None:
++                post_unpack_func(batch)
++
++        if post_unpack_func is None:
++            streams[buffer_idx].synchronize()
++            if cpu_staging:
++                batch = [(name, tensor.cpu()) for name, tensor in batch]
++                packed_tensors[buffer_idx] = torch.empty(0, dtype=torch.uint8, device="npu")
++            yield batch
+ 
+         # Move to the next buffer
+         buffer_idx = (buffer_idx + 1) % num_buffers
+@@ -207,9 +255,8 @@ def packed_npu_ipc_producer(
+     """Pack tensors into a reusable NPU IPC buffer and yield chunks.
+ 
+     Allocates a single NPU buffer of ``buffer_size_bytes`` and registers
+-    it for IPC once via ``reduce_tensor``.  Each chunk's packed data is
+-    copied into this buffer before yielding, so only one IPC-shared
+-    allocation exists for the lifetime of the transfer.
++    it for IPC for each chunk via ``reduce_tensor``. Each send needs a fresh
++    reference counter, even though all chunks reuse the same allocation.
+ 
+     Args:
+         iterator: Iterator of (name, tensor) pairs.
+@@ -218,9 +265,6 @@ def packed_npu_ipc_producer(
+         buffer_size_bytes: Exact capacity of the reusable IPC buffer.
+     """
+     ipc_buffer = torch.empty(buffer_size_bytes, dtype=torch.uint8, device="npu")
+-    # Store only the rebuild args (drop the func); the consumer rebuilds with
+-    # the well-known ``rebuild_npu_tensor``, mirroring upstream's CUDA IPC engine.
+-    _, ipc_args = reduce_tensor(ipc_buffer)
+ 
+     names: list[str] = []
+     shapes: list[list[int]] = []
+@@ -240,6 +284,7 @@ def packed_npu_ipc_producer(
+ 
+         if total_bytes and total_bytes + flat.numel() > buffer_size_bytes:
+             torch.npu.current_stream().synchronize()
++            _, ipc_args = reduce_tensor(ipc_buffer)
+             yield {
+                 "names": names,
+                 "shapes": shapes,
+@@ -259,6 +304,7 @@ def packed_npu_ipc_producer(
+ 
+     if total_bytes:
+         torch.npu.current_stream().synchronize()
++        _, ipc_args = reduce_tensor(ipc_buffer)
+         yield {
+             "names": names,
+             "shapes": shapes,
+diff --git a/vllm-ascend/vllm_ascend/patch/worker/patch_hy4_reload.py b/vllm-ascend/vllm_ascend/patch/worker/patch_hy4_reload.py
+index 71502d5..2dd192d 100644
+--- a/vllm-ascend/vllm_ascend/patch/worker/patch_hy4_reload.py
++++ b/vllm-ascend/vllm_ascend/patch/worker/patch_hy4_reload.py
+@@ -11,37 +11,10 @@
+ # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+-"""HY4 reload / weight-update compatibility patches (vllm-ascend side only).
+-
+-Three defects surface on Ascend for HY4 when a live weight update runs
+-(`POST /collective_rpc reload_weights`) or when an HCCL weight transfer lands.
+-All of them are worked around here so that no upstream (vLLM) source file has to
+-be modified:
+-
+-1. `ExpertMapManager.map_global_to_local` reads the device expert map with
+-   `self._expert_map[global_id].item()`. On CANN 9.1.0 / torch_npu 2.10.0.post4
+-   that device->host scalar read on an offset 0-dim view traps
+-   (`LocalScalarDenseNpu`, `Invalid_Argument(EL0003)`, aivec trap), and it runs
+-   once per expert inside `finalize_layerwise_reload` (thousands of syncs).
+-   Fix: materialise the map once on the host and index a Python list.
+-
+-2. `RoutedExperts._load_w2` / `_load_w13` copy straight out of a `narrow()` view
+-   of the safetensors mmap. Materialise the source slice into an independent
+-   contiguous host buffer first so the H2D copy uses a single mapping.
+-
+-3. HY4's attention sinks are loaded by `HYV4ForCausalLM.load_weights` through a
+-   dedicated branch that writes `params_dict[name][:n].copy_(narrow_weight)` and
+-   `continue`s, i.e. it bypasses `param.weight_loader`. A live update runs inside
+-   vLLM's layerwise reload, which parks the layer on the meta device and only
+-   replays loads performed through `weight_loader`; the direct `copy_` therefore
+-   leaves `learnable_sink_param` on the meta device (`Failed to load weights` in
+-   the layerwise log) and later kernels dereference it. Same defect class as the
+-   `attn_sink` fix in vllm-ascend PR #18491 for DeepSeek-V4.1.
+-   Fix: intercept sink names, replicate the head sharding, and apply them through
+-   the parameter's loader (which is the layerwise-wrapped one during a reload).
+-
+-All patches are idempotent, only wrap existing behaviour, and do not change any
+-numerical result. Drop them once the equivalent fixes land upstream.
++"""Cache expert maps on CPU and materialize expert copy sources for HY4.
++
++Meta-device copies must execute so layerwise reload can count loaded elements.
++Sink parameters use the native HYV4Model weight loader.
+ """
+ 
+ from __future__ import annotations
+@@ -49,7 +22,6 @@ from __future__ import annotations
+ import functools
+ 
+ import torch
+-
+ from vllm.logger import init_logger
+ 
+ logger = init_logger(__name__)
+@@ -102,14 +74,10 @@ def _patch_expert_map_manager() -> None:
+ def _materialise_source(fn):
+     @functools.wraps(fn)
+     def wrapper(self, *args, **kwargs):
+-        # _skip_meta_copy: during a layerwise reload the destination parameter may
+-        # still be parked on the meta device (no storage). Copying into it would
+-        # issue a device memcpy against an address that does not exist, which is
+-        # exactly the aclrtMemcpy 507899 trap. The layerwise replay performs the
+-        # real write once the layer is materialised, so skip it here.
++        # Meta copies must still contribute to layerwise loading counts.
+         dst = args[0] if args else kwargs.get("expert_data")
+         if isinstance(dst, torch.Tensor) and dst.is_meta:
+-            return None
++            return fn(self, *args, **kwargs)
+         if len(args) >= 3 and isinstance(args[2], torch.Tensor):
+             args = args[:2] + (args[2].clone(),) + args[3:]
+         elif isinstance(kwargs.get("loaded_weight"), torch.Tensor):
+@@ -138,67 +106,8 @@ def _patch_routed_experts_copy() -> None:
+ 
+ 
+ # ---------------------------------------------------------------------------
+-# 3. Attention sinks: load through `weight_loader` so layerwise can replay them.
++# Sink loading is handled by the native HYV4Model weight loader.
+ # ---------------------------------------------------------------------------
+-def _patch_hy4_sink_loader() -> None:
+-    try:
+-        from vllm.models.hy_v4.nvidia.model import HYV4ForCausalLM
+-    except Exception as exc:  # pragma: no cover - model not in this build
+-        logger.warning("hy4 patch: HYV4ForCausalLM unavailable (%s), skipped", exc)
+-        return
+-
+-    if getattr(HYV4ForCausalLM, "_hy4_sink_patched", False):
+-        return
+-
+-    from vllm.distributed import (
+-        get_tensor_model_parallel_rank,
+-        get_tensor_model_parallel_world_size,
+-    )
+-    from vllm.model_executor.model_loader.weight_utils import default_weight_loader
+-
+-    original_load_weights = HYV4ForCausalLM.load_weights
+-
+-    @functools.wraps(original_load_weights)
+-    def load_weights(self, weights):
+-        deferred: list[tuple[str, torch.Tensor]] = []
+-
+-        def forwarded():
+-            for name, weight in weights:
+-                if "learnable_sink_param" in name:
+-                    deferred.append((name, weight))
+-                    continue
+-                yield name, weight
+-
+-        loaded = original_load_weights(self, forwarded())
+-        if not deferred:
+-            return loaded
+-
+-        params = dict(self.named_parameters())
+-        tp_size = get_tensor_model_parallel_world_size()
+-        tp_rank = get_tensor_model_parallel_rank()
+-        n_local_head = getattr(self.config, "num_attention_heads", 0) // max(tp_size, 1)
+-        start = n_local_head * tp_rank
+-        end = n_local_head * (tp_rank + 1)
+-
+-        applied = set()
+-        for name, weight in deferred:
+-            param = params.get(name)
+-            if param is None:
+-                continue
+-            slice_weight = weight[start:end] if weight.ndim else weight
+-            loader = getattr(param, "weight_loader", default_weight_loader)
+-            # During a reload this is the layerwise-wrapped loader, so the write is
+-            # recorded and replayed after the layer is materialised.
+-            loader(param, slice_weight)
+-            applied.add(name)
+-
+-        if isinstance(loaded, set):
+-            loaded.update(applied)
+-        return loaded
+-
+-    HYV4ForCausalLM.load_weights = load_weights
+-    HYV4ForCausalLM._hy4_sink_patched = True
+-    logger.info("hy4 patch: HY4 attention sinks load through weight_loader")
+ 
+ 
+ def apply() -> None:
+@@ -207,7 +116,6 @@ def apply() -> None:
+         return
+     _patch_expert_map_manager()
+     _patch_routed_experts_copy()
+-    _patch_hy4_sink_loader()
+     _PATCHED = True
+ 
+ 

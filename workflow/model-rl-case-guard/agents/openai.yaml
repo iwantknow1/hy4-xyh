@@ -1,0 +1,4 @@
+interface:
+  display_name: "模型RL用例看护"
+  short_description: "看护昇腾 NPU 模型 RL 用例、环境、拓扑与特性验证"
+  default_prompt: "使用 $model-rl-case-guard，对指定 vLLM-Ascend 模型执行 RL 用例看护、环境检测、拓扑验收和特性验证。"

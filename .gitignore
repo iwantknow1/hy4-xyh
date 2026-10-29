@@ -1,0 +1,13 @@
+.env
+.env.*
+*askpass*
+id_ed25519*
+*.pem
+*.key
+__pycache__/
+.venv*/
+node_modules/
+*.safetensors
+*.tar.gz
+*.core
+*.lz4

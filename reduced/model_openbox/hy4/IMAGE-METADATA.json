@@ -1,0 +1,81 @@
+{
+  "status": "passed",
+  "created_utc": "2026-10-27T14:23:10.977Z",
+  "image_tag": "hy4-codex:a5-cann9.1-20261027-verified",
+  "image_id": "sha256:81d4c9171a24404d669f6b161c4f3abea70bb928e534126bea29d57198ecfa45",
+  "image_uncompressed_bytes": 26706248200,
+  "base_image_id": "sha256:1ba11fc501306b7ef44b2dcbb7e1fea69a33bc18ca0a7a48c1ede76874a3d6cf",
+  "source_manifest_sha256": "af15727eeeb457eec1a680903b722c882af94280f3759e1b32a31e864b0ca6e6",
+  "source_file_count": 9,
+  "runtime_versions": {
+    "torch": "2.10.0",
+    "torch-npu": "2.10.0.post4",
+    "triton-ascend": "3.6.0",
+    "torch_runtime": "2.10.0+cpu"
+  },
+  "source_mounts": false,
+  "external_mounts": [
+    {
+      "Type": "bind",
+      "Source": "/data/x00951564/models",
+      "Destination": "/models",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/usr/local/Ascend/driver",
+      "Destination": "/usr/local/Ascend/driver",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    }
+  ],
+  "physical_inference_devices": [
+    6,
+    7
+  ],
+  "physical_producer_device": 5,
+  "npu_validation": {
+    "model": "/models/Hy4-6L",
+    "tensor_count": 810,
+    "tp": 2,
+    "graph_mode": "FULL_DECODE_ONLY",
+    "capture_sizes": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "weight_transfer": "packed HCCL with explicit CPU staging",
+    "checkpoint_manifest_sha256": "93e8d554c12a57ca6c39dc8b372a53ced4de8fc060daae57e33129e82288c970",
+    "endpoint_checks": {
+      "/v1/completions": true,
+      "/v1/chat/completions": true
+    },
+    "all_text_tokens_logprobs_exact": true,
+    "evidence": "logs/resume-exclusive/image-hccl-6l-graph.json"
+  },
+  "cpu_units": {
+    "passed": 98,
+    "warnings": 15,
+    "scope": "same frozen production source and runtime in the parent candidate; final overlay only changes reports/Excel/export helper/probe",
+    "torch_device_backend_autoload": "0 for CPU mock fixture tests only; NPU inference uses normal backend loading",
+    "evidence": "logs/resume-exclusive/image-unit.log"
+  },
+  "excel": {
+    "status": "passed",
+    "sha256": "74edde27e5b74b997b064aa111ceb92a7f0d24b067efacf79d0d9a95bc9b21ce",
+    "formula_recalculation": true
+  },
+  "archive": {
+    "path": "/mnt/share/x00951564/codex-transfer-20261027/hy4-codex-a5-cann9.1-20261027-verified.tar.gz",
+    "status": "passed",
+    "sha256": "18d57f4dd20279e6594daabdc3a03c55b209c43b8a706dad5cfaa0d723282f40",
+    "bytes": 10150827612,
+    "gzip_test": "passed",
+    "completed_utc": "2026-10-27T14:27:57.846Z"
+  },
+  "cards_released": true
+}

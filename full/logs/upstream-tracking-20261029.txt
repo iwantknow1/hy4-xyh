@@ -1,0 +1,1 @@
+2026-10-29 Git SSH ls-remote checked user fork and donor hy4-v0.30.0. Both remain a74b08e3f3ec98f5f624cb4a4ab3ae07b2c217b4. Frozen inference source unchanged.

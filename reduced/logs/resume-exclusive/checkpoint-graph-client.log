@@ -1,0 +1,7 @@
+SLEEP_RELOAD 1
+identical True
+SLEEP_RELOAD 2
+identical True
+SLEEP_RELOAD 3
+identical True
+PASS three reloads both endpoints

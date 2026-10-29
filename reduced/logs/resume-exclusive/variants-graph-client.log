@@ -1,0 +1,7 @@
+LOAD sink-B
+changed {'completions': True, 'chat/completions': True}
+restored True
+LOAD expert-C
+changed {'completions': True, 'chat/completions': True}
+restored True
+PASS sink and expert A-B-A both endpoints

@@ -1,0 +1,4 @@
+[2026-10-27-13:42:49.732] [INFO] [AscendProfiler_TraceStepTimeParser:97] Profiler logger initialized at: /codex/profiles/hy4-2l-middle/hy4-2l-middle/dp0_pp0_tp0_dcp0_ep0_rank0_2907_20261027134145133_ascend_pt/logs/profiler_20261027134249_5091_TraceStepTimeParser.log
+[2026-10-27-13:42:49.732] [INFO] [AscendProfiler_TraceStepTimeParser:169] TraceStepTimeParser start.
+[2026-10-27-13:42:49.734] [WARNING] [AscendProfiler_TraceStepTimeParser:69] Get step range failed, the step node list is empty.
+[2026-10-27-13:42:49.805] [INFO] [AscendProfiler_TraceStepTimeParser:177] TraceStepTimeParser finish.

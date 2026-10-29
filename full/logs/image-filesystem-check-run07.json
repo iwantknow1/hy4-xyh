@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "image": "hy4-codex:a5-cann9.1-four-node-run07-20261029",
+  "image_id": "sha256:b4f23be23aa05d77b33c5b1fa7070398986f5b40e3720c18c29289fce866322a",
+  "method": "Transient read-only container with networking disabled; bash filesystem checks only",
+  "deployment_helper_present_and_bash_syntax_valid": true,
+  "reuse_document_present": true,
+  "reload_patch_and_hy4_model_source_present": true,
+  "cpu_evaluation_private_credential_paths_absent": true,
+  "judge_key_environment_variables_absent": true,
+  "new_model_launch_performed": false
+}

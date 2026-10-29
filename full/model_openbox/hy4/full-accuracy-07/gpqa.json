@@ -1,0 +1,51 @@
+{
+  "feature": "dataset_evaluation",
+  "status": "passed",
+  "dataset": "GPQA Diamond 198",
+  "max_out_len": 102400,
+  "metrics": {
+    "status": "passed",
+    "rows": 198,
+    "exact_input_sha256": "1705137667c5b9b4e2ad5b3a85a0d94103bad3c303f41aa24609203771a91e2d",
+    "raw_prediction_keys": [
+      "data_abbr",
+      "gold",
+      "id",
+      "input_tokens",
+      "origin_prompt",
+      "output_tokens",
+      "prediction",
+      "success",
+      "uuid"
+    ],
+    "successful": 198,
+    "output_tokens": {
+      "min": 100,
+      "max": 48513,
+      "mean": 4311.868686868687,
+      "median": 1183.0,
+      "sum": 853750
+    },
+    "output_tokens_at_limit_102400": 0,
+    "unclosed_thinking_prediction_ids": [],
+    "native_result": "/task/evaluation/runs/gpqa-full-07/20261028_180756/results/hy4-gpu-aligned/GPQA_diamond.json",
+    "accuracy_percent": 93.43434343434343,
+    "extract_rate_percent": 100.0,
+    "correct": 185,
+    "reference_accuracy_percent": 93.43434343434343,
+    "reference_gap_percentage_points": 0.0
+  },
+  "checks": {
+    "all_198_successful": true,
+    "exact_reference_inputs": true,
+    "unique_ids": true,
+    "zero_failed_requests": true
+  },
+  "endpoint_checks": {
+    "/v1/completions": null,
+    "/v1/chat/completions": true
+  },
+  "result_path": "/task/evaluation/runs/gpqa-full-07/20261028_180756/results/hy4-gpu-aligned/GPQA_diamond.json",
+  "log": "/task/logs/gpqa-full-07.log",
+  "note": "Real full BF16 checkpoint; reference uses different quantized weights."
+}

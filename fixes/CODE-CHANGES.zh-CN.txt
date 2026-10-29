@@ -1,0 +1,128 @@
+HY4 A5 reload / 权重传输修复说明
+
+一、代码位置与比较方式
+
+审阅根目录：/home/a/src/hy4-codex-weight-transfer-review
+本目录是独立审阅快照，包含 vllm/ 和 vllm-ascend/ 两个源码目录。
+暂存区是修改前 donor 文件，工作区是最终修复；尚未创建提交，也未推送。
+在本目录执行：
+  git diff --stat
+  git diff
+  git diff -- vllm/vllm/models/hy_v4/nvidia/model.py
+  git diff -- vllm-ascend/vllm_ascend/distributed/weight_transfer/hccl_engine.py
+
+9 文件，331 行新增、166 行删除。它不是基于当前 /home/a/src/vllm 主干的补丁，
+而是针对当时 HY4 donor 源码；移植到个人 fork 时必须核对其基线。
+源码和测试的 SHA-256 已逐一匹配最终实机验证镜像。
+组合补丁：patches/weight-transfer-fix.diff
+分仓库补丁：patches/vllm-hy4-reload.diff、patches/vllm-ascend-hy4-transfer.diff
+
+二、先理解 reload 的工作方式
+
+普通首次加载可直接向已分配参数写数据。layerwise reload 还会把参数暂存为 meta，
+用包装后的 weight_loader 记录加载内容和计数，再 materialize/replay 到运行时存储。
+所以“数据拷贝看起来执行了”不代表正确完成 reload：既要走 loader、保持计数完整，
+也要保留图模式中引用的参数存储，并控制加载临时张量的生命周期。
+
+三、五个运行时文件逐项说明
+
+1. vllm/vllm/models/hy_v4/nvidia/model.py，约 574–581 行
+
+问题：attention sink 的专用分支做 TP head 切片后直接 copy_，绕过参数 weight_loader。
+layerwise reload 因而无法正常记录、回放这项参数加载。
+修改：保留原有 TP 切片，改为取 param.weight_loader（无则 default_weight_loader），
+调用 weight_loader(param, narrow_weight)。修复放在真正加载 sink 的模型分支内。
+意义：遵循原生加载流程，兼容 reload 包装器；不通过替换参数对象修补，从而保留图引用。
+测试：TP 分片 loader 调用及运行时参数更新，实机 sink-B / A-B-A 输出变化与恢复。
+
+2. vllm-ascend/vllm_ascend/patch/worker/patch_hy4_reload.py，约 74–84 行
+
+问题：已有补丁在目标是 meta tensor 时直接 return，连原专家加载函数也不调用，
+导致 reload 的已加载元素计数丢失。避免了一次表面上的 copy，却破坏了加载协议。
+修改：meta 分支仍调用原函数，使原加载过程完成记账；保留非 meta 来源切片 clone。
+删除外层重复 sink 拦截补丁，因为第 1 项已在原生位置处理，避免两套路径干扰。
+沿用已有 CPU expert-map cache 与来源切片 materialization，不把它们算作本次新发明。
+测试：meta 专家加载计数从 0 正确增加到 6；实机专家-C 变更及恢复。
+
+3. vllm-ascend/vllm_ascend/distributed/weight_transfer/hccl_engine.py
+
+问题 A：把每个 tensor/packed chunk 当成完整 checkpoint 分别调用 model.load_weights。
+某些 HY4 加载检查需要看到完整权重流，分块调用会过早判定缺项。
+修改 A：packed 和 unpacked 都组织成迭代器，只调用一次 model.load_weights。
+
+问题 B：接收及延迟加载保留 NPU 临时张量，finalize materialization 时空间不足。
+修改 B：新增 cpu_staging=False，显式开启时把真实 HCCL 接收到的张量搬到 CPU 暂存。
+这仍然是 HCCL 传输，不是用文件拷贝替代通信。默认值维持关闭。
+
+问题 C：原本仅在 finalize 后释放缓存，来不及解决 finalize 本身的容量不足。
+修改 C：finish 在 finalize 前后各 empty_cache 一次。前一次释放传输留下的空闲缓存，
+后一次释放 reload 临时缓存，为恢复 KV 留空间。它不释放活跃参数，也不改变参数值。
+实机证据：finalize 前释放约 19.76 GiB reserved 缓存，allocated 约 59.60 GiB 不变；
+同一 6L TP2 / KV 8 GiB 配置随后在 eager 与图模式通过。
+
+4. vllm-ascend/vllm_ascend/distributed/weight_transfer/packed_tensor.py
+
+HCCL：提供 packed_broadcast_iterator，让上层将各包视作一条完整流；旧 consumer 接口
+继续保留。广播显式传入 default stream，并在消费前完成相应同步。
+CPU staging 开启时将解包数据复制到 CPU，减少 NPU 接收缓冲的驻留。
+
+IPC：仍复用同一块 packed NPU storage，但每个 chunk 都重新 reduce_tensor，生成独立
+导出引用计数。旧做法只导出一次、每包复用相同句柄计数，会破坏多次重建的生命周期。
+测试验证多包共享 storage，但每次都有新导出；实机原 producer 生命周期警告消失。
+
+5. vllm-ascend/vllm_ascend/distributed/weight_transfer/npu_ipc_engine.py
+
+问题：packed IPC 一次更新跨多个 RPC；每包直接 load_weights 会触发完整性检查，
+而源 packed buffer 又会被下一包覆盖。
+修改：增加可选 cpu_staging。packed + staging 时每包立即复制到独立 CPU 张量，
+整个更新期间累计到 _pending_weights；finish 时统一 load_weights，再 finalize。
+start 清空 pending，成功 finish 后清空 pending 并回收空闲缓存。
+不删除、不放宽 HY4 的完整性检查。默认 staging=False，原路径仍保留。
+
+四、测试文件与证据
+
+修改的四个测试文件：
+  vllm-ascend/tests/ut/models/test_hy_v4.py
+  vllm-ascend/tests/ut/distributed/weight_transfer/test_hccl_engine.py
+  vllm-ascend/tests/ut/distributed/weight_transfer/test_npu_ipc_engine.py
+  vllm-ascend/tests/ut/distributed/weight_transfer/test_packed_tensor.py
+
+针对性单元测试合计 98 passed、15 warnings；ruff 通过。
+远端验证环境使用 uv 管理的 .venv；测试调用形式为：
+  TORCH_DEVICE_BACKEND_AUTOLOAD=0 /codex/.venv/bin/python -m pytest \
+    /vllm-workspace/vllm-ascend/tests/ut/models/test_hy_v4.py \
+    /vllm-workspace/vllm-ascend/tests/ut/distributed/weight_transfer/test_hccl_engine.py \
+    /vllm-workspace/vllm-ascend/tests/ut/distributed/weight_transfer/test_npu_ipc_engine.py \
+    /vllm-workspace/vllm-ascend/tests/ut/distributed/weight_transfer/test_packed_tensor.py
+CPU mock 测试关闭自动 backend 加载；真实 NPU 推理正常加载 backend。
+精确测试日志：oldhost-revalidation-20261027/logs/resume-exclusive/image-unit.log
+
+实机覆盖：2L/6L checkpoint、HCCL、IPC，eager/图模式，重复 reload，变更权重再恢复。
+最终镜像：6L TP2 图模式，HCCL 更新 810 个张量，两个接口的 text/token/logprob 严格一致。
+并非每个早期 2L 用例都在最后缓存清理的两文件差异后重跑；最终 6L 图模式与镜像
+已核对最终 9 文件哈希。完整范围和历史失败保留在验证报告中。
+
+五、代价、边界与后续验证
+
+CPU staging 增加主机内存、PCIe 拷贝和等待时间；完整更新可能累计大量主机张量。
+empty_cache 可能增加后续重新分配开销，本次证明功能与容量修复，不宣称性能提升。
+本次不是对任意中断/异常事务恢复能力的证明，也未证明官方全量更新可承受同样容量。
+不删除 CP 保护条件，不修改数学计算公式，不宣称减层分数代表官方模型精度。
+
+双机阶段：先检查跨机 HCCL，再分别验证跨机 TP、合法边界 PP、跨机 DP，
+与相同拓扑基线比较，覆盖正常推理与必要 reload；DP 成功不代替跨机 TP 成功。
+四机阶段：用户要求集中做官方 78 层 BF16 模型精度；需先完成全量启动预检。
+减层通过并不保证全量启动无新增问题，如出现问题先定位再评测，不能直接记通过。
+
+六、GitHub 推送
+
+运行时代码涉及两个独立仓库：vLLM（1 文件）和 vllm-ascend（4 代码 + 4 测试）。
+得到个人 fork 地址并具备可用认证后，在新分支核对基线并应用、推送。
+当前审阅仓库不是完整上游仓库，不能直接把它作为上游修复历史推送。
+不覆盖现有分支，不自动创建上游 PR；提交注明 AI 协助并采用用户 Git 身份。
+
+2026-10-28 上游核查补充：
+官方主干已通过 #57797 于 2026-10-14 合并 sink reload 通用修复。
+当前 donor 分支仍保留旧实现，因此我们的本地修复仍有必要；不是需要向主干新提的 bug。
+主干在 sink loader 内完成 TP 切片，本地在调用前切片，升级时不可直接叠加。
+详细证据见 upstream-audit-20261028/RESULT.zh-CN.txt。

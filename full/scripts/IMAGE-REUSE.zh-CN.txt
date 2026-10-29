@@ -1,0 +1,39 @@
+四机 HY4 BF16 镜像复用说明
+
+最终镜像/归档的存在性、完整 SHA256 和大小，以
+logs/reusable-image-run07.json 为准；该文件仅在保存和校验完成后产生。
+镜像标签：hy4-codex:a5-cann9.1-four-node-run07-20261029。
+它保存推理容器，CPU 评测容器及其 API/SSH 私有密钥不保存为镜像。
+权重和共享评测数据是挂载目录，Docker 镜像不包含这些挂载内容。
+
+每台 A5 先将归档 docker load，再建立推理容器，例如：
+
+docker run -d --name hy4-run07 --privileged --network host --ipc shareable \
+  --shm-size 64g \
+  -v /usr/local/Ascend/driver:/usr/local/Ascend/driver:ro \
+  -v /mnt/share/z30059446/hy4_safetensors:/mnt/model:ro \
+  hy4-codex:a5-cann9.1-four-node-run07-20261029 sleep infinity
+
+容器参数沿用本轮的 privileged、host 网络、shareable IPC 和 64 GiB shm。
+每节点使用 8 个 NPU，本轮总共四节点 32 个 NPU；启动前确认均可用。
+主机驱动需要与镜像的 CANN 9.1 兼容。模型目录应为本轮审计过的完整 BF16
+checkpoint，78 层、246 分片。替换挂载源时自行确认权重的一致性。
+
+镜像内 /usr/local/share/hy4-codex/run07/run-inference-node.sh 提供无需 skill
+和额外 SSH 凭据的节点启动命令，参数依次为 rank、本机通信 IP、主节点通信 IP、
+容器内模型路径。先启动 rank0，确认主节点开始监听29740，再启动其余节点。
+
+25：docker exec -d hy4-run07 bash /usr/local/share/hy4-codex/run07/run-inference-node.sh 0 197.13.49.1 197.13.49.1 /mnt/model
+26：docker exec -d hy4-run07 bash /usr/local/share/hy4-codex/run07/run-inference-node.sh 1 197.13.50.1 197.13.49.1 /mnt/model
+27：docker exec -d hy4-run07 bash /usr/local/share/hy4-codex/run07/run-inference-node.sh 2 197.13.51.1 197.13.49.1 /mnt/model
+28：docker exec -d hy4-run07 bash /usr/local/share/hy4-codex/run07/run-inference-node.sh 3 197.13.52.1 197.13.49.1 /mnt/model
+
+换机器时替换各 IP，并通过 docker exec -e HY4_NIC=实际网卡名指定通信网卡。
+本轮 enp39s0f0 是 200 Gb，管理网 enp35s0f2 仅 1 Gb，勿混淆。
+服务地址为主节点18080端口，模型名hy4；初始化等待可能超过10分钟。
+可将每条 docker exec 改为后台 bash 并重定向日志；示例省略了日志重定向。
+
+独立启动脚本根据本轮实际生效参数整理，包含已修复的编译器 PATH。
+它仅经过 bash 语法检查；正式验证由本轮 skill 生成的等价命令完成。
+原始实际命令在 logs/nodeN/dp4-command-07.sh，完整启动日志与最终精度报告
+在共享任务目录中。复用镜像不替代换环境后的服务健康与精度检查。

@@ -1,0 +1,7 @@
+{
+  "samples": 1129,
+  "token_usage_coverage": 1129,
+  "avg_completion_token": 729.5349867139062,
+  "length_truncated": 2,
+  "note": "Inference only; accuracy requires the matching evaluator"
+}

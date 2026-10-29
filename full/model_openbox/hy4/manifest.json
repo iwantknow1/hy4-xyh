@@ -1,0 +1,736 @@
+{
+  "created_utc": "2026-10-28T13:54:53.695Z",
+  "status": "complete",
+  "scope": "four_node_full_model_accuracy",
+  "user_override": "skip two-node validation; GPQA Diamond + HallusionBench",
+  "nodes": [
+    "177.11.25.1",
+    "177.11.26.1",
+    "177.11.27.1",
+    "177.11.28.1"
+  ],
+  "source_branch": "hy4-v0.30.0",
+  "donor_sha": "a74b08e3f3ec98f5f624cb4a4ab3ae07b2c217b4",
+  "image": "hy4-codex:a5-cann9.1-20261027-verified",
+  "image_id": "sha256:81d4c9171a24404d669f6b161c4f3abea70bb928e534126bea29d57198ecfa45",
+  "weight_kind": "real_full",
+  "audit": {
+    "status": "passed",
+    "path": "/mnt/share/z30059446/hy4_safetensors",
+    "layers": 78,
+    "architecture": [
+      "HYV4VLForConditionalGeneration"
+    ],
+    "dtype": "bfloat16",
+    "shards": 246,
+    "tensors": 2655,
+    "payload_bytes": 1562453830516,
+    "file_bytes": 1562454136204,
+    "metadata_size_basis": "file_bytes_including_headers",
+    "expected_bytes": 1562454136204,
+    "dtypes": {
+      "BF16": 1562330647552,
+      "F32": 123182964
+    },
+    "missing": [],
+    "mismatches": [],
+    "index_sha256": "605941bd325eec75ffe918932217e526b687f96f78cfe78eb2b5ae188779f863",
+    "vision_tensors": 649
+  },
+  "capacity": {
+    "status": "passed",
+    "tp": 8,
+    "dp": 4,
+    "pp": 1,
+    "ep_size": 32,
+    "mtp_tokens": 3,
+    "max_num_seqs": 64,
+    "kv_cache_memory_bytes": 15032385536,
+    "reported_weight_memory_gb_per_rank": 55.1109,
+    "kv_capacity_tokens": 155520,
+    "validation": "Full checkpoint loaded on all four nodes; GPQA198 and Hallusion1129 completed without OOM",
+    "budget_evidence": "/task/logs/tp8-dp4-mtp3-64-capacity.json",
+    "budget": {
+      "status": "passed",
+      "tp": 8,
+      "dp": 4,
+      "pp": 1,
+      "ep_size": 32,
+      "max_num_seqs_per_dp": 64,
+      "max_num_batched_tokens": 8192,
+      "max_model_len": 147456,
+      "mtp": 3,
+      "main_weights_upper_gib": 54.63816376402974,
+      "draft_weights_upper_gib": 1.6347599468231202,
+      "fixed_kv_budget_gib": 14,
+      "runtime_graph_workspace_allowance_gib": 14,
+      "fragmentation_allowance_gib": 4,
+      "total_estimate_gib": 88.27292371085287,
+      "observed_min_free_gib": 91.06456756591797,
+      "allocator_total_gib": 91.75,
+      "startup_threshold_gib": 87.1625,
+      "headroom_after_all_allowances_gib": 2.7916438550651037,
+      "budget_semantics": "Fixed kv_cache_memory_bytes bypasses automatic utilization-based cache profiling; check estimated full allocation against measured free memory, and separately check startup utilization threshold",
+      "nodes": {
+        "25": {
+          "devices": [
+            {
+              "device": 0,
+              "free_gib": 91.06822204589844,
+              "total_gib": 91.75
+            },
+            {
+              "device": 1,
+              "free_gib": 91.06949615478516,
+              "total_gib": 91.75
+            },
+            {
+              "device": 2,
+              "free_gib": 91.07001495361328,
+              "total_gib": 91.75
+            },
+            {
+              "device": 3,
+              "free_gib": 91.06990432739258,
+              "total_gib": 91.75
+            },
+            {
+              "device": 4,
+              "free_gib": 91.06945419311523,
+              "total_gib": 91.75
+            },
+            {
+              "device": 5,
+              "free_gib": 91.07118606567383,
+              "total_gib": 91.75
+            },
+            {
+              "device": 6,
+              "free_gib": 91.07159805297852,
+              "total_gib": 91.75
+            },
+            {
+              "device": 7,
+              "free_gib": 91.06912612915039,
+              "total_gib": 91.75
+            }
+          ],
+          "min_free_gib": 91.06822204589844
+        },
+        "26": {
+          "devices": [
+            {
+              "device": 0,
+              "free_gib": 91.06784439086914,
+              "total_gib": 91.75
+            },
+            {
+              "device": 1,
+              "free_gib": 91.06958389282227,
+              "total_gib": 91.75
+            },
+            {
+              "device": 2,
+              "free_gib": 91.0706558227539,
+              "total_gib": 91.75
+            },
+            {
+              "device": 3,
+              "free_gib": 91.07122039794922,
+              "total_gib": 91.75
+            },
+            {
+              "device": 4,
+              "free_gib": 91.07046127319336,
+              "total_gib": 91.75
+            },
+            {
+              "device": 5,
+              "free_gib": 91.07095336914062,
+              "total_gib": 91.75
+            },
+            {
+              "device": 6,
+              "free_gib": 91.07068634033203,
+              "total_gib": 91.75
+            },
+            {
+              "device": 7,
+              "free_gib": 91.06985092163086,
+              "total_gib": 91.75
+            }
+          ],
+          "min_free_gib": 91.06784439086914
+        },
+        "27": {
+          "devices": [
+            {
+              "device": 0,
+              "free_gib": 91.06456756591797,
+              "total_gib": 91.75
+            },
+            {
+              "device": 1,
+              "free_gib": 91.07175064086914,
+              "total_gib": 91.75
+            },
+            {
+              "device": 2,
+              "free_gib": 91.07160568237305,
+              "total_gib": 91.75
+            },
+            {
+              "device": 3,
+              "free_gib": 91.07156753540039,
+              "total_gib": 91.75
+            },
+            {
+              "device": 4,
+              "free_gib": 91.07124710083008,
+              "total_gib": 91.75
+            },
+            {
+              "device": 5,
+              "free_gib": 91.07197189331055,
+              "total_gib": 91.75
+            },
+            {
+              "device": 6,
+              "free_gib": 91.07247543334961,
+              "total_gib": 91.75
+            },
+            {
+              "device": 7,
+              "free_gib": 91.07126998901367,
+              "total_gib": 91.75
+            }
+          ],
+          "min_free_gib": 91.06456756591797
+        },
+        "28": {
+          "devices": [
+            {
+              "device": 0,
+              "free_gib": 91.08113098144531,
+              "total_gib": 91.75
+            },
+            {
+              "device": 1,
+              "free_gib": 91.07981491088867,
+              "total_gib": 91.75
+            },
+            {
+              "device": 2,
+              "free_gib": 91.07975006103516,
+              "total_gib": 91.75
+            },
+            {
+              "device": 3,
+              "free_gib": 91.07959747314453,
+              "total_gib": 91.75
+            },
+            {
+              "device": 4,
+              "free_gib": 91.07979202270508,
+              "total_gib": 91.75
+            },
+            {
+              "device": 5,
+              "free_gib": 91.07966232299805,
+              "total_gib": 91.75
+            },
+            {
+              "device": 6,
+              "free_gib": 91.07828903198242,
+              "total_gib": 91.75
+            },
+            {
+              "device": 7,
+              "free_gib": 91.07737731933594,
+              "total_gib": 91.75
+            }
+          ],
+          "min_free_gib": 91.07737731933594
+        }
+      }
+    }
+  },
+  "baseline_special_config": {
+    "revision": "run07-compiler-path",
+    "tp": 8,
+    "dp": 4,
+    "pp": 1,
+    "ep_size": 32,
+    "mtp_tokens": 3,
+    "max_model_len": 147456,
+    "max_num_seqs": 64,
+    "max_num_batched_tokens": 8192,
+    "kv_cache_bytes": 15032385536,
+    "gpu_memory_utilization": 0.95,
+    "api_server_count": 1,
+    "engine_ready_timeout_seconds": 3600,
+    "communication_iface": "enp39s0f0",
+    "communication_link_gbps": 200,
+    "compiler_path": "/usr/local/Ascend/cann-9.1.0/bin",
+    "async_scheduling": true,
+    "prefix_caching": true,
+    "seed": 0
+  },
+  "dataset_evaluation": {
+    "enabled": true,
+    "datasets": [
+      "GPQA Diamond (198 exact prompts)",
+      "HallusionBench (1129 questions,346 images)"
+    ],
+    "max_out_len": 102400,
+    "status": "run06_waiting_service",
+    "judge": "deepseek-flash; authentication and synthetic generation smoke passed",
+    "gpqa_config_parse": "passed",
+    "generation_config": {
+      "temperature": 0.9,
+      "top_p": 1,
+      "top_k": -1
+    },
+    "configuration": "evaluation/gpqa-full-config-06.py",
+    "integrity_checks": "198 successful unique nonempty GPQA predictions; zero failed requests;1129 nonempty Hallusion predictions"
+  },
+  "communication": {
+    "status": "passed",
+    "ranks": 4,
+    "all_reduce": true,
+    "broadcast": true,
+    "first_failure": "default NPU port16666 bound; fixed explicit64000-64199 for preflight; full service uses61000-61999"
+  },
+  "containers": {
+    "owned": "x00951564-hy4-codex-20261028",
+    "other_idle_containers": "restored; do not stop",
+    "ds_pd_d_guard": "only this named container; 8h"
+  },
+  "eval_environment": {
+    "isolated_venv": "/task/evaluation/.venv-client",
+    "dependencies": "read-only reference aisbench-venv site-packages; no inference environment changes",
+    "torch_client": "2.14.1+cpu",
+    "config_preflight": "passed",
+    "configuration": "evaluation/gpqa-full-config.py"
+  },
+  "automation": {
+    "wall": {
+      "interval_seconds": 900,
+      "ttl_seconds": 28800,
+      "nodes": [
+        25,
+        26,
+        27,
+        28
+      ]
+    },
+    "guards": [
+      {
+        "node": 25,
+        "container": "ds_pd_p2",
+        "interval_seconds": 3,
+        "ttl_seconds": 28800
+      },
+      {
+        "node": 27,
+        "container": "ds_pd_d",
+        "interval_seconds": 3,
+        "ttl_seconds": 28800
+      }
+    ]
+  },
+  "updated_utc": "2026-10-29T04:33:54.098571+00:00",
+  "runtime_npu_probe": {
+    "method": "skill serve_probe_npus.py",
+    "nodes": 4,
+    "devices": 32,
+    "free": 32,
+    "npu_name": "Ascend950DT"
+  },
+  "network_override": {
+    "skill_default": "data0.3001",
+    "actual_iface": "enp39s0f0",
+    "reason": "Use existing200Gbps data NIC, as reference deployment; 1Gbps enp35s0f2 showed CPU integrity failures in independent32rank tests",
+    "implementation": "scripts/serve-with-cann.sh and scripts/launch-dp4-skill.sh"
+  },
+  "aligned_capacity": {
+    "status": "passed",
+    "tp": 8,
+    "dp": 4,
+    "pp": 1,
+    "ep_size": 32,
+    "max_num_seqs_per_dp": 64,
+    "max_num_batched_tokens": 8192,
+    "max_model_len": 147456,
+    "mtp": 3,
+    "main_weights_upper_gib": 54.63816376402974,
+    "draft_weights_upper_gib": 1.6347599468231202,
+    "fixed_kv_budget_gib": 14,
+    "runtime_graph_workspace_allowance_gib": 14,
+    "fragmentation_allowance_gib": 4,
+    "total_estimate_gib": 88.27292371085287,
+    "observed_min_free_gib": 91.06456756591797,
+    "allocator_total_gib": 91.75,
+    "startup_threshold_gib": 87.1625,
+    "headroom_after_all_allowances_gib": 2.7916438550651037,
+    "budget_semantics": "Fixed kv_cache_memory_bytes bypasses automatic utilization-based cache profiling; check estimated full allocation against measured free memory, and separately check startup utilization threshold",
+    "nodes": {
+      "25": {
+        "devices": [
+          {
+            "device": 0,
+            "free_gib": 91.06822204589844,
+            "total_gib": 91.75
+          },
+          {
+            "device": 1,
+            "free_gib": 91.06949615478516,
+            "total_gib": 91.75
+          },
+          {
+            "device": 2,
+            "free_gib": 91.07001495361328,
+            "total_gib": 91.75
+          },
+          {
+            "device": 3,
+            "free_gib": 91.06990432739258,
+            "total_gib": 91.75
+          },
+          {
+            "device": 4,
+            "free_gib": 91.06945419311523,
+            "total_gib": 91.75
+          },
+          {
+            "device": 5,
+            "free_gib": 91.07118606567383,
+            "total_gib": 91.75
+          },
+          {
+            "device": 6,
+            "free_gib": 91.07159805297852,
+            "total_gib": 91.75
+          },
+          {
+            "device": 7,
+            "free_gib": 91.06912612915039,
+            "total_gib": 91.75
+          }
+        ],
+        "min_free_gib": 91.06822204589844
+      },
+      "26": {
+        "devices": [
+          {
+            "device": 0,
+            "free_gib": 91.06784439086914,
+            "total_gib": 91.75
+          },
+          {
+            "device": 1,
+            "free_gib": 91.06958389282227,
+            "total_gib": 91.75
+          },
+          {
+            "device": 2,
+            "free_gib": 91.0706558227539,
+            "total_gib": 91.75
+          },
+          {
+            "device": 3,
+            "free_gib": 91.07122039794922,
+            "total_gib": 91.75
+          },
+          {
+            "device": 4,
+            "free_gib": 91.07046127319336,
+            "total_gib": 91.75
+          },
+          {
+            "device": 5,
+            "free_gib": 91.07095336914062,
+            "total_gib": 91.75
+          },
+          {
+            "device": 6,
+            "free_gib": 91.07068634033203,
+            "total_gib": 91.75
+          },
+          {
+            "device": 7,
+            "free_gib": 91.06985092163086,
+            "total_gib": 91.75
+          }
+        ],
+        "min_free_gib": 91.06784439086914
+      },
+      "27": {
+        "devices": [
+          {
+            "device": 0,
+            "free_gib": 91.06456756591797,
+            "total_gib": 91.75
+          },
+          {
+            "device": 1,
+            "free_gib": 91.07175064086914,
+            "total_gib": 91.75
+          },
+          {
+            "device": 2,
+            "free_gib": 91.07160568237305,
+            "total_gib": 91.75
+          },
+          {
+            "device": 3,
+            "free_gib": 91.07156753540039,
+            "total_gib": 91.75
+          },
+          {
+            "device": 4,
+            "free_gib": 91.07124710083008,
+            "total_gib": 91.75
+          },
+          {
+            "device": 5,
+            "free_gib": 91.07197189331055,
+            "total_gib": 91.75
+          },
+          {
+            "device": 6,
+            "free_gib": 91.07247543334961,
+            "total_gib": 91.75
+          },
+          {
+            "device": 7,
+            "free_gib": 91.07126998901367,
+            "total_gib": 91.75
+          }
+        ],
+        "min_free_gib": 91.06456756591797
+      },
+      "28": {
+        "devices": [
+          {
+            "device": 0,
+            "free_gib": 91.08113098144531,
+            "total_gib": 91.75
+          },
+          {
+            "device": 1,
+            "free_gib": 91.07981491088867,
+            "total_gib": 91.75
+          },
+          {
+            "device": 2,
+            "free_gib": 91.07975006103516,
+            "total_gib": 91.75
+          },
+          {
+            "device": 3,
+            "free_gib": 91.07959747314453,
+            "total_gib": 91.75
+          },
+          {
+            "device": 4,
+            "free_gib": 91.07979202270508,
+            "total_gib": 91.75
+          },
+          {
+            "device": 5,
+            "free_gib": 91.07966232299805,
+            "total_gib": 91.75
+          },
+          {
+            "device": 6,
+            "free_gib": 91.07828903198242,
+            "total_gib": 91.75
+          },
+          {
+            "device": 7,
+            "free_gib": 91.07737731933594,
+            "total_gib": 91.75
+          }
+        ],
+        "min_free_gib": 91.07737731933594
+      }
+    }
+  },
+  "current_run": "07",
+  "current_configuration": {
+    "tp": 8,
+    "dp": 4,
+    "pp": 1,
+    "ep_size": 32,
+    "mtp_tokens": 3,
+    "max_model_len": 147456,
+    "max_num_seqs": 64,
+    "max_num_batched_tokens": 8192,
+    "kv_cache_bytes": 15032385536,
+    "gpu_memory_utilization": 0.95,
+    "api_server_count": 1,
+    "engine_ready_timeout_seconds": 3600,
+    "communication_iface": "enp39s0f0",
+    "communication_link_gbps": 200,
+    "compiler_path": "/usr/local/Ascend/cann-9.1.0/bin",
+    "async_scheduling": true,
+    "prefix_caching": true,
+    "seed": 0
+  },
+  "gpqa_run07": {
+    "status": "passed",
+    "rows": 198,
+    "exact_input_sha256": "1705137667c5b9b4e2ad5b3a85a0d94103bad3c303f41aa24609203771a91e2d",
+    "raw_prediction_keys": [
+      "data_abbr",
+      "gold",
+      "id",
+      "input_tokens",
+      "origin_prompt",
+      "output_tokens",
+      "prediction",
+      "success",
+      "uuid"
+    ],
+    "successful": 198,
+    "output_tokens": {
+      "min": 100,
+      "max": 48513,
+      "mean": 4311.868686868687,
+      "median": 1183,
+      "sum": 853750
+    },
+    "output_tokens_at_limit_102400": 0,
+    "unclosed_thinking_prediction_ids": [],
+    "native_result": "/task/evaluation/runs/gpqa-full-07/20261028_180756/results/hy4-gpu-aligned/GPQA_diamond.json",
+    "accuracy_percent": 93.43434343434343,
+    "extract_rate_percent": 100,
+    "correct": 185,
+    "reference_accuracy_percent": 93.43434343434343,
+    "reference_gap_percentage_points": 0
+  },
+  "hallusion_transport_change": {
+    "status": "restarted_hall_only",
+    "gpqa_results": "preserved_and_revalidated",
+    "old_timeout_seconds": 1200,
+    "new_timeout_seconds": 7200,
+    "previous_partial_samples_archived": 8,
+    "new_controller_pid": 2433,
+    "concurrency": "unchanged_sequential",
+    "generation_parameters": "unchanged",
+    "dataset_and_order": "unchanged",
+    "server": "not_restarted"
+  },
+  "hallusion_generation_run07": {
+    "status": "passed",
+    "samples": 1129,
+    "nonempty_final_answers": 1129,
+    "unique_ordered_response_indices": 1129,
+    "dataset_and_order_match_reference": true,
+    "dataset_sha256": "ca6e0fb677dd56e5fb0e2700d06c58d01f8a6ae66e0f1773b2ac48c0a095d051",
+    "length_truncated": 2,
+    "truncated_question_numbers": [
+      998,
+      1033
+    ],
+    "visual_input_counts": {
+      "0": 178,
+      "1": 447,
+      "2": 504
+    },
+    "category_counts": {
+      "VS": 538,
+      "VD": 591
+    },
+    "judge_status": "running",
+    "accuracy_not_yet_available": true
+  },
+  "reusable_image": {
+    "status": "saved",
+    "generation_validated": true,
+    "accuracy_status": "see evaluation-pipeline.json; judge may still be running",
+    "tag": "hy4-codex:a5-cann9.1-four-node-run07-20261029",
+    "image_id": "sha256:b4f23be23aa05d77b33c5b1fa7070398986f5b40e3720c18c29289fce866322a",
+    "archive": "/mnt/share/x00951564/codex-hy4-20261028-four-node/images/hy4-codex-a5-cann9.1-four-node-run07-20261029.tar.gz",
+    "bytes": 10233176716,
+    "sha256": "b73f6ad30f12a09cf8760b15f4e8cc698445cef2a4280031d85e38ebfc946969",
+    "source_container": "x00951564-hy4-codex-20261028",
+    "cpu_evaluation_container_saved": false,
+    "saved_utc": "2026-10-28T23:48:19.112996+00:00"
+  },
+  "image_filesystem_check": {
+    "status": "passed",
+    "image": "hy4-codex:a5-cann9.1-four-node-run07-20261029",
+    "image_id": "sha256:b4f23be23aa05d77b33c5b1fa7070398986f5b40e3720c18c29289fce866322a",
+    "method": "Transient read-only container with networking disabled; bash filesystem checks only",
+    "deployment_helper_present_and_bash_syntax_valid": true,
+    "reuse_document_present": true,
+    "reload_patch_and_hy4_model_source_present": true,
+    "cpu_evaluation_private_credential_paths_absent": true,
+    "judge_key_environment_variables_absent": true,
+    "new_model_launch_performed": false
+  },
+  "npu_resources": "our_four_inference_containers_stopped; released",
+  "judge_protocol_audit": {
+    "status": "passed",
+    "script_hashes": {
+      "evaluation.py": {
+        "reference_sha256": "bcc5db10c61f1c20e7a94ae2414e104b937bf877b1a44c62005c434f3dad9eea",
+        "actual_sha256": "bcc5db10c61f1c20e7a94ae2414e104b937bf877b1a44c62005c434f3dad9eea"
+      },
+      "utils.py": {
+        "reference_sha256": "46cabcb1b935d9c291e58fc93f40ad5812c80b014575eb0046690affc5f14479",
+        "actual_sha256": "46cabcb1b935d9c291e58fc93f40ad5812c80b014575eb0046690affc5f14479"
+      }
+    },
+    "actual_judge_configuration": {
+      "HALLUSION_JUDGE_BASE_URL": "https://api.deepseek.com",
+      "HALLUSION_JUDGE_MODEL": "deepseek-flash"
+    },
+    "judge_input_matches_our_generated_output": true,
+    "judge_input_sha256": "22668582d5d76f479f8103712b88e93f072b02553b5a1a54120f04bfd67386da",
+    "question_count": 1129,
+    "logical_judge_calls": 2258,
+    "phases": {
+      "VD_correctness": 591,
+      "VD_consistency": 591,
+      "VS_correctness": 538,
+      "VS_consistency": 538
+    },
+    "scheduling": "original_sequential",
+    "prompts_and_statistics": "unchanged_original",
+    "online_model_revision_frozen": false
+  },
+  "hallusion_run07": {
+    "metrics": {
+      "qAcc": 54.9451,
+      "fAcc": 62.4277,
+      "easy_aAcc": 82.6374,
+      "hard_aAcc": 65.5814,
+      "aAcc": 79.1851
+    },
+    "reference": {
+      "qAcc": 56.4835,
+      "fAcc": 63.8728,
+      "easy_aAcc": 82.6374,
+      "hard_aAcc": 65.814,
+      "aAcc": 79.4508
+    },
+    "gap_percentage_points": {
+      "qAcc": -1.5384000000000029,
+      "fAcc": -1.4450999999999965,
+      "easy_aAcc": 0,
+      "hard_aAcc": -0.23259999999999081,
+      "aAcc": -0.2656999999999954
+    },
+    "generation_summary": {
+      "samples": 1129,
+      "token_usage_coverage": 1129,
+      "avg_completion_token": 729.5349867139062,
+      "length_truncated": 2,
+      "note": "Inference only; accuracy requires the matching evaluator"
+    }
+  },
+  "delivery_policy": "success_only_raw_evidence; failed/incomplete trial data excluded; limitations and failure analysis retained in prose"
+}

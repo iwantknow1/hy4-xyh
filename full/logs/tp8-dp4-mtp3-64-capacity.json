@@ -1,0 +1,204 @@
+{
+  "status": "passed",
+  "tp": 8,
+  "dp": 4,
+  "pp": 1,
+  "ep_size": 32,
+  "max_num_seqs_per_dp": 64,
+  "max_num_batched_tokens": 8192,
+  "max_model_len": 147456,
+  "mtp": 3,
+  "main_weights_upper_gib": 54.63816376402974,
+  "draft_weights_upper_gib": 1.6347599468231202,
+  "fixed_kv_budget_gib": 14,
+  "runtime_graph_workspace_allowance_gib": 14,
+  "fragmentation_allowance_gib": 4,
+  "total_estimate_gib": 88.27292371085287,
+  "observed_min_free_gib": 91.06456756591797,
+  "allocator_total_gib": 91.75,
+  "startup_threshold_gib": 87.1625,
+  "headroom_after_all_allowances_gib": 2.7916438550651037,
+  "budget_semantics": "Fixed kv_cache_memory_bytes bypasses automatic utilization-based cache profiling; check estimated full allocation against measured free memory, and separately check startup utilization threshold",
+  "nodes": {
+    "25": {
+      "devices": [
+        {
+          "device": 0,
+          "free_gib": 91.06822204589844,
+          "total_gib": 91.75
+        },
+        {
+          "device": 1,
+          "free_gib": 91.06949615478516,
+          "total_gib": 91.75
+        },
+        {
+          "device": 2,
+          "free_gib": 91.07001495361328,
+          "total_gib": 91.75
+        },
+        {
+          "device": 3,
+          "free_gib": 91.06990432739258,
+          "total_gib": 91.75
+        },
+        {
+          "device": 4,
+          "free_gib": 91.06945419311523,
+          "total_gib": 91.75
+        },
+        {
+          "device": 5,
+          "free_gib": 91.07118606567383,
+          "total_gib": 91.75
+        },
+        {
+          "device": 6,
+          "free_gib": 91.07159805297852,
+          "total_gib": 91.75
+        },
+        {
+          "device": 7,
+          "free_gib": 91.06912612915039,
+          "total_gib": 91.75
+        }
+      ],
+      "min_free_gib": 91.06822204589844
+    },
+    "26": {
+      "devices": [
+        {
+          "device": 0,
+          "free_gib": 91.06784439086914,
+          "total_gib": 91.75
+        },
+        {
+          "device": 1,
+          "free_gib": 91.06958389282227,
+          "total_gib": 91.75
+        },
+        {
+          "device": 2,
+          "free_gib": 91.0706558227539,
+          "total_gib": 91.75
+        },
+        {
+          "device": 3,
+          "free_gib": 91.07122039794922,
+          "total_gib": 91.75
+        },
+        {
+          "device": 4,
+          "free_gib": 91.07046127319336,
+          "total_gib": 91.75
+        },
+        {
+          "device": 5,
+          "free_gib": 91.07095336914062,
+          "total_gib": 91.75
+        },
+        {
+          "device": 6,
+          "free_gib": 91.07068634033203,
+          "total_gib": 91.75
+        },
+        {
+          "device": 7,
+          "free_gib": 91.06985092163086,
+          "total_gib": 91.75
+        }
+      ],
+      "min_free_gib": 91.06784439086914
+    },
+    "27": {
+      "devices": [
+        {
+          "device": 0,
+          "free_gib": 91.06456756591797,
+          "total_gib": 91.75
+        },
+        {
+          "device": 1,
+          "free_gib": 91.07175064086914,
+          "total_gib": 91.75
+        },
+        {
+          "device": 2,
+          "free_gib": 91.07160568237305,
+          "total_gib": 91.75
+        },
+        {
+          "device": 3,
+          "free_gib": 91.07156753540039,
+          "total_gib": 91.75
+        },
+        {
+          "device": 4,
+          "free_gib": 91.07124710083008,
+          "total_gib": 91.75
+        },
+        {
+          "device": 5,
+          "free_gib": 91.07197189331055,
+          "total_gib": 91.75
+        },
+        {
+          "device": 6,
+          "free_gib": 91.07247543334961,
+          "total_gib": 91.75
+        },
+        {
+          "device": 7,
+          "free_gib": 91.07126998901367,
+          "total_gib": 91.75
+        }
+      ],
+      "min_free_gib": 91.06456756591797
+    },
+    "28": {
+      "devices": [
+        {
+          "device": 0,
+          "free_gib": 91.08113098144531,
+          "total_gib": 91.75
+        },
+        {
+          "device": 1,
+          "free_gib": 91.07981491088867,
+          "total_gib": 91.75
+        },
+        {
+          "device": 2,
+          "free_gib": 91.07975006103516,
+          "total_gib": 91.75
+        },
+        {
+          "device": 3,
+          "free_gib": 91.07959747314453,
+          "total_gib": 91.75
+        },
+        {
+          "device": 4,
+          "free_gib": 91.07979202270508,
+          "total_gib": 91.75
+        },
+        {
+          "device": 5,
+          "free_gib": 91.07966232299805,
+          "total_gib": 91.75
+        },
+        {
+          "device": 6,
+          "free_gib": 91.07828903198242,
+          "total_gib": 91.75
+        },
+        {
+          "device": 7,
+          "free_gib": 91.07737731933594,
+          "total_gib": 91.75
+        }
+      ],
+      "min_free_gib": 91.07737731933594
+    }
+  }
+}

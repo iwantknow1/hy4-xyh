@@ -1,0 +1,38 @@
+2026-10-28 官方 vllm-ascend 主干逐项核查
+
+固定 SHA：deca4670c4f654e06ca802fb000e260f2ab98232。
+配套 vLLM 源码检查 SHA：ebaa8124755b10b956dc0b69082d9a94c12285d6。
+只读源码/API 审计，未在新主干上进行 NPU 复现或运行测试，不能把实现差异直接当作主干故障结论。
+
+1. 定制 HY4 meta 专家计数补丁
+官方 tree 没有 patch_hy4_reload.py，亦未见 HY4 专用 patch 文件。
+原缺陷是 donor 的 _materialise_source 在 meta 时提前 return，不能归咎于官方同名实现。
+结论：定制补丁问题，不适用“官方已经/尚未修复”的简单表述。
+
+2. HCCL 引擎
+PR #18944 于 2026-10-27T06:09:44Z 合并；main 已继承 vLLM NCCL engine。
+receive 仍对每个 unpacked tensor / packed callback 调用 model.load_weights。
+并且用 disable_mtp_completeness_check 包住接收路径，处理分包 MTP 检查。
+没有我们整流单次 load_weights、cpu_staging 或 finalize 前后 empty_cache 的等价实现。
+结论：结构和部分兼容行为已变化，不能机械移植旧补丁，也不能宣布相同 HY4 场景已通过。
+
+3. packed HCCL 流管理
+main producer / consumer 显式向 broadcast 传 slot stream，收包后同步，再 unpack/load，
+有 stream drain 与生命周期管理。这已不同于 donor，覆盖了部分相同问题域。
+PR #19127 仍 open，专门处理跨 chunk readiness 和 owning clone lifetime；IPC 不在该 PR 范围。
+PR #16999 仍 open；不要把同名/同类 PR 视作已经合并，也不重复提交同一修复。
+
+4. IPC CPU staging / 汇总
+main NPU receiver 仍逐次 RPC model.load_weights，调用外包 disable_mtp_completeness_check。
+未见 cpu_staging / _pending_weights；这与我们保持检查、整次汇总的策略不同。
+是否仍触发定制 HY4 完整性检查，必须在配套版本上实测，不作未验证断言。
+
+5. packed NPU IPC 引用计数
+main packed_npu_ipc_producer 仍在循环前 reduce_tensor(ipc_buffer) 一次。
+未包含我们每 chunk 新 reduce_tensor 的实现。
+vLLM CUDA IPC 已有 _packed_importer 生命周期代码；NPU receive 覆写消费过程，
+不能由 CUDA 改进直接推断 NPU packed producer 的问题已解决。
+
+结论：不像 vLLM sink 已有确定的合并修复，Ascend 侧属于部分改进、部分仍无等价实现、
+部分为 donor 专有补丁。后续在独立分支用新主干配套基线复现，方可删补丁或决定贡献。
+本次没有修改最终验证代码，没有创建 PR、推送或发评论。

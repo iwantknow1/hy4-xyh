@@ -1,0 +1,6 @@
+# Independent 6-layer IPC TP4 graph validation precheck
+Physical devices 4,5,6,7 only; 0,1 remain untouched. This is a new IPC case, not a retry of the former TP2 HCCL failure. Inherits EP, RL, 8 GiB KV, max context 2048, sequence count 8, FULL_DECODE_ONLY capture [1,2,4,8], checkpoint /models/Hy4-6L.
+Checkpoint: 810 tensors, 106403732980 bytes, largest tensor 12 GiB. Four colocated producer processes, packed 12 GiB per rank, CPU staging enabled.
+TP2 observed live model weights 51.48 GiB per card. TP4 divides tensor/expert partitions further; conservative estimate 32 GiB live weights per card. Allow 12 GiB retained loading storage, 4 GiB runtime, 0.3 GiB graph. Initialization: 32+12+8+4+0.3=56.3 GiB, below about 91.75 GiB usable.
+Transfer while KV asleep: 32+12+4+0.3+24 producer source/packed+12 receiver clone=84.3 GiB. Finish must occur after transfer temporary source/receiver clone release; finalization scratch then replaces those temporaries, not summed as if simultaneously live. CPU staging holds about 99.1 GiB checkpoint per worker (about 397 GiB total), plus ordinary host weights; check host free memory before launch.
+These are bounds to screen the candidate, not measured peaks. Save actual startup and update logs; if initialization OOM occurs, stop and preserve capacity failure rather than automatic retry.

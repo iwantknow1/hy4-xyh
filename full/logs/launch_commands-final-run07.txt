@@ -1,0 +1,41 @@
+# Actual four-node launcher and environment wrapper
+#!/bin/bash
+set -euo pipefail
+export TORCH_DEVICE_BACKEND_AUTOLOAD=0 PYTHONDONTWRITEBYTECODE=1
+export PYTHONPATH=/mnt/share/z00949185/hy4-work/22.1/aisbench-venv/lib/python3.12/site-packages
+exec /task/evaluation/.venv-client/bin/python /task/tooling/MindSpeed-Agent/skills/inference-model-skills/deployment/vllm-ascend-serving/scripts/serve_start.py \
+ --host 197.13.49.1 --key-file /tmp/hy4-ssh/id_ed25519 --container x00951564-hy4-codex-20261028 \
+ --worker-hosts 197.13.50.1,197.13.51.1,197.13.52.1 --tp 8 --dp 4 \
+ --model /mnt/share/z30059446/hy4_safetensors --served-model-name hy4 \
+ --port 18080 --master-port 29740 --health-timeout 3600 --dp-rpc-timeout 300 \
+ --wrap-script /task/scripts/serve-with-cann.sh \
+ --extra-env PATH=/codex/.venv/bin:/usr/local/Ascend/cann-9.1.0/bin:/usr/local/bin:/usr/bin:/bin \
+ --extra-env ASCEND_RT_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 \
+ --extra-env VLLM_WORKER_MULTIPROC_METHOD=spawn \
+ --extra-env GLOO_SOCKET_IFNAME=enp39s0f0 --extra-env HCCL_SOCKET_IFNAME=enp39s0f0 --extra-env IP_SOCKET_IFNAME=enp39s0f0 \
+ --extra-env HCCL_NPU_SOCKET_PORT_RANGE=61000-61999 --extra-env HCCL_HOST_SOCKET_PORT_RANGE=61000-61999 \
+ --extra-env HCCL_CONNECT_TIMEOUT=600 --extra-env HCCL_EXEC_TIMEOUT=600 \
+ --extra-env VLLM_ENGINE_READY_TIMEOUT_S=3600 \
+ --extra-env HCCL_BUFFSIZE=128 --extra-env HCCL_OP_EXPANSION_MODE=AIV \
+ --extra-env TOKENIZERS_PARALLELISM=false --extra-env PYTORCH_NPU_ALLOC_CONF=expandable_segments:True \
+ -- --trust-remote-code --distributed-executor-backend mp --enable-expert-parallel \
+ --api-server-count 1 \
+ --max-model-len 147456 --max-num-seqs 64 --max-num-batched-tokens 8192 \
+ --gpu-memory-utilization 0.95 --kv-cache-memory-bytes 15032385536 \
+ --enable-prefix-caching --async-scheduling --seed 0 \
+ --compilation-config '{"cudagraph_mode":"FULL_DECODE_ONLY"}' \
+ --speculative-config '{"method":"mtp","num_speculative_tokens":3,"draft_load_config":{}}'
+
+#!/bin/bash
+set -euo pipefail
+node_ip=${2##*_}
+case "$node_ip" in 197.13.49.1|197.13.5[0-2].1) ;; *) echo 'Unexpected node identity in runtime directory' >&2; exit 2;; esac
+export VLLM_HOST_IP=$node_ip HCCL_IF_IP=$node_ip
+export GLOO_SOCKET_IFNAME=enp39s0f0 HCCL_SOCKET_IFNAME=enp39s0f0 IP_SOCKET_IFNAME=enp39s0f0
+exec hy4-entrypoint bash "$1"
+
+# GPQA actual invocation
+/task/evaluation/bin/ais_bench /task/evaluation/gpqa-full-config-07.py --mode all --num-prompts 198 --num-warmups 0 --max-num-workers 1 --dump-eval-details --dump-extract-rate --debug
+# Full Hallusion invocation is recorded in evaluation/runs/hallusion-full-07/config.json; request timeout7200, serial, max_tokens102400, temperature0.1
+# Judge credentials are intentionally excluded
+bash /task/scripts/run-hallusion-judge.sh

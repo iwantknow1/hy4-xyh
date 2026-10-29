@@ -1,0 +1,260 @@
+{
+  "feature": "profiling",
+  "status": "passed",
+  "validation_scope": "functional_smoke",
+  "checks": {
+    "collector_and_analysis_ok": true,
+    "two_ranks": true,
+    "ten_graph_executions_each_rank": true,
+    "actual_input_32768": true,
+    "actual_output_4096": true,
+    "all_requests_succeeded": true,
+    "real_multimodal_input": true,
+    "middle_window_configured": true
+  },
+  "actual_tokens": {
+    "Successful requests": 1,
+    "Failed requests": 0,
+    "Total input tokens": 32768,
+    "Total generated tokens": 4096
+  },
+  "profile_delay_worker_steps": 2048,
+  "profile_worker_steps": 10,
+  "rank_evidence": [
+    {
+      "folder": "/codex/profiles/hy4-2l-middle/hy4-2l-middle/dp0_pp0_tp0_dcp0_ep0_rank0_2907_20261027134145133_ascend_pt",
+      "kernel_details": "/codex/profiles/hy4-2l-middle/hy4-2l-middle/dp0_pp0_tp0_dcp0_ep0_rank0_2907_20261027134145133_ascend_pt/ASCEND_PROFILER_OUTPUT/kernel_details.csv",
+      "trace": "/codex/profiles/hy4-2l-middle/hy4-2l-middle/dp0_pp0_tp0_dcp0_ep0_rank0_2907_20261027134145133_ascend_pt/ASCEND_PROFILER_OUTPUT/trace_view.json",
+      "step_events": [
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505386380.986",
+          "dur": 8.16590234375
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505391794.451",
+          "dur": 7.87690625
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505396837.868",
+          "dur": 7.942904296875
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505401720.217",
+          "dur": 7.699908203125
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505406633.785",
+          "dur": 7.895904296875
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505411607.974",
+          "dur": 7.69290625
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505416520.065",
+          "dur": 7.88590625
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505421325.105",
+          "dur": 7.694908203125
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505426240.631",
+          "dur": 7.70690625
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505431052.898",
+          "dur": 8.12090234375
+        }
+      ],
+      "kernel_rows": 2380,
+      "columns": [
+        "Device_id",
+        "Model ID",
+        "Task ID",
+        "Stream ID",
+        "Name",
+        "Type",
+        "OP State",
+        "Accelerator Core",
+        "Start Time(us)",
+        "Duration(us)",
+        "Wait Time(us)",
+        "Block Num",
+        "Mix Block Num",
+        "HF32 Eligible",
+        "Input Shapes",
+        "Input Data Types",
+        "Input Formats",
+        "Output Shapes",
+        "Output Data Types",
+        "Output Formats",
+        "Context ID",
+        "aicore_time(us)",
+        "aic_total_cycles",
+        "aic_mac_time(us)",
+        "aic_mac_ratio",
+        "aic_scalar_time(us)",
+        "aic_scalar_ratio",
+        "aic_mte1_time(us)",
+        "aic_mte1_ratio",
+        "aic_mte2_time(us)",
+        "aic_mte2_ratio",
+        "aic_mte3_time(us)",
+        "aic_mte3_ratio",
+        "aic_fixpipe_time(us)",
+        "aic_fixpipe_ratio",
+        "aic_icache_miss_rate",
+        "aiv_time(us)",
+        "aiv_total_cycles",
+        "aiv_vec_time(us)",
+        "aiv_vec_ratio",
+        "aiv_scalar_time(us)",
+        "aiv_scalar_ratio",
+        "aiv_mte2_time(us)",
+        "aiv_mte2_ratio",
+        "aiv_mte3_time(us)",
+        "aiv_mte3_ratio",
+        "aiv_icache_miss_rate",
+        "cube_utilization(%)"
+      ],
+      "task_types": [
+        "AI_CORE",
+        "AI_CPU",
+        "AI_VECTOR_CORE",
+        "COMMUNICATION",
+        "MIX_AIC",
+        "MIX_AIV"
+      ]
+    },
+    {
+      "folder": "/codex/profiles/hy4-2l-middle/hy4-2l-middle/dp0_pp0_tp1_dcp0_ep1_rank1_2908_20261027134145133_ascend_pt",
+      "kernel_details": "/codex/profiles/hy4-2l-middle/hy4-2l-middle/dp0_pp0_tp1_dcp0_ep1_rank1_2908_20261027134145133_ascend_pt/ASCEND_PROFILER_OUTPUT/kernel_details.csv",
+      "trace": "/codex/profiles/hy4-2l-middle/hy4-2l-middle/dp0_pp0_tp1_dcp0_ep1_rank1_2908_20261027134145133_ascend_pt/ASCEND_PROFILER_OUTPUT/trace_view.json",
+      "step_events": [
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505386408.776",
+          "dur": 8.13791015625
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505391617.758",
+          "dur": 8.28291015625
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505396635.745",
+          "dur": 8.13591015625
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505401531.126",
+          "dur": 7.9329140625
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505406447.168",
+          "dur": 8.50590625
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505411403.513",
+          "dur": 8.19391015625
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505416416.254",
+          "dur": 8.16391015625
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505421151.034",
+          "dur": 8.021912109375
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505426075.450",
+          "dur": 8.21391015625
+        },
+        {
+          "name": "MODEL_EXECUTE",
+          "ts": "1793108505430873.367",
+          "dur": 8.16191015625
+        }
+      ],
+      "kernel_rows": 2380,
+      "columns": [
+        "Device_id",
+        "Model ID",
+        "Task ID",
+        "Stream ID",
+        "Name",
+        "Type",
+        "OP State",
+        "Accelerator Core",
+        "Start Time(us)",
+        "Duration(us)",
+        "Wait Time(us)",
+        "Block Num",
+        "Mix Block Num",
+        "HF32 Eligible",
+        "Input Shapes",
+        "Input Data Types",
+        "Input Formats",
+        "Output Shapes",
+        "Output Data Types",
+        "Output Formats",
+        "Context ID",
+        "aicore_time(us)",
+        "aic_total_cycles",
+        "aic_mac_time(us)",
+        "aic_mac_ratio",
+        "aic_scalar_time(us)",
+        "aic_scalar_ratio",
+        "aic_mte1_time(us)",
+        "aic_mte1_ratio",
+        "aic_mte2_time(us)",
+        "aic_mte2_ratio",
+        "aic_mte3_time(us)",
+        "aic_mte3_ratio",
+        "aic_fixpipe_time(us)",
+        "aic_fixpipe_ratio",
+        "aic_icache_miss_rate",
+        "aiv_time(us)",
+        "aiv_total_cycles",
+        "aiv_vec_time(us)",
+        "aiv_vec_ratio",
+        "aiv_scalar_time(us)",
+        "aiv_scalar_ratio",
+        "aiv_mte2_time(us)",
+        "aiv_mte2_ratio",
+        "aiv_mte3_time(us)",
+        "aiv_mte3_ratio",
+        "aiv_icache_miss_rate",
+        "cube_utilization(%)"
+      ],
+      "task_types": [
+        "AI_CORE",
+        "AI_CPU",
+        "AI_VECTOR_CORE",
+        "COMMUNICATION",
+        "MIX_AIC",
+        "MIX_AIV"
+      ]
+    }
+  ],
+  "collector_manifest": "/codex/tooling/.workspace-local/ascend-profiling-collection/runs/20261027_134003_hy4-2l-middle_177.8.21.1_339_6edbde38/manifest.json",
+  "note": "Trace uses MODEL_EXECUTE markers rather than ProfilerStep names. Each rank contains exactly ten graph executions and 2380 kernel rows. Worker logs confirm start after delay and automatic stop at ten iterations. Both decoder layers execute in each PP1 graph; no layer extrapolation is used.",
+  "original_evidence": "/codex/logs/resume-exclusive/profile-final.json"
+}

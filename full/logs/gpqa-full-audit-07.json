@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "rows": 198,
+  "exact_input_sha256": "1705137667c5b9b4e2ad5b3a85a0d94103bad3c303f41aa24609203771a91e2d",
+  "raw_prediction_keys": [
+    "data_abbr",
+    "gold",
+    "id",
+    "input_tokens",
+    "origin_prompt",
+    "output_tokens",
+    "prediction",
+    "success",
+    "uuid"
+  ],
+  "successful": 198,
+  "output_tokens": {
+    "min": 100,
+    "max": 48513,
+    "mean": 4311.868686868687,
+    "median": 1183.0,
+    "sum": 853750
+  },
+  "output_tokens_at_limit_102400": 0,
+  "unclosed_thinking_prediction_ids": [],
+  "native_result": "/task/evaluation/runs/gpqa-full-07/20261028_180756/results/hy4-gpu-aligned/GPQA_diamond.json"
+}

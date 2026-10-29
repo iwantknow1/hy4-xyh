@@ -1,0 +1,25 @@
+{
+  "feature": "reusable_inference_image",
+  "status": "passed",
+  "checks": {
+    "archive_exists": true,
+    "archive_size_matches": true,
+    "sha256_recorded": true,
+    "evaluation_container_excluded": true
+  },
+  "metrics": {
+    "status": "saved",
+    "generation_validated": true,
+    "accuracy_status": "see evaluation-pipeline.json; judge may still be running",
+    "tag": "hy4-codex:a5-cann9.1-four-node-run07-20261029",
+    "image_id": "sha256:b4f23be23aa05d77b33c5b1fa7070398986f5b40e3720c18c29289fce866322a",
+    "archive": "/mnt/share/x00951564/codex-hy4-20261028-four-node/images/hy4-codex-a5-cann9.1-four-node-run07-20261029.tar.gz",
+    "bytes": 10233176716,
+    "sha256": "b73f6ad30f12a09cf8760b15f4e8cc698445cef2a4280031d85e38ebfc946969",
+    "source_container": "x00951564-hy4-codex-20261028",
+    "cpu_evaluation_container_saved": false,
+    "saved_utc": "2026-10-28T23:48:19.112996+00:00"
+  },
+  "result_path": "/mnt/share/x00951564/codex-hy4-20261028-four-node/images/hy4-codex-a5-cann9.1-four-node-run07-20261029.tar.gz",
+  "note": "Only our inference container was saved. See logs/reusable-image-run07.json and IMAGE-REUSE.zh-CN.txt."
+}

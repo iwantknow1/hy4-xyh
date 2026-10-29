@@ -1,0 +1,1531 @@
+{
+  "feature": "feature-mtp",
+  "status": "passed",
+  "endpoint_checks": {
+    "/v1/completions": true,
+    "/v1/chat/completions": true
+  },
+  "feature_outputs_by_endpoint": {
+    "/v1/completions": [
+      {
+        "text": "/materialized了的的气itosisesontab极了 excursion镜头的-E类推 scaled-down",
+        "tokens": [
+          "/material",
+          "ized",
+          "了的",
+          "的气",
+          "itos",
+          "ises",
+          "ontab",
+          "极了",
+          " exc",
+          "ursion",
+          "镜",
+          "头的",
+          "-E",
+          "类推",
+          " scaled",
+          "-down"
+        ],
+        "token_logprobs": [
+          -5.059730052947998,
+          -1.5920952558517456,
+          -4.227444171905518,
+          -3.6037020683288574,
+          -4.425836563110352,
+          -4.775407314300537,
+          -4.6655755043029785,
+          -4.772834300994873,
+          -5.3385186195373535,
+          -0.7755116820335388,
+          -4.444377422332764,
+          -1.6715060472488403,
+          -4.696792125701904,
+          -3.9438037872314453,
+          -4.445778846740723,
+          -3.375354290008545
+        ]
+      },
+      {
+        "text": "的爱德华的金沙滩浴盆的改变之城之夜的人身bacilluslld肃的那样子的",
+        "tokens": [
+          "的爱",
+          "德华",
+          "的金",
+          "沙滩",
+          "浴",
+          "盆",
+          "的改变",
+          "之城",
+          "之夜",
+          "的人身",
+          "bac",
+          "illus",
+          "lld",
+          "肃",
+          "的那样",
+          "子的"
+        ],
+        "token_logprobs": [
+          -6.846774578094482,
+          -3.2899105548858643,
+          -4.2017621994018555,
+          -4.2513909339904785,
+          -4.945526123046875,
+          -3.7947866916656494,
+          -4.307109355926514,
+          -3.3007724285125732,
+          -4.597614288330078,
+          -5.000556945800781,
+          -3.9997689723968506,
+          -3.9904255867004395,
+          -4.994872093200684,
+          -3.6239490509033203,
+          -5.269711494445801,
+          -1.7173665761947632
+        ]
+      }
+    ],
+    "/v1/chat/completions": [
+      {
+        "text": "levensburgundy手腕/armitage申请的的同 fightbacktot在不断超限itare规矩",
+        "tokens": [
+          "lev",
+          "ens",
+          "burg",
+          "undy",
+          "手腕",
+          "/arm",
+          "itage",
+          "申请的",
+          "的同",
+          " fight",
+          "back",
+          "tot",
+          "在不断",
+          "超限",
+          "itare",
+          "规矩"
+        ],
+        "token_logprobs": [
+          -5.339831829071045,
+          -4.806967258453369,
+          -3.6511223316192627,
+          -0.3546227514743805,
+          -4.090996742248535,
+          -4.237446308135986,
+          -2.517526388168335,
+          -4.955398082733154,
+          -5.160783290863037,
+          -4.334926128387451,
+          -1.8169002532958984,
+          -2.9750864505767822,
+          -3.723891496658325,
+          -4.648724555969238,
+          -4.8644208908081055,
+          -3.8868088722229004
+        ]
+      },
+      {
+        "text": "levensburgundy手腕/armitage申请的的同 fightbacktotallyitarian用人之道",
+        "tokens": [
+          "lev",
+          "ens",
+          "burg",
+          "undy",
+          "手腕",
+          "/arm",
+          "itage",
+          "申请的",
+          "的同",
+          " fight",
+          "back",
+          "tot",
+          "ally",
+          "itarian",
+          "用人",
+          "之道"
+        ],
+        "token_logprobs": [
+          -5.399302959442139,
+          -4.912580966949463,
+          -3.7552244663238525,
+          -0.4847423732280731,
+          -4.173011779785156,
+          -4.360525131225586,
+          -2.559217929840088,
+          -5.039780139923096,
+          -5.149765491485596,
+          -4.429549217224121,
+          -2.068331003189087,
+          -2.9887948036193848,
+          -3.5550272464752197,
+          -2.480370044708252,
+          -4.2264299392700195,
+          -4.247284889221191
+        ]
+      }
+    ]
+  },
+  "baseline_outputs_by_endpoint": {
+    "/v1/completions": [
+      {
+        "text": "/materialized了的的气itosisesontab极了 excursion镜头的-E类推 scaled-down",
+        "tokens": [
+          "/material",
+          "ized",
+          "了的",
+          "的气",
+          "itos",
+          "ises",
+          "ontab",
+          "极了",
+          " exc",
+          "ursion",
+          "镜",
+          "头的",
+          "-E",
+          "类推",
+          " scaled",
+          "-down"
+        ],
+        "token_logprobs": [
+          -5.059730052947998,
+          -1.5920952558517456,
+          -4.227444171905518,
+          -3.6037020683288574,
+          -4.425836563110352,
+          -4.775407314300537,
+          -4.6655755043029785,
+          -4.772834300994873,
+          -5.3385186195373535,
+          -0.7755116820335388,
+          -4.444377422332764,
+          -1.6715060472488403,
+          -4.696792125701904,
+          -3.9438037872314453,
+          -4.445778846740723,
+          -3.375354290008545
+        ]
+      },
+      {
+        "text": "的爱德华的金沙滩浴盆的改变之城之夜的人身bacilluslld肃的那样子的",
+        "tokens": [
+          "的爱",
+          "德华",
+          "的金",
+          "沙滩",
+          "浴",
+          "盆",
+          "的改变",
+          "之城",
+          "之夜",
+          "的人身",
+          "bac",
+          "illus",
+          "lld",
+          "肃",
+          "的那样",
+          "子的"
+        ],
+        "token_logprobs": [
+          -6.846774578094482,
+          -3.2899105548858643,
+          -4.2017621994018555,
+          -4.2513909339904785,
+          -4.945526123046875,
+          -3.7947866916656494,
+          -4.307109355926514,
+          -3.3007724285125732,
+          -4.597614288330078,
+          -5.000556945800781,
+          -3.9997689723968506,
+          -3.9904255867004395,
+          -4.994872093200684,
+          -3.6239490509033203,
+          -5.269711494445801,
+          -1.7173665761947632
+        ]
+      }
+    ],
+    "/v1/chat/completions": [
+      {
+        "text": "levensburgundy手腕/armitage申请的的同 fightbacktot在不断超限itare规矩",
+        "tokens": [
+          "lev",
+          "ens",
+          "burg",
+          "undy",
+          "手腕",
+          "/arm",
+          "itage",
+          "申请的",
+          "的同",
+          " fight",
+          "back",
+          "tot",
+          "在不断",
+          "超限",
+          "itare",
+          "规矩"
+        ],
+        "token_logprobs": [
+          -5.339831829071045,
+          -4.806967258453369,
+          -3.6511223316192627,
+          -0.3546227514743805,
+          -4.090996742248535,
+          -4.237446308135986,
+          -2.517526388168335,
+          -4.955398082733154,
+          -5.160783290863037,
+          -4.334926128387451,
+          -1.8169002532958984,
+          -2.9750864505767822,
+          -3.723891496658325,
+          -4.648724555969238,
+          -4.8644208908081055,
+          -3.8868088722229004
+        ]
+      },
+      {
+        "text": "levensburgundy手腕/armitage申请的的同 fightbacktotallyitarian用人之道",
+        "tokens": [
+          "lev",
+          "ens",
+          "burg",
+          "undy",
+          "手腕",
+          "/arm",
+          "itage",
+          "申请的",
+          "的同",
+          " fight",
+          "back",
+          "tot",
+          "ally",
+          "itarian",
+          "用人",
+          "之道"
+        ],
+        "token_logprobs": [
+          -5.399302959442139,
+          -4.912580966949463,
+          -3.7552244663238525,
+          -0.4847423732280731,
+          -4.173011779785156,
+          -4.360525131225586,
+          -2.559217929840088,
+          -5.039780139923096,
+          -5.149765491485596,
+          -4.429549217224121,
+          -2.068331003189087,
+          -2.9887948036193848,
+          -3.5550272464752197,
+          -2.480370044708252,
+          -4.2264299392700195,
+          -4.247284889221191
+        ]
+      }
+    ]
+  },
+  "outputs_exactly_identical": {
+    "/v1/completions": true,
+    "/v1/chat/completions": true
+  },
+  "comparison_contract": "same generated text and tokens; all logprobs finite and recorded; exact equality separately reported",
+  "raw_responses": [
+    {
+      "endpoint": "/v1/completions",
+      "request": {
+        "model": "hy4-codex",
+        "max_tokens": 16,
+        "temperature": 0,
+        "top_p": 1,
+        "seed": 0,
+        "prompt": "What is 2 + 2?",
+        "logprobs": 1
+      },
+      "response": {
+        "id": "cmpl-b9c8fe3fde2a2b3b",
+        "object": "text_completion",
+        "created": 1793107646,
+        "model": "hy4-codex",
+        "choices": [
+          {
+            "index": 0,
+            "text": "/materialized了的的气itosisesontab极了 excursion镜头的-E类推 scaled-down",
+            "logprobs": {
+              "text_offset": [
+                0,
+                9,
+                13,
+                15,
+                17,
+                21,
+                25,
+                30,
+                32,
+                36,
+                42,
+                43,
+                45,
+                47,
+                49,
+                56
+              ],
+              "token_logprobs": [
+                -5.059730052947998,
+                -1.5920952558517456,
+                -4.227444171905518,
+                -3.6037020683288574,
+                -4.425836563110352,
+                -4.775407314300537,
+                -4.6655755043029785,
+                -4.772834300994873,
+                -5.3385186195373535,
+                -0.7755116820335388,
+                -4.444377422332764,
+                -1.6715060472488403,
+                -4.696792125701904,
+                -3.9438037872314453,
+                -4.445778846740723,
+                -3.375354290008545
+              ],
+              "tokens": [
+                "/material",
+                "ized",
+                "了的",
+                "的气",
+                "itos",
+                "ises",
+                "ontab",
+                "极了",
+                " exc",
+                "ursion",
+                "镜",
+                "头的",
+                "-E",
+                "类推",
+                " scaled",
+                "-down"
+              ],
+              "top_logprobs": [
+                {
+                  "/material": -5.059730052947998
+                },
+                {
+                  "ized": -1.5920952558517456
+                },
+                {
+                  "了的": -4.227444171905518
+                },
+                {
+                  "的气": -3.6037020683288574
+                },
+                {
+                  "itos": -4.425836563110352
+                },
+                {
+                  "ises": -4.775407314300537
+                },
+                {
+                  "ontab": -4.6655755043029785
+                },
+                {
+                  "极了": -4.772834300994873
+                },
+                {
+                  " exc": -5.3385186195373535
+                },
+                {
+                  "ursion": -0.7755116820335388
+                },
+                {
+                  "镜": -4.444377422332764
+                },
+                {
+                  "头的": -1.6715060472488403
+                },
+                {
+                  "-E": -4.696792125701904
+                },
+                {
+                  "类推": -3.9438037872314453
+                },
+                {
+                  " scaled": -4.445778846740723
+                },
+                {
+                  "-down": -3.375354290008545
+                }
+              ]
+            },
+            "finish_reason": "length",
+            "stop_reason": null,
+            "token_ids": null,
+            "prompt_logprobs": null,
+            "prompt_token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.30.0-tp2-ep-6cf92f7e",
+        "usage": {
+          "prompt_tokens": 8,
+          "total_tokens": 24,
+          "completion_tokens": 16,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": null
+        },
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "endpoint": "/v1/chat/completions",
+      "request": {
+        "model": "hy4-codex",
+        "max_tokens": 16,
+        "temperature": 0,
+        "top_p": 1,
+        "seed": 0,
+        "messages": [
+          {
+            "role": "user",
+            "content": "What is 2 + 2?"
+          }
+        ],
+        "logprobs": true,
+        "top_logprobs": 1
+      },
+      "response": {
+        "id": "chatcmpl-a7a38d2f55415a96",
+        "object": "chat.completion",
+        "created": 1793107646,
+        "model": "hy4-codex",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "levensburgundy手腕/armitage申请的的同 fightbacktot在不断超限itare规矩",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": {
+              "content": [
+                {
+                  "token": "lev",
+                  "logprob": -5.339831829071045,
+                  "bytes": [
+                    108,
+                    101,
+                    118
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "lev",
+                      "logprob": -5.339831829071045,
+                      "bytes": [
+                        108,
+                        101,
+                        118
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "ens",
+                  "logprob": -4.806967258453369,
+                  "bytes": [
+                    101,
+                    110,
+                    115
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "ens",
+                      "logprob": -4.806967258453369,
+                      "bytes": [
+                        101,
+                        110,
+                        115
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "burg",
+                  "logprob": -3.6511223316192627,
+                  "bytes": [
+                    98,
+                    117,
+                    114,
+                    103
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "burg",
+                      "logprob": -3.6511223316192627,
+                      "bytes": [
+                        98,
+                        117,
+                        114,
+                        103
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "undy",
+                  "logprob": -0.3546227514743805,
+                  "bytes": [
+                    117,
+                    110,
+                    100,
+                    121
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "undy",
+                      "logprob": -0.3546227514743805,
+                      "bytes": [
+                        117,
+                        110,
+                        100,
+                        121
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "手腕",
+                  "logprob": -4.090996742248535,
+                  "bytes": [
+                    230,
+                    137,
+                    139,
+                    232,
+                    133,
+                    149
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "手腕",
+                      "logprob": -4.090996742248535,
+                      "bytes": [
+                        230,
+                        137,
+                        139,
+                        232,
+                        133,
+                        149
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "/arm",
+                  "logprob": -4.237446308135986,
+                  "bytes": [
+                    47,
+                    97,
+                    114,
+                    109
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "/arm",
+                      "logprob": -4.237446308135986,
+                      "bytes": [
+                        47,
+                        97,
+                        114,
+                        109
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "itage",
+                  "logprob": -2.517526388168335,
+                  "bytes": [
+                    105,
+                    116,
+                    97,
+                    103,
+                    101
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "itage",
+                      "logprob": -2.517526388168335,
+                      "bytes": [
+                        105,
+                        116,
+                        97,
+                        103,
+                        101
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "申请的",
+                  "logprob": -4.955398082733154,
+                  "bytes": [
+                    231,
+                    148,
+                    179,
+                    232,
+                    175,
+                    183,
+                    231,
+                    154,
+                    132
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "申请的",
+                      "logprob": -4.955398082733154,
+                      "bytes": [
+                        231,
+                        148,
+                        179,
+                        232,
+                        175,
+                        183,
+                        231,
+                        154,
+                        132
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "的同",
+                  "logprob": -5.160783290863037,
+                  "bytes": [
+                    231,
+                    154,
+                    132,
+                    229,
+                    144,
+                    140
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "的同",
+                      "logprob": -5.160783290863037,
+                      "bytes": [
+                        231,
+                        154,
+                        132,
+                        229,
+                        144,
+                        140
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": " fight",
+                  "logprob": -4.334926128387451,
+                  "bytes": [
+                    32,
+                    102,
+                    105,
+                    103,
+                    104,
+                    116
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": " fight",
+                      "logprob": -4.334926128387451,
+                      "bytes": [
+                        32,
+                        102,
+                        105,
+                        103,
+                        104,
+                        116
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "back",
+                  "logprob": -1.8169002532958984,
+                  "bytes": [
+                    98,
+                    97,
+                    99,
+                    107
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "back",
+                      "logprob": -1.8169002532958984,
+                      "bytes": [
+                        98,
+                        97,
+                        99,
+                        107
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "tot",
+                  "logprob": -2.9750864505767822,
+                  "bytes": [
+                    116,
+                    111,
+                    116
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "tot",
+                      "logprob": -2.9750864505767822,
+                      "bytes": [
+                        116,
+                        111,
+                        116
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "在不断",
+                  "logprob": -3.723891496658325,
+                  "bytes": [
+                    229,
+                    156,
+                    168,
+                    228,
+                    184,
+                    141,
+                    230,
+                    150,
+                    173
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "在不断",
+                      "logprob": -3.723891496658325,
+                      "bytes": [
+                        229,
+                        156,
+                        168,
+                        228,
+                        184,
+                        141,
+                        230,
+                        150,
+                        173
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "超限",
+                  "logprob": -4.648724555969238,
+                  "bytes": [
+                    232,
+                    182,
+                    133,
+                    233,
+                    153,
+                    144
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "超限",
+                      "logprob": -4.648724555969238,
+                      "bytes": [
+                        232,
+                        182,
+                        133,
+                        233,
+                        153,
+                        144
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "itare",
+                  "logprob": -4.8644208908081055,
+                  "bytes": [
+                    105,
+                    116,
+                    97,
+                    114,
+                    101
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "itare",
+                      "logprob": -4.8644208908081055,
+                      "bytes": [
+                        105,
+                        116,
+                        97,
+                        114,
+                        101
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "规矩",
+                  "logprob": -3.8868088722229004,
+                  "bytes": [
+                    232,
+                    167,
+                    132,
+                    231,
+                    159,
+                    169
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "规矩",
+                      "logprob": -3.8868088722229004,
+                      "bytes": [
+                        232,
+                        167,
+                        132,
+                        231,
+                        159,
+                        169
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "finish_reason": "length",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.30.0-tp2-ep-6cf92f7e",
+        "usage": {
+          "prompt_tokens": 29,
+          "total_tokens": 45,
+          "completion_tokens": 16,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "endpoint": "/v1/completions",
+      "request": {
+        "model": "hy4-codex",
+        "max_tokens": 16,
+        "temperature": 0,
+        "top_p": 1,
+        "seed": 0,
+        "prompt": "Write one word about the sky.",
+        "logprobs": 1
+      },
+      "response": {
+        "id": "cmpl-8b669adddcae789b",
+        "object": "text_completion",
+        "created": 1793107646,
+        "model": "hy4-codex",
+        "choices": [
+          {
+            "index": 0,
+            "text": "的爱德华的金沙滩浴盆的改变之城之夜的人身bacilluslld肃的那样子的",
+            "logprobs": {
+              "text_offset": [
+                0,
+                2,
+                4,
+                6,
+                8,
+                9,
+                10,
+                13,
+                15,
+                17,
+                20,
+                23,
+                28,
+                31,
+                32,
+                35
+              ],
+              "token_logprobs": [
+                -6.846774578094482,
+                -3.2899105548858643,
+                -4.2017621994018555,
+                -4.2513909339904785,
+                -4.945526123046875,
+                -3.7947866916656494,
+                -4.307109355926514,
+                -3.3007724285125732,
+                -4.597614288330078,
+                -5.000556945800781,
+                -3.9997689723968506,
+                -3.9904255867004395,
+                -4.994872093200684,
+                -3.6239490509033203,
+                -5.269711494445801,
+                -1.7173665761947632
+              ],
+              "tokens": [
+                "的爱",
+                "德华",
+                "的金",
+                "沙滩",
+                "浴",
+                "盆",
+                "的改变",
+                "之城",
+                "之夜",
+                "的人身",
+                "bac",
+                "illus",
+                "lld",
+                "肃",
+                "的那样",
+                "子的"
+              ],
+              "top_logprobs": [
+                {
+                  "的爱": -6.846774578094482
+                },
+                {
+                  "德华": -3.2899105548858643
+                },
+                {
+                  "的金": -4.2017621994018555
+                },
+                {
+                  "沙滩": -4.2513909339904785
+                },
+                {
+                  "浴": -4.945526123046875
+                },
+                {
+                  "盆": -3.7947866916656494
+                },
+                {
+                  "的改变": -4.307109355926514
+                },
+                {
+                  "之城": -3.3007724285125732
+                },
+                {
+                  "之夜": -4.597614288330078
+                },
+                {
+                  "的人身": -5.000556945800781
+                },
+                {
+                  "bac": -3.9997689723968506
+                },
+                {
+                  "illus": -3.9904255867004395
+                },
+                {
+                  "lld": -4.994872093200684
+                },
+                {
+                  "肃": -3.6239490509033203
+                },
+                {
+                  "的那样": -5.269711494445801
+                },
+                {
+                  "子的": -1.7173665761947632
+                }
+              ]
+            },
+            "finish_reason": "length",
+            "stop_reason": null,
+            "token_ids": null,
+            "prompt_logprobs": null,
+            "prompt_token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.30.0-tp2-ep-6cf92f7e",
+        "usage": {
+          "prompt_tokens": 7,
+          "total_tokens": 23,
+          "completion_tokens": 16,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": null
+        },
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "endpoint": "/v1/chat/completions",
+      "request": {
+        "model": "hy4-codex",
+        "max_tokens": 16,
+        "temperature": 0,
+        "top_p": 1,
+        "seed": 0,
+        "messages": [
+          {
+            "role": "user",
+            "content": "Write one word about the sky."
+          }
+        ],
+        "logprobs": true,
+        "top_logprobs": 1
+      },
+      "response": {
+        "id": "chatcmpl-b794593ab5090060",
+        "object": "chat.completion",
+        "created": 1793107647,
+        "model": "hy4-codex",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "levensburgundy手腕/armitage申请的的同 fightbacktotallyitarian用人之道",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": {
+              "content": [
+                {
+                  "token": "lev",
+                  "logprob": -5.399302959442139,
+                  "bytes": [
+                    108,
+                    101,
+                    118
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "lev",
+                      "logprob": -5.399302959442139,
+                      "bytes": [
+                        108,
+                        101,
+                        118
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "ens",
+                  "logprob": -4.912580966949463,
+                  "bytes": [
+                    101,
+                    110,
+                    115
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "ens",
+                      "logprob": -4.912580966949463,
+                      "bytes": [
+                        101,
+                        110,
+                        115
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "burg",
+                  "logprob": -3.7552244663238525,
+                  "bytes": [
+                    98,
+                    117,
+                    114,
+                    103
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "burg",
+                      "logprob": -3.7552244663238525,
+                      "bytes": [
+                        98,
+                        117,
+                        114,
+                        103
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "undy",
+                  "logprob": -0.4847423732280731,
+                  "bytes": [
+                    117,
+                    110,
+                    100,
+                    121
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "undy",
+                      "logprob": -0.4847423732280731,
+                      "bytes": [
+                        117,
+                        110,
+                        100,
+                        121
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "手腕",
+                  "logprob": -4.173011779785156,
+                  "bytes": [
+                    230,
+                    137,
+                    139,
+                    232,
+                    133,
+                    149
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "手腕",
+                      "logprob": -4.173011779785156,
+                      "bytes": [
+                        230,
+                        137,
+                        139,
+                        232,
+                        133,
+                        149
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "/arm",
+                  "logprob": -4.360525131225586,
+                  "bytes": [
+                    47,
+                    97,
+                    114,
+                    109
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "/arm",
+                      "logprob": -4.360525131225586,
+                      "bytes": [
+                        47,
+                        97,
+                        114,
+                        109
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "itage",
+                  "logprob": -2.559217929840088,
+                  "bytes": [
+                    105,
+                    116,
+                    97,
+                    103,
+                    101
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "itage",
+                      "logprob": -2.559217929840088,
+                      "bytes": [
+                        105,
+                        116,
+                        97,
+                        103,
+                        101
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "申请的",
+                  "logprob": -5.039780139923096,
+                  "bytes": [
+                    231,
+                    148,
+                    179,
+                    232,
+                    175,
+                    183,
+                    231,
+                    154,
+                    132
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "申请的",
+                      "logprob": -5.039780139923096,
+                      "bytes": [
+                        231,
+                        148,
+                        179,
+                        232,
+                        175,
+                        183,
+                        231,
+                        154,
+                        132
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "的同",
+                  "logprob": -5.149765491485596,
+                  "bytes": [
+                    231,
+                    154,
+                    132,
+                    229,
+                    144,
+                    140
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "的同",
+                      "logprob": -5.149765491485596,
+                      "bytes": [
+                        231,
+                        154,
+                        132,
+                        229,
+                        144,
+                        140
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": " fight",
+                  "logprob": -4.429549217224121,
+                  "bytes": [
+                    32,
+                    102,
+                    105,
+                    103,
+                    104,
+                    116
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": " fight",
+                      "logprob": -4.429549217224121,
+                      "bytes": [
+                        32,
+                        102,
+                        105,
+                        103,
+                        104,
+                        116
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "back",
+                  "logprob": -2.068331003189087,
+                  "bytes": [
+                    98,
+                    97,
+                    99,
+                    107
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "back",
+                      "logprob": -2.068331003189087,
+                      "bytes": [
+                        98,
+                        97,
+                        99,
+                        107
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "tot",
+                  "logprob": -2.9887948036193848,
+                  "bytes": [
+                    116,
+                    111,
+                    116
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "tot",
+                      "logprob": -2.9887948036193848,
+                      "bytes": [
+                        116,
+                        111,
+                        116
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "ally",
+                  "logprob": -3.5550272464752197,
+                  "bytes": [
+                    97,
+                    108,
+                    108,
+                    121
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "ally",
+                      "logprob": -3.5550272464752197,
+                      "bytes": [
+                        97,
+                        108,
+                        108,
+                        121
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "itarian",
+                  "logprob": -2.480370044708252,
+                  "bytes": [
+                    105,
+                    116,
+                    97,
+                    114,
+                    105,
+                    97,
+                    110
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "itarian",
+                      "logprob": -2.480370044708252,
+                      "bytes": [
+                        105,
+                        116,
+                        97,
+                        114,
+                        105,
+                        97,
+                        110
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "用人",
+                  "logprob": -4.2264299392700195,
+                  "bytes": [
+                    231,
+                    148,
+                    168,
+                    228,
+                    186,
+                    186
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "用人",
+                      "logprob": -4.2264299392700195,
+                      "bytes": [
+                        231,
+                        148,
+                        168,
+                        228,
+                        186,
+                        186
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "之道",
+                  "logprob": -4.247284889221191,
+                  "bytes": [
+                    228,
+                    185,
+                    139,
+                    233,
+                    129,
+                    147
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "之道",
+                      "logprob": -4.247284889221191,
+                      "bytes": [
+                        228,
+                        185,
+                        139,
+                        233,
+                        129,
+                        147
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "finish_reason": "length",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.30.0-tp2-ep-6cf92f7e",
+        "usage": {
+          "prompt_tokens": 28,
+          "total_tokens": 44,
+          "completion_tokens": 16,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": null
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    }
+  ]
+}

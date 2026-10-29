@@ -1,0 +1,48 @@
+{
+  "feature": "dataset_evaluation",
+  "status": "passed",
+  "dataset": "HallusionBench 1129 questions / 346 images",
+  "max_out_len": 102400,
+  "checks": {
+    "all_1129_nonempty": true,
+    "exact_dataset_and_order": true,
+    "original_judge_completed": true
+  },
+  "metrics": {
+    "actual": {
+      "qAcc": 54.9451,
+      "fAcc": 62.4277,
+      "easy_aAcc": 82.6374,
+      "hard_aAcc": 65.5814,
+      "aAcc": 79.1851
+    },
+    "reference": {
+      "qAcc": 56.4835,
+      "fAcc": 63.8728,
+      "easy_aAcc": 82.6374,
+      "hard_aAcc": 65.814,
+      "aAcc": 79.4508
+    },
+    "gap_percentage_points": {
+      "qAcc": -1.5384000000000029,
+      "fAcc": -1.4450999999999965,
+      "easy_aAcc": 0.0,
+      "hard_aAcc": -0.23259999999999081,
+      "aAcc": -0.2656999999999954
+    },
+    "generation_summary": {
+      "samples": 1129,
+      "token_usage_coverage": 1129,
+      "avg_completion_token": 729.5349867139062,
+      "length_truncated": 2,
+      "note": "Inference only; accuracy requires the matching evaluator"
+    }
+  },
+  "endpoint_checks": {
+    "/v1/completions": null,
+    "/v1/chat/completions": true
+  },
+  "result_path": "/task/evaluation/runs/hallusion-full-07/HallusionBench_result.json",
+  "log": "/task/logs/hallusion-judge-07.log",
+  "note": "Original serial client with transport timeout 7200s; generation parameters unchanged."
+}

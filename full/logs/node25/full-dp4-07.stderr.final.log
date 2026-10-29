@@ -1,0 +1,254 @@
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+2026-10-28 17:55:56,462 - 1034 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1
+(APIServer pid=1034) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1034) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1034) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1034) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1034) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1034) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+(EngineCore_DP0 pid=1234) 2026-10-28 17:57:31,471 - 1234 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+2026-10-28 17:57:41,541 - 1400 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1
+2026-10-28 17:57:41,625 - 1402 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1
+2026-10-28 17:57:41,652 - 1401 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1
+2026-10-28 17:57:41,690 - 1398 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1
+2026-10-28 17:57:41,690 - 1403 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1
+2026-10-28 17:57:41,691 - 1399 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1
+2026-10-28 17:57:42,195 - 1396 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1
+2026-10-28 17:57:42,254 - 1397 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1
+[W1028 17:57:42.901737410 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[W1028 17:57:42.988912590 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[W1028 17:57:42.019634040 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[W1028 17:57:42.051838110 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())
+[W1028 17:57:42.058131980 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())
+[W1028 17:57:42.059512060 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[W1028 17:57:43.570132980 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[W1028 17:57:43.637018640 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   0% Completed | 0/246 [00:00<?, ?it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   0% Completed | 1/246 [00:00<00:28,  8.49it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   1% Completed | 2/246 [00:00<00:28,  8.45it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   1% Completed | 3/246 [00:00<00:34,  6.94it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   2% Completed | 5/246 [00:00<00:22, 10.61it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   3% Completed | 7/246 [00:00<00:28,  8.26it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   3% Completed | 8/246 [00:01<00:32,  7.40it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   4% Completed | 10/246 [00:01<00:26,  9.07it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   4% Completed | 11/246 [00:01<00:26,  8.72it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   5% Completed | 12/246 [00:01<00:27,  8.61it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   5% Completed | 13/246 [00:01<00:27,  8.35it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   6% Completed | 15/246 [00:01<00:21, 10.84it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   7% Completed | 17/246 [00:01<00:25,  8.98it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   8% Completed | 19/246 [00:02<00:23,  9.63it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   9% Completed | 21/246 [00:02<00:23,  9.58it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   9% Completed | 23/246 [00:02<00:27,  8.21it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  10% Completed | 24/246 [00:02<00:26,  8.42it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  11% Completed | 26/246 [00:02<00:26,  8.38it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  11% Completed | 27/246 [00:03<00:29,  7.53it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  11% Completed | 28/246 [00:03<00:28,  7.64it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  12% Completed | 30/246 [00:03<00:21,  9.90it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  13% Completed | 32/246 [00:03<00:21,  9.91it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  14% Completed | 34/246 [00:03<00:19, 10.60it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  15% Completed | 37/246 [00:03<00:16, 12.33it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  17% Completed | 41/246 [00:04<00:13, 15.32it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  17% Completed | 43/246 [00:04<00:15, 13.16it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  18% Completed | 45/246 [00:04<00:13, 14.40it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  19% Completed | 47/246 [00:04<00:16, 12.23it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  20% Completed | 49/246 [00:04<00:15, 12.48it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  21% Completed | 51/246 [00:05<00:15, 12.29it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  22% Completed | 53/246 [00:05<00:15, 12.24it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  22% Completed | 55/246 [00:05<00:14, 12.87it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  23% Completed | 57/246 [00:05<00:15, 11.92it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  24% Completed | 60/246 [00:05<00:13, 13.87it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  25% Completed | 62/246 [00:05<00:12, 14.71it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  26% Completed | 64/246 [00:06<00:17, 10.39it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  27% Completed | 67/246 [00:06<00:13, 13.11it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  28% Completed | 69/246 [00:06<00:14, 12.63it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  29% Completed | 71/246 [00:06<00:12, 13.71it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  30% Completed | 73/246 [00:06<00:14, 12.00it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  30% Completed | 75/246 [00:06<00:15, 10.98it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  31% Completed | 77/246 [00:07<00:14, 11.50it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  32% Completed | 79/246 [00:07<00:13, 12.60it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  33% Completed | 81/246 [00:07<00:13, 12.54it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  34% Completed | 84/246 [00:07<00:11, 14.55it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  35% Completed | 87/246 [00:07<00:09, 17.42it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  36% Completed | 89/246 [00:07<00:09, 16.06it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  37% Completed | 92/246 [00:07<00:09, 16.88it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  38% Completed | 94/246 [00:08<00:08, 17.27it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  39% Completed | 97/246 [00:08<00:08, 17.68it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  40% Completed | 99/246 [00:08<00:09, 15.44it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  41% Completed | 102/246 [00:08<00:09, 15.98it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  43% Completed | 105/246 [00:08<00:07, 18.63it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  43% Completed | 107/246 [00:08<00:09, 14.44it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  44% Completed | 109/246 [00:09<00:08, 15.41it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  45% Completed | 111/246 [00:09<00:09, 14.72it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  46% Completed | 114/246 [00:09<00:07, 17.83it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  47% Completed | 116/246 [00:09<00:09, 13.55it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  48% Completed | 118/246 [00:09<00:09, 14.17it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  49% Completed | 120/246 [00:09<00:09, 13.25it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  50% Completed | 123/246 [00:09<00:07, 16.50it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  51% Completed | 125/246 [00:10<00:09, 12.96it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  52% Completed | 128/246 [00:10<00:07, 14.92it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  53% Completed | 130/246 [00:10<00:07, 15.22it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  54% Completed | 133/246 [00:10<00:07, 15.58it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  55% Completed | 135/246 [00:10<00:08, 13.69it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  56% Completed | 137/246 [00:10<00:07, 14.88it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  57% Completed | 139/246 [00:11<00:06, 15.83it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  58% Completed | 142/246 [00:11<00:09, 11.16it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  59% Completed | 144/246 [00:11<00:09, 10.64it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  60% Completed | 147/246 [00:11<00:07, 12.58it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  61% Completed | 150/246 [00:11<00:06, 15.56it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  62% Completed | 152/246 [00:12<00:08, 10.74it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  63% Completed | 155/246 [00:12<00:06, 13.05it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  64% Completed | 157/246 [00:12<00:06, 14.17it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  65% Completed | 160/246 [00:12<00:06, 13.38it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  66% Completed | 162/246 [00:13<00:07, 11.52it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  67% Completed | 165/246 [00:13<00:06, 12.97it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  68% Completed | 168/246 [00:13<00:05, 15.47it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  69% Completed | 170/246 [00:13<00:05, 12.79it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  70% Completed | 172/246 [00:13<00:06, 10.78it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  71% Completed | 174/246 [00:14<00:06, 11.42it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  72% Completed | 177/246 [00:14<00:04, 14.53it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  73% Completed | 179/246 [00:14<00:06,  9.65it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  74% Completed | 182/246 [00:14<00:05, 12.41it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  75% Completed | 184/246 [00:14<00:04, 13.64it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  76% Completed | 187/246 [00:14<00:03, 15.10it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  77% Completed | 189/246 [00:15<00:04, 13.32it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  78% Completed | 192/246 [00:15<00:03, 14.55it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  79% Completed | 195/246 [00:15<00:03, 16.51it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  80% Completed | 197/246 [00:15<00:03, 14.63it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  81% Completed | 200/246 [00:15<00:03, 15.03it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  82% Completed | 202/246 [00:15<00:02, 15.69it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  83% Completed | 205/246 [00:16<00:02, 16.80it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  84% Completed | 207/246 [00:16<00:02, 16.54it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  86% Completed | 211/246 [00:16<00:01, 18.75it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  87% Completed | 214/246 [00:16<00:01, 20.57it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  88% Completed | 217/246 [00:16<00:01, 18.20it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  90% Completed | 221/246 [00:16<00:01, 20.03it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  91% Completed | 224/246 [00:16<00:01, 21.79it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  92% Completed | 227/246 [00:17<00:01, 18.43it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  93% Completed | 229/246 [00:17<00:00, 18.34it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  94% Completed | 231/246 [00:17<00:00, 17.85it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  95% Completed | 234/246 [00:17<00:00, 18.28it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  96% Completed | 236/246 [00:17<00:00, 17.76it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  97% Completed | 239/246 [00:17<00:00, 17.75it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  98% Completed | 242/246 [00:17<00:00, 20.18it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards: 100% Completed | 245/246 [00:18<00:00, 19.53it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards: 100% Completed | 246/246 [00:18<00:00, 13.54it/s]
+(Worker_DP0_TP0_EP0 pid=1396) 
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:   0% Completed | 0/246 [00:00<?, ?it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  15% Completed | 38/246 [00:00<00:00, 256.70it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  26% Completed | 64/246 [00:00<00:01, 145.89it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  47% Completed | 115/246 [00:00<00:00, 223.45it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  60% Completed | 148/246 [00:00<00:00, 251.59it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards:  99% Completed | 244/246 [00:00<00:00, 433.80it/s]
+(Worker_DP0_TP0_EP0 pid=1396) Loading safetensors checkpoint shards: 100% Completed | 246/246 [00:00<00:00, 321.33it/s]
+(Worker_DP0_TP0_EP0 pid=1396) 
+[rank2]:[W1028 18:05:21.231714960 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+[rank5]:[W1028 18:05:21.231723010 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+[rank3]:[W1028 18:05:21.231839490 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+[rank7]:[W1028 18:05:21.231852660 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+[rank6]:[W1028 18:05:21.232041180 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+[rank4]:[W1028 18:05:21.233777750 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+[rank0]:[W1028 18:05:21.241880460 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+[rank1]:[W1028 18:05:21.241999220 TensorFactories.cpp:423] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+(Worker_DP0_TP0_EP0 pid=1396) Capturing CUDA graphs (decode, FULL):   0%|          | 0/33 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   3%|▎         | 1/33 [00:33<17:47, 33.37s/it]Capturing CUDA graphs (decode, FULL):   6%|▌         | 2/33 [00:34<07:21, 14.26s/it]Capturing CUDA graphs (decode, FULL):   9%|▉         | 3/33 [00:35<04:05,  8.18s/it]Capturing CUDA graphs (decode, FULL):  12%|█▏        | 4/33 [00:36<02:33,  5.30s/it]Capturing CUDA graphs (decode, FULL):  15%|█▌        | 5/33 [00:36<01:43,  3.71s/it]Capturing CUDA graphs (decode, FULL):  18%|█▊        | 6/33 [00:37<01:14,  2.76s/it]Capturing CUDA graphs (decode, FULL):  21%|██        | 7/33 [00:38<00:55,  2.15s/it]Capturing CUDA graphs (decode, FULL):  24%|██▍       | 8/33 [00:39<00:43,  1.75s/it]Capturing CUDA graphs (decode, FULL):  27%|██▋       | 9/33 [00:40<00:35,  1.49s/it]Capturing CUDA graphs (decode, FULL):  30%|███       | 10/33 [00:41<00:30,  1.31s/it]Capturing CUDA graphs (decode, FULL):  33%|███▎      | 11/33 [00:42<00:25,  1.17s/it]Capturing CUDA graphs (decode, FULL):  36%|███▋      | 12/33 [00:43<00:22,  1.09s/it]Capturing CUDA graphs (decode, FULL):  39%|███▉      | 13/33 [00:44<00:20,  1.03s/it]Capturing CUDA graphs (decode, FULL):  42%|████▏     | 14/33 [00:45<00:18,  1.01it/s]Capturing CUDA graphs (decode, FULL):  45%|████▌     | 15/33 [00:45<00:17,  1.04it/s]Capturing CUDA graphs (decode, FULL):  48%|████▊     | 16/33 [00:46<00:16,  1.06it/s]Capturing CUDA graphs (decode, FULL):  52%|█████▏    | 17/33 [00:47<00:14,  1.08it/s]Capturing CUDA graphs (decode, FULL):  55%|█████▍    | 18/33 [00:48<00:13,  1.09it/s]Capturing CUDA graphs (decode, FULL):  58%|█████▊    | 19/33 [00:49<00:12,  1.09it/s]Capturing CUDA graphs (decode, FULL):  61%|██████    | 20/33 [00:50<00:11,  1.10it/s]Capturing CUDA graphs (decode, FULL):  64%|██████▎   | 21/33 [00:51<00:10,  1.11it/s]Capturing CUDA graphs (decode, FULL):  67%|██████▋   | 22/33 [00:52<00:09,  1.11it/s]Capturing CUDA graphs (decode, FULL):  70%|██████▉   | 23/33 [00:53<00:09,  1.10it/s]Capturing CUDA graphs (decode, FULL):  73%|███████▎  | 24/33 [00:54<00:08,  1.10it/s]Capturing CUDA graphs (decode, FULL):  76%|███████▌  | 25/33 [00:54<00:07,  1.10it/s]Capturing CUDA graphs (decode, FULL):  79%|███████▉  | 26/33 [00:55<00:06,  1.10it/s]Capturing CUDA graphs (decode, FULL):  82%|████████▏ | 27/33 [00:56<00:05,  1.11it/s]Capturing CUDA graphs (decode, FULL):  85%|████████▍ | 28/33 [00:57<00:04,  1.12it/s]Capturing CUDA graphs (decode, FULL):  88%|████████▊ | 29/33 [00:58<00:03,  1.12it/s]Capturing CUDA graphs (decode, FULL):  91%|█████████ | 30/33 [00:59<00:02,  1.12it/s]Capturing CUDA graphs (decode, FULL):  94%|█████████▍| 31/33 [01:00<00:01,  1.11it/s]Capturing CUDA graphs (decode, FULL):  97%|█████████▋| 32/33 [01:01<00:00,  1.10it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 33/33 [01:02<00:00,  1.10it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 33/33 [01:02<00:00,  1.88s/it]
+(EngineCore_DP0 pid=1234) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(EngineCore_DP0 pid=1234) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1034) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1034) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1034) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1034) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1034) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1034) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1034) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1034) [transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+(APIServer pid=1034) INFO:     Started server process [1034]
+(APIServer pid=1034) INFO:     Waiting for application startup.
+(APIServer pid=1034) INFO:     Application startup complete.
+[rank3]:[W1028 18:08:20.937433140 ProcessGroupHCCL.cpp:5755] Warning: The current allgather operator has a defect in handling different tensor shape,         the work event forces a wait operation, and the allgather wait on the python side would be fake (function operator())
+[rank4]:[W1028 18:08:20.937432860 ProcessGroupHCCL.cpp:5755] Warning: The current allgather operator has a defect in handling different tensor shape,         the work event forces a wait operation, and the allgather wait on the python side would be fake (function operator())
+[rank5]:[W1028 18:08:20.937465720 ProcessGroupHCCL.cpp:5755] Warning: The current allgather operator has a defect in handling different tensor shape,         the work event forces a wait operation, and the allgather wait on the python side would be fake (function operator())
+[rank6]:[W1028 18:08:20.937540890 ProcessGroupHCCL.cpp:5755] Warning: The current allgather operator has a defect in handling different tensor shape,         the work event forces a wait operation, and the allgather wait on the python side would be fake (function operator())
+[rank1]:[W1028 18:08:20.937546810 ProcessGroupHCCL.cpp:5755] Warning: The current allgather operator has a defect in handling different tensor shape,         the work event forces a wait operation, and the allgather wait on the python side would be fake (function operator())
+[rank0]:[W1028 18:08:20.937573840 ProcessGroupHCCL.cpp:5755] Warning: The current allgather operator has a defect in handling different tensor shape,         the work event forces a wait operation, and the allgather wait on the python side would be fake (function operator())
+[rank7]:[W1028 18:08:20.937586770 ProcessGroupHCCL.cpp:5755] Warning: The current allgather operator has a defect in handling different tensor shape,         the work event forces a wait operation, and the allgather wait on the python side would be fake (function operator())
+[rank2]:[W1028 18:08:20.937587860 ProcessGroupHCCL.cpp:5755] Warning: The current allgather operator has a defect in handling different tensor shape,         the work event forces a wait operation, and the allgather wait on the python side would be fake (function operator())

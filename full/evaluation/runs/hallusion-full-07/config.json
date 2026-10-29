@@ -1,0 +1,11 @@
+{
+  "data": "/mnt/share/z00949185/hy4-work/22.1/Hallusionbench_test/HallusionBench/HallusionBench.json",
+  "root": "/mnt/share/z00949185/hy4-work/22.1/Hallusionbench_test/HallusionBench/hallusion_bench",
+  "api": "http://177.11.25.1:18080/v1",
+  "model": "hy4",
+  "output": "/task/evaluation/runs/hallusion-full-07",
+  "limit": null,
+  "max_tokens": 102400,
+  "temperature": 0.1,
+  "request_timeout": 7200.0
+}

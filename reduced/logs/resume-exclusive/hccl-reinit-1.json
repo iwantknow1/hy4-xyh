@@ -1,0 +1,383 @@
+{
+  "mode": "checkpoint_native_hccl_weight_update",
+  "server_url": "http://127.0.0.1:18080",
+  "served_model_name": "hy4-codex",
+  "checkpoint_path": "/models/Hy4-2L",
+  "producer_device": 0,
+  "packed": true,
+  "packed_buffer_mb": 1024,
+  "packed_num_buffers": 1,
+  "weight_update_acceptance": "real_checkpoint_outputs_identical",
+  "checks": {
+    "both_generation_endpoints_baseline": true,
+    "sleep_level2": true,
+    "wake_weights": true,
+    "checkpoint_stream_transfer": true,
+    "init_start_update_finish": true,
+    "wake_kv_cache": true,
+    "both_generation_endpoints_post_update": true,
+    "post_update_available": true,
+    "outputs_identical": true
+  },
+  "status": "passed",
+  "verification_command": "/codex/.venv/bin/python scripts/skill-scripts/weight-update/test_hccl_packed_cpu_stage.py --server-url http://127.0.0.1:18080 --served-model-name hy4-codex --checkpoint /models/Hy4-2L --device 0 --master-address 127.0.0.1 --master-port 29611 --prompts-json /codex/scripts/prompts.json --max-tokens 16 --timeout 600 --report /codex/logs/resume-exclusive/hccl-reinit-1.json",
+  "prompts": [
+    "What is 2 + 2?",
+    "Write one word about the sky."
+  ],
+  "inference_world_size": 1,
+  "transfer_world_size": 2,
+  "baseline_by_endpoint": {
+    "/v1/completions": [
+      {
+        "text": "/materialized了的的气itosisesontab极了 excursion镜头的-E类推 scaled-down",
+        "tokens": [
+          "/material",
+          "ized",
+          "了的",
+          "的气",
+          "itos",
+          "ises",
+          "ontab",
+          "极了",
+          " exc",
+          "ursion",
+          "镜",
+          "头的",
+          "-E",
+          "类推",
+          " scaled",
+          "-down"
+        ],
+        "token_logprobs": [
+          -5.070127487182617,
+          -1.5722265243530273,
+          -4.242175579071045,
+          -3.606135606765747,
+          -4.416794776916504,
+          -4.800335884094238,
+          -4.657891750335693,
+          -4.764471530914307,
+          -5.340261459350586,
+          -0.7771568894386292,
+          -4.442620754241943,
+          -1.6580249071121216,
+          -4.699674606323242,
+          -3.9361395835876465,
+          -4.422239780426025,
+          -3.370418071746826
+        ]
+      },
+      {
+        "text": "的爱德华的金本位 Giggle的小伙伴虎啸alphabetically built-in玩的儿",
+        "tokens": [
+          "的爱",
+          "德华",
+          "的金",
+          "本位",
+          " Gig",
+          "gle",
+          "的小伙伴",
+          "虎",
+          "啸",
+          "alph",
+          "abet",
+          "ically",
+          " built",
+          "-in",
+          "玩的",
+          "儿"
+        ],
+        "token_logprobs": [
+          -6.840651512145996,
+          -3.2745845317840576,
+          -4.229675769805908,
+          -4.238421440124512,
+          -5.353860378265381,
+          -0.1370505392551422,
+          -5.558790683746338,
+          -4.965434551239014,
+          -1.6289533376693726,
+          -4.665212631225586,
+          -4.096260070800781,
+          -0.6598102450370789,
+          -3.970775842666626,
+          -1.4473118782043457,
+          -4.688422679901123,
+          -1.60090970993042
+        ]
+      }
+    ],
+    "/v1/chat/completions": [
+      {
+        "text": "levensburgundy手腕/armitage申请的的同 fightbacktot在不断超限itare规矩",
+        "tokens": [
+          "lev",
+          "ens",
+          "burg",
+          "undy",
+          "手腕",
+          "/arm",
+          "itage",
+          "申请的",
+          "的同",
+          " fight",
+          "back",
+          "tot",
+          "在不断",
+          "超限",
+          "itare",
+          "规矩"
+        ],
+        "token_logprobs": [
+          -5.3241801261901855,
+          -4.815529823303223,
+          -3.673537254333496,
+          -0.34990033507347107,
+          -4.1290693283081055,
+          -4.255687236785889,
+          -2.5022318363189697,
+          -4.965063571929932,
+          -5.157588005065918,
+          -4.341821193695068,
+          -1.8265459537506104,
+          -2.95933198928833,
+          -3.7309436798095703,
+          -4.65114164352417,
+          -4.864499092102051,
+          -3.900848865509033
+        ]
+      },
+      {
+        "text": "levensburgundy手腕/armitage申请的的同 fightbacktotallyitarian用人之道",
+        "tokens": [
+          "lev",
+          "ens",
+          "burg",
+          "undy",
+          "手腕",
+          "/arm",
+          "itage",
+          "申请的",
+          "的同",
+          " fight",
+          "back",
+          "tot",
+          "ally",
+          "itarian",
+          "用人",
+          "之道"
+        ],
+        "token_logprobs": [
+          -5.392412185668945,
+          -4.930185794830322,
+          -3.748257875442505,
+          -0.48519495129585266,
+          -4.172966480255127,
+          -4.352108955383301,
+          -2.5683841705322266,
+          -5.01535177230835,
+          -5.141754150390625,
+          -4.421401023864746,
+          -2.053954839706421,
+          -2.967550039291382,
+          -3.516770839691162,
+          -2.491333484649658,
+          -4.227342128753662,
+          -4.2488884925842285
+        ]
+      }
+    ]
+  },
+  "checkpoint": {
+    "path": "/models/Hy4-2L",
+    "format": "safetensors",
+    "file_count": 4,
+    "total_file_bytes": 26629205932,
+    "tensor_count": 709,
+    "total_tensor_bytes": 26629125812,
+    "max_tensor_name": "model.layers.1.mlp.experts.gate_up_proj",
+    "max_tensor_bytes": 12884901888,
+    "manifest_sha256": "d57c5134b925b670942d630539174d29b5d5f7a0ac4f1fea88f4b877bb63c188"
+  },
+  "transfer": {
+    "packed_buffer_bytes": 12884901888,
+    "tensor_count": 709
+  },
+  "post_update_by_endpoint": {
+    "/v1/completions": [
+      {
+        "text": "/materialized了的的气itosisesontab极了 excursion镜头的-E类推 scaled-down",
+        "tokens": [
+          "/material",
+          "ized",
+          "了的",
+          "的气",
+          "itos",
+          "ises",
+          "ontab",
+          "极了",
+          " exc",
+          "ursion",
+          "镜",
+          "头的",
+          "-E",
+          "类推",
+          " scaled",
+          "-down"
+        ],
+        "token_logprobs": [
+          -5.070127487182617,
+          -1.5722265243530273,
+          -4.242175579071045,
+          -3.606135606765747,
+          -4.416794776916504,
+          -4.800335884094238,
+          -4.657891750335693,
+          -4.764471530914307,
+          -5.340261459350586,
+          -0.7771568894386292,
+          -4.442620754241943,
+          -1.6580249071121216,
+          -4.699674606323242,
+          -3.9361395835876465,
+          -4.422239780426025,
+          -3.370418071746826
+        ]
+      },
+      {
+        "text": "的爱德华的金本位 Giggle的小伙伴虎啸alphabetically built-in玩的儿",
+        "tokens": [
+          "的爱",
+          "德华",
+          "的金",
+          "本位",
+          " Gig",
+          "gle",
+          "的小伙伴",
+          "虎",
+          "啸",
+          "alph",
+          "abet",
+          "ically",
+          " built",
+          "-in",
+          "玩的",
+          "儿"
+        ],
+        "token_logprobs": [
+          -6.840651512145996,
+          -3.2745845317840576,
+          -4.229675769805908,
+          -4.238421440124512,
+          -5.353860378265381,
+          -0.1370505392551422,
+          -5.558790683746338,
+          -4.965434551239014,
+          -1.6289533376693726,
+          -4.665212631225586,
+          -4.096260070800781,
+          -0.6598102450370789,
+          -3.970775842666626,
+          -1.4473118782043457,
+          -4.688422679901123,
+          -1.60090970993042
+        ]
+      }
+    ],
+    "/v1/chat/completions": [
+      {
+        "text": "levensburgundy手腕/armitage申请的的同 fightbacktot在不断超限itare规矩",
+        "tokens": [
+          "lev",
+          "ens",
+          "burg",
+          "undy",
+          "手腕",
+          "/arm",
+          "itage",
+          "申请的",
+          "的同",
+          " fight",
+          "back",
+          "tot",
+          "在不断",
+          "超限",
+          "itare",
+          "规矩"
+        ],
+        "token_logprobs": [
+          -5.3241801261901855,
+          -4.815529823303223,
+          -3.673537254333496,
+          -0.34990033507347107,
+          -4.1290693283081055,
+          -4.255687236785889,
+          -2.5022318363189697,
+          -4.965063571929932,
+          -5.157588005065918,
+          -4.341821193695068,
+          -1.8265459537506104,
+          -2.95933198928833,
+          -3.7309436798095703,
+          -4.65114164352417,
+          -4.864499092102051,
+          -3.900848865509033
+        ]
+      },
+      {
+        "text": "levensburgundy手腕/armitage申请的的同 fightbacktotallyitarian用人之道",
+        "tokens": [
+          "lev",
+          "ens",
+          "burg",
+          "undy",
+          "手腕",
+          "/arm",
+          "itage",
+          "申请的",
+          "的同",
+          " fight",
+          "back",
+          "tot",
+          "ally",
+          "itarian",
+          "用人",
+          "之道"
+        ],
+        "token_logprobs": [
+          -5.392412185668945,
+          -4.930185794830322,
+          -3.748257875442505,
+          -0.48519495129585266,
+          -4.172966480255127,
+          -4.352108955383301,
+          -2.5683841705322266,
+          -5.01535177230835,
+          -5.141754150390625,
+          -4.421401023864746,
+          -2.053954839706421,
+          -2.967550039291382,
+          -3.516770839691162,
+          -2.491333484649658,
+          -4.227342128753662,
+          -4.2488884925842285
+        ]
+      }
+    ]
+  },
+  "outputs_identical_by_endpoint": {
+    "/v1/completions": [
+      true,
+      true
+    ],
+    "/v1/chat/completions": [
+      true,
+      true
+    ]
+  },
+  "endpoint_checks": {
+    "/v1/completions": true,
+    "/v1/chat/completions": true
+  }
+}

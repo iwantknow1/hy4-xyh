@@ -1,0 +1,26 @@
+四机全量精度第 07 次启动：环境修正记录
+
+第 06 次启动已完成 BF16 全量模型加载，文本冒烟通过；图片请求被调度到
+DP1 后，compute_slot_mapping 抛出 TypeError: 'function' object is not subscriptable。
+该轮未进入有效全量精度评测。
+
+原因：我方启动参数显式设置了 PATH=/codex/.venv/bin:/usr/local/bin:/usr/bin:/bin，
+覆盖了 CANN 初始化脚本提供的编译器路径。工作进程检查 Triton Ascend 后端时
+找不到 bisheng，判定零个可用后端。vLLM 因此导入占位装饰器，原本应为
+JITFunction 的 slot mapping 内核成为普通 Python 函数；kernel[grid] 调用失败。
+该问题由本次启动环境配置引入，不能据此认定为 vLLM 或模型代码缺陷。
+
+修复：在 launch-dp4-skill.sh 的显式 PATH 中加入
+/usr/local/Ascend/cann-9.1.0/bin。保留原来的 vLLM / vLLM-Ascend 模型代码。
+
+验证：26 节点限制 PATH 时可复现 Ascend 后端不可用和普通 function；补齐
+编译器目录后后端可用，内核恢复 JITFunction。独立 NPU 执行检查通过：
+逻辑位置 0、1，物理块 2，块大小 128，输出为 256、257，其余六个槽位 -1。
+完整四机服务与两个数据集的结果以共享目录后续日志为准，不提前宣称通过。
+
+第 07 轮保持 TP8、DP4、EP32、MTP3，max_num_seqs=64，max_model_len=147456，
+max_num_batched_tokens=8192，固定 KV 14 GiB，单 API，200 Gb 通信网卡。
+GPQA 198 题完整性检查通过后才继续 HallusionBench 1129 题和原裁判脚本。
+
+API 密钥已重新复制到 CPU 评测容器的私有临时目录，权限 600，API 连通检查
+通过；28 节点用户原文件已删除。密钥不写入本记录、共享文件或推理镜像。

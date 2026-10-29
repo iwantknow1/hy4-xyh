@@ -1,0 +1,95 @@
+__WORKSPACE_SERVING_PROGRESS__={"message": "looking up 197.13.49.1", "phase": "resolve-target"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "head: 197.13.49.1, workers: ['197.13.50.1', '197.13.51.1', '197.13.52.1']", "phase": "resolve-target"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[head 197.13.49.1] verifying SSH connectivity", "phase": "preflight"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[head 197.13.49.1] checking model path: /mnt/share/z30059446/hy4_safetensors", "phase": "preflight"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[worker 197.13.50.1] verifying SSH connectivity", "phase": "preflight"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[worker 197.13.50.1] checking model path: /mnt/share/z30059446/hy4_safetensors", "phase": "preflight"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[worker 197.13.51.1] verifying SSH connectivity", "phase": "preflight"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[worker 197.13.51.1] checking model path: /mnt/share/z30059446/hy4_safetensors", "phase": "preflight"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[worker 197.13.52.1] verifying SSH connectivity", "phase": "preflight"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[worker 197.13.52.1] checking model path: /mnt/share/z30059446/hy4_safetensors", "phase": "preflight"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[head 197.13.49.1] already stopped (pid=440)", "phase": "stop-existing"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[worker 197.13.50.1] already stopped (pid=441)", "phase": "stop-existing"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[worker 197.13.51.1] already stopped (pid=441)", "phase": "stop-existing"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[worker 197.13.52.1] already stopped (pid=441)", "phase": "stop-existing"}
+__WORKSPACE_SERVING_PROGRESS__={"busy": [], "free": [0, 1, 2, 3, 4, 5, 6, 7], "message": "[head 197.13.49.1] devices: 0,1,2,3,4,5,6,7", "phase": "probe-npus"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "197.13.49.1: detected 1 die(s) per NPU (machine_type=A5)", "phase": "select-devices"}
+__WORKSPACE_SERVING_PROGRESS__={"busy": [], "free": [0, 1, 2, 3, 4, 5, 6, 7], "message": "[worker 197.13.50.1] devices: 0,1,2,3,4,5,6,7", "phase": "probe-npus"}
+__WORKSPACE_SERVING_PROGRESS__={"busy": [], "free": [0, 1, 2, 3, 4, 5, 6, 7], "message": "[worker 197.13.51.1] devices: 0,1,2,3,4,5,6,7", "phase": "probe-npus"}
+__WORKSPACE_SERVING_PROGRESS__={"busy": [], "free": [0, 1, 2, 3, 4, 5, 6, 7], "message": "[worker 197.13.52.1] devices: 0,1,2,3,4,5,6,7", "phase": "probe-npus"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "vLLM die-aware: dp_local=1, dp_size=4, leaving ASCEND_RT_VISIBLE_DEVICES unset for auto-enumeration", "phase": "select-devices"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "service port 18080", "phase": "allocate-port", "port": 18080}
+__WORKSPACE_SERVING_PROGRESS__={"message": "DP RPC port 29740", "phase": "allocate-port", "port": 29740}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[head 197.13.49.1] starting vLLM serve", "phase": "launch"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[head 197.13.49.1] pid=1034", "phase": "launch", "pid": 1034}
+__WORKSPACE_SERVING_PROGRESS__={"message": "waiting for head DP RPC port 29740 (timeout=300s)", "phase": "probe"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "head DP RPC port 29740 ready, launching workers", "phase": "probe"}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[worker 197.13.50.1] starting vLLM serve", "phase": "launch"}
+WARN: stripped --api-server-count from worker extra_args (headless workers run no API server)
+__WORKSPACE_SERVING_PROGRESS__={"message": "[worker 197.13.50.1] pid=1003", "phase": "launch", "pid": 1003}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[worker 197.13.51.1] starting vLLM serve", "phase": "launch"}
+WARN: stripped --api-server-count from worker extra_args (headless workers run no API server)
+__WORKSPACE_SERVING_PROGRESS__={"message": "[worker 197.13.51.1] pid=791", "phase": "launch", "pid": 791}
+__WORKSPACE_SERVING_PROGRESS__={"message": "[worker 197.13.52.1] starting vLLM serve", "phase": "launch"}
+WARN: stripped --api-server-count from worker extra_args (headless workers run no API server)
+__WORKSPACE_SERVING_PROGRESS__={"message": "[worker 197.13.52.1] pid=1063", "phase": "launch", "pid": 1063}
+__WORKSPACE_SERVING_PROGRESS__={"message": "waiting for cluster ready (timeout=3600s)", "phase": "probe"}
+{
+  "status": "failed",
+  "cluster_type": "multi-node",
+  "machine": "197.13.49.1",
+  "nnodes": 4,
+  "base_url": "http://197.13.49.1:18080",
+  "service_port": 18080,
+  "dp_rpc_port": 29740,
+  "dp_size": 4,
+  "head_pid": 1034,
+  "served_model_name": "hy4",
+  "model": "/mnt/share/z30059446/hy4_safetensors",
+  "tp": 8,
+  "nodes": [
+    {
+      "role": "head",
+      "host": "197.13.49.1",
+      "pid": 1034,
+      "port": 18080,
+      "devices": "0",
+      "dp_size_local": 1,
+      "base_url": "http://197.13.49.1:18080",
+      "runtime_dir": "/home/vllm/.workspace-runtime/serving/20261028_175536_197.13.49.1"
+    },
+    {
+      "role": "worker",
+      "host": "197.13.50.1",
+      "pid": 1003,
+      "devices": "0",
+      "runtime_dir": "/home/vllm/.workspace-runtime/serving/20261028_175536_197.13.50.1",
+      "alive": true
+    },
+    {
+      "role": "worker",
+      "host": "197.13.51.1",
+      "pid": 791,
+      "devices": "0",
+      "runtime_dir": "/home/vllm/.workspace-runtime/serving/20261028_175536_197.13.51.1",
+      "alive": true
+    },
+    {
+      "role": "worker",
+      "host": "197.13.52.1",
+      "pid": 1063,
+      "devices": "0",
+      "runtime_dir": "/home/vllm/.workspace-runtime/serving/20261028_175536_197.13.52.1",
+      "alive": true
+    }
+  ],
+  "readiness": {
+    "ready": false,
+    "alive": false,
+    "error": "process exited before becoming ready",
+    "stderr_tail": "2026-10-28 17:57:41,652 - 1401 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1\n2026-10-28 17:57:41,690 - 1398 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1\n2026-10-28 17:57:41,690 - 1403 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1\n2026-10-28 17:57:41,691 - 1399 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1\n2026-10-28 17:57:42,195 - 1396 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1\n2026-10-28 17:57:42,254 - 1397 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1\n[W1028 17:57:42.901737410 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}\n[W1028 17:57:42.988912590 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}\n[W1028 17:57:42.019634040 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}\n[W1028 17:57:42.051838110 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())\n[W1028 17:57:42.058131980 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())\n[W1028 17:57:42.059512060 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}\n[W1028 17:57:43.570132980 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}\n[W1028 17:57:43.637018640 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}",
+    "elapsed_seconds": 185.1
+  },
+  "all_workers_alive": true,
+  "stderr_tail": "2026-10-28 17:57:41,652 - 1401 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1\n2026-10-28 17:57:41,690 - 1398 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1\n2026-10-28 17:57:41,690 - 1403 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1\n2026-10-28 17:57:41,691 - 1399 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1\n2026-10-28 17:57:42,195 - 1396 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1\n2026-10-28 17:57:42,254 - 1397 - ServiceProfiler - INFO - VLLM_USE_V1 not set, auto-detected via vLLM 0.30.0+empty: default 1\n[W1028 17:57:42.901737410 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}\n[W1028 17:57:42.988912590 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}\n[W1028 17:57:42.019634040 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}\n[W1028 17:57:42.051838110 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())\n[W1028 17:57:42.058131980 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())\n[W1028 17:57:42.059512060 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}\n[W1028 17:57:43.570132980 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}\n[W1028 17:57:43.637018640 OptionRegister.cpp:95] Warning: Current device only support allow_internal_format=False, the requested value True is invalid and has been reverted to False. (function operator())\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}\n[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}"
+}

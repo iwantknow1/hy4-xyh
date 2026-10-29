@@ -1,0 +1,176 @@
+{
+  "bytes": {
+    "lm_head.weight": 1484783616,
+    "self_attn.indexer.wq_b.weight": 352321536,
+    "self_attn.o_proj.weight": 15703474176,
+    "mlp.shared_experts.down_proj.weight": 1937768448,
+    "mlp.shared_experts.gate_proj.weight": 1937768448,
+    "mlp.shared_experts.up_proj.weight": 1937768448,
+    "self_attn.q_a_proj.weight": 1962934272,
+    "self_attn.linear_gate.weight": 15703474176,
+    "self_attn.kv_b_proj.weight": 2290089984,
+    "self_attn.q_b_proj.weight": 5234491392,
+    "hc_attn_layer.hc_pre.hc_base": 2496,
+    "hc_attn_layer.hc_pre.hc_fn": 61341696,
+    "hc_attn_layer.hc_pre.hc_scale": 624,
+    "hc_mlp_layer.hc_pre.hc_base": 2496,
+    "hc_mlp_layer.hc_pre.hc_fn": 61341696,
+    "hc_mlp_layer.hc_pre.hc_scale": 624,
+    "mlp.gate.e_score_correction_bias": 78848,
+    "self_attn.learnable_sink_param": 19968,
+    "input_layernorm.weight": 958464,
+    "mlp.gate.weight": 242221056,
+    "post_attention_layernorm.weight": 958464,
+    "self_attn.indexer.k_norm.bias": 5376,
+    "self_attn.indexer.k_norm.weight": 5376,
+    "self_attn.indexer.weights_proj.weight": 8257536,
+    "self_attn.indexer.wk.weight": 33030144,
+    "self_attn.kv_a_layernorm.weight": 79872,
+    "self_attn.kv_a_proj_with_mqa.weight": 552075264,
+    "self_attn.q_a_layernorm.weight": 319488,
+    "model.hc_head.hc_head_base": 16,
+    "model.hc_head.hc_head_fn": 393216,
+    "model.hc_head.hc_head_scale": 4,
+    "model.norm.weight": 12288,
+    "mlp.down_proj.weight": 226492416,
+    "vit.all": 2470253568,
+    "mlp.gate_proj.weight": 226492416,
+    "mlp.up_proj.weight": 226492416,
+    "model.embed_tokens.weight": 1484783616
+  },
+  "shape_examples": {
+    "lm_head.weight": [
+      120832,
+      6144
+    ],
+    "self_attn.indexer.wq_b.weight": [
+      4096,
+      2048
+    ],
+    "self_attn.o_proj.weight": [
+      6144,
+      16384
+    ],
+    "mlp.shared_experts.down_proj.weight": [
+      6144,
+      2048
+    ],
+    "mlp.shared_experts.gate_proj.weight": [
+      2048,
+      6144
+    ],
+    "mlp.shared_experts.up_proj.weight": [
+      2048,
+      6144
+    ],
+    "self_attn.q_a_proj.weight": [
+      2048,
+      6144
+    ],
+    "self_attn.linear_gate.weight": [
+      16384,
+      6144
+    ],
+    "self_attn.kv_b_proj.weight": [
+      28672,
+      512
+    ],
+    "self_attn.q_b_proj.weight": [
+      16384,
+      2048
+    ],
+    "hc_attn_layer.hc_pre.hc_base": [
+      8
+    ],
+    "hc_attn_layer.hc_pre.hc_fn": [
+      8,
+      24576
+    ],
+    "hc_attn_layer.hc_pre.hc_scale": [
+      2
+    ],
+    "hc_mlp_layer.hc_pre.hc_base": [
+      8
+    ],
+    "hc_mlp_layer.hc_pre.hc_fn": [
+      8,
+      24576
+    ],
+    "hc_mlp_layer.hc_pre.hc_scale": [
+      2
+    ],
+    "mlp.gate.e_score_correction_bias": [
+      256
+    ],
+    "self_attn.learnable_sink_param": [
+      64
+    ],
+    "input_layernorm.weight": [
+      6144
+    ],
+    "mlp.gate.weight": [
+      256,
+      6144
+    ],
+    "post_attention_layernorm.weight": [
+      6144
+    ],
+    "self_attn.indexer.k_norm.bias": [
+      128
+    ],
+    "self_attn.indexer.k_norm.weight": [
+      128
+    ],
+    "self_attn.indexer.weights_proj.weight": [
+      32,
+      6144
+    ],
+    "self_attn.indexer.wk.weight": [
+      128,
+      6144
+    ],
+    "self_attn.kv_a_layernorm.weight": [
+      512
+    ],
+    "self_attn.kv_a_proj_with_mqa.weight": [
+      576,
+      6144
+    ],
+    "self_attn.q_a_layernorm.weight": [
+      2048
+    ],
+    "model.hc_head.hc_head_base": [
+      4
+    ],
+    "model.hc_head.hc_head_fn": [
+      4,
+      24576
+    ],
+    "model.hc_head.hc_head_scale": [
+      1
+    ],
+    "model.norm.weight": [
+      6144
+    ],
+    "mlp.down_proj.weight": [
+      6144,
+      18432
+    ],
+    "vit.all": [
+      1536,
+      6144
+    ],
+    "mlp.gate_proj.weight": [
+      18432,
+      6144
+    ],
+    "mlp.up_proj.weight": [
+      18432,
+      6144
+    ],
+    "model.embed_tokens.weight": [
+      120832,
+      6144
+    ]
+  }
+}

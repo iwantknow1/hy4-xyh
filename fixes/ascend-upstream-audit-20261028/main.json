@@ -1,0 +1,125 @@
+{
+  "sha": "deca4670c4f654e06ca802fb000e260f2ab98232",
+  "node_id": "C_kwDONxQEAdoAKGRlY2E0NjcwYzRmNjU0ZTA2Y2E4MDJmYjAwMGUyNjBmMmFiOTgyMzI",
+  "commit": {
+    "author": {
+      "name": "yjyang62",
+      "email": "yangjinyang5@huawei.com",
+      "date": "2026-10-28T03:29:57Z"
+    },
+    "committer": {
+      "name": "GitHub",
+      "email": "noreply@github.com",
+      "date": "2026-10-28T03:29:57Z"
+    },
+    "message": "[Feature][MRV2] Default VL encoder disaggregation to Model Runner V2 (#19183)\n\n### What this PR does / why we need it?\n\nUnset `VLLM_USE_V2_MODEL_RUNNER` now keeps VL encoder disaggregation on\nModel Runner V2. This removes both halves of that blacklist entry:\n\n- `ec_transfer_config` is configured (`VL encoder disaggregation`)\n- `mm_encoder_only` is set and `ec_transfer_config` is not (`VL\nencoder-only`)\n\n`VLLM_USE_V2_MODEL_RUNNER=0` still forces V1, and `=1` still forces V2.\nVL encoder graph (`compilation_config.cudagraph_mm_encoder`) stays on\nthe V1 blacklist.\n\nMooncake and CPU-offload EC tests already pin\n`VLLM_USE_V2_MODEL_RUNNER=1`. The unset-env cases this changes are\n`tests/e2e/pull_request/two_card/test_disaggregated_encoder.py`\n(`Qwen/Qwen2.5-VL-7B-Instruct`, `ECExampleConnector`) and the weekly\n`qwen2-5-vl-7b-epd` case.\n\n### Does this PR introduce _any_ user-facing change?\n\nYes. With `VLLM_USE_V2_MODEL_RUNNER` unset, a request that sets\n`ec_transfer_config` or `mm_encoder_only` now uses Model Runner V2. Set\n`VLLM_USE_V2_MODEL_RUNNER=0` to keep V1.\n\n### How was this patch tested?\n\n- Unit tests updated: `tests/ut/test_mrv2_utils.py`.\n`ec_transfer_config` and `mm_encoder_only` moved from the V1 blacklist\ncases to the default-V2 cases. Explicit env override still wins.\n- NPU e2e was not run here. CI should run `test_disaggregated_encoder`.\n\n---\n\n### Checklist\n\n#### Testing\n\n- [x] **Boundary / edge-case coverage**: I reviewed whether this change\ninvolves boundary conditions. The unit test covers both\n`ec_transfer_config` and `mm_encoder_only`, plus the explicit env\noverride.\n- [ ] **Regression test**: If this PR fixes a bug, I added a regression\ntest that would fail without the fix.\n- [ ] **Error / failure path coverage**: I covered abnormal paths in\naddition to the happy path.\n- [x] **Meaningful & reliable tests**: The updated tests assert runner\nselection, not just that the suite runs.\n- [ ] **Performance impact**: This PR does not touch a\nperformance-sensitive path.\n\n- vLLM main:\nhttps://github.com/vllm-project/vllm/commit/544f182d9f0c9bfe8bd7645525951d5e3692a542\n\n---------\n\nSigned-off-by: yjyang62 <yangjinyang5@huawei.com>\nSigned-off-by: yangjinyang <yangjinyang5@huawei.com>",
+    "tree": {
+      "sha": "f85333063495caa92a631bbb6f05cc3d1f2c6b1f",
+      "url": "https://api.github.com/repos/vllm-project/vllm-ascend/git/trees/f85333063495caa92a631bbb6f05cc3d1f2c6b1f"
+    },
+    "url": "https://api.github.com/repos/vllm-project/vllm-ascend/git/commits/deca4670c4f654e06ca802fb000e260f2ab98232",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJq4Ww1CRC1aQ7uu5UhlAAA1OsQAHm9wWRDvjPQRMBRgEYcDuKF\nCBpbcLulU68mBmU4oNSJSY4TZYte89DdM9t9KNQ6O7NLQaR61CooDVk/PLR39oT7\nvoVDKs7WDiczVbPng1ry8exM9Ksg1t8ZvKSsUIQw8zDHdMkR6RFQecZITn/Q0C3B\n17Roh9R+HI2MFRKP7GrZFzhSUcK8IaFbb6wD1Pvj8DMgEV4fdcu1M0XwoXSwKKRj\n9PgwIdgvjYwF87/4lmFD/+ejzNhRtq8tTOVipQZfB1rBnI54KBLUOFdV4Iii+UOq\nNsZOFnP2NB9Nx9MI26wNZ16g29/c22c8GatYcSiX8b75wSkqtB/Ai+Mqi+uHS+CN\noD9LUpocrF/3IfkX/mMvYnyoCpGPWKAPK+ZqOoc1fa7hUcSGUkSeBxTe/gsuCBrq\n7YOYwrcxy4poEYDZoDroA4pWCZcUYVOoGHC3WBB2tYpanacD/vFCOxowyYYbN37z\n1ksLQN80Asfd7Gu1/SSkNH3TXKMpu9IOkwoJUdowtiewjRv7F1FiEp36/uEC+c01\n4CCzBPt9IFojl1UlewMmib/S8iKayilxLhSST/34ikLc2VBFPJDEFVOdYIpcYMk2\nD0EmQigMsVjltThmu/IHVMMzgm+0j326uRI03r5CIbDTJ1TSPApSUC0rUkmQMm6u\nf4mvIdcI4ETb7992tCKV\n=wPCP\n-----END PGP SIGNATURE-----\n",
+      "payload": "tree f85333063495caa92a631bbb6f05cc3d1f2c6b1f\nparent 74f589b50c2059e8f1145addec022fbfe1879c8a\nauthor yjyang62 <yangjinyang5@huawei.com> 1793158197 +0800\ncommitter GitHub <noreply@github.com> 1793158197 +0800\n\n[Feature][MRV2] Default VL encoder disaggregation to Model Runner V2 (#19183)\n\n### What this PR does / why we need it?\n\nUnset `VLLM_USE_V2_MODEL_RUNNER` now keeps VL encoder disaggregation on\nModel Runner V2. This removes both halves of that blacklist entry:\n\n- `ec_transfer_config` is configured (`VL encoder disaggregation`)\n- `mm_encoder_only` is set and `ec_transfer_config` is not (`VL\nencoder-only`)\n\n`VLLM_USE_V2_MODEL_RUNNER=0` still forces V1, and `=1` still forces V2.\nVL encoder graph (`compilation_config.cudagraph_mm_encoder`) stays on\nthe V1 blacklist.\n\nMooncake and CPU-offload EC tests already pin\n`VLLM_USE_V2_MODEL_RUNNER=1`. The unset-env cases this changes are\n`tests/e2e/pull_request/two_card/test_disaggregated_encoder.py`\n(`Qwen/Qwen2.5-VL-7B-Instruct`, `ECExampleConnector`) and the weekly\n`qwen2-5-vl-7b-epd` case.\n\n### Does this PR introduce _any_ user-facing change?\n\nYes. With `VLLM_USE_V2_MODEL_RUNNER` unset, a request that sets\n`ec_transfer_config` or `mm_encoder_only` now uses Model Runner V2. Set\n`VLLM_USE_V2_MODEL_RUNNER=0` to keep V1.\n\n### How was this patch tested?\n\n- Unit tests updated: `tests/ut/test_mrv2_utils.py`.\n`ec_transfer_config` and `mm_encoder_only` moved from the V1 blacklist\ncases to the default-V2 cases. Explicit env override still wins.\n- NPU e2e was not run here. CI should run `test_disaggregated_encoder`.\n\n---\n\n### Checklist\n\n#### Testing\n\n- [x] **Boundary / edge-case coverage**: I reviewed whether this change\ninvolves boundary conditions. The unit test covers both\n`ec_transfer_config` and `mm_encoder_only`, plus the explicit env\noverride.\n- [ ] **Regression test**: If this PR fixes a bug, I added a regression\ntest that would fail without the fix.\n- [ ] **Error / failure path coverage**: I covered abnormal paths in\naddition to the happy path.\n- [x] **Meaningful & reliable tests**: The updated tests assert runner\nselection, not just that the suite runs.\n- [ ] **Performance impact**: This PR does not touch a\nperformance-sensitive path.\n\n- vLLM main:\nhttps://github.com/vllm-project/vllm/commit/544f182d9f0c9bfe8bd7645525951d5e3692a542\n\n---------\n\nSigned-off-by: yjyang62 <yangjinyang5@huawei.com>\nSigned-off-by: yangjinyang <yangjinyang5@huawei.com>",
+      "verified_at": "2026-10-28T03:29:58Z"
+    }
+  },
+  "url": "https://api.github.com/repos/vllm-project/vllm-ascend/commits/deca4670c4f654e06ca802fb000e260f2ab98232",
+  "html_url": "https://github.com/vllm-project/vllm-ascend/commit/deca4670c4f654e06ca802fb000e260f2ab98232",
+  "comments_url": "https://api.github.com/repos/vllm-project/vllm-ascend/commits/deca4670c4f654e06ca802fb000e260f2ab98232/comments",
+  "author": {
+    "login": "yjyang62",
+    "id": 279579935,
+    "node_id": "U_kgDOEKoNHw",
+    "avatar_url": "https://avatars.githubusercontent.com/u/279579935?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/yjyang62",
+    "html_url": "https://github.com/yjyang62",
+    "followers_url": "https://api.github.com/users/yjyang62/followers",
+    "following_url": "https://api.github.com/users/yjyang62/following{/other_user}",
+    "gists_url": "https://api.github.com/users/yjyang62/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/yjyang62/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/yjyang62/subscriptions",
+    "organizations_url": "https://api.github.com/users/yjyang62/orgs",
+    "repos_url": "https://api.github.com/users/yjyang62/repos",
+    "events_url": "https://api.github.com/users/yjyang62/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/yjyang62/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "web-flow",
+    "id": 19864447,
+    "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+    "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/web-flow",
+    "html_url": "https://github.com/web-flow",
+    "followers_url": "https://api.github.com/users/web-flow/followers",
+    "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+    "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+    "organizations_url": "https://api.github.com/users/web-flow/orgs",
+    "repos_url": "https://api.github.com/users/web-flow/repos",
+    "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/web-flow/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "74f589b50c2059e8f1145addec022fbfe1879c8a",
+      "url": "https://api.github.com/repos/vllm-project/vllm-ascend/commits/74f589b50c2059e8f1145addec022fbfe1879c8a",
+      "html_url": "https://github.com/vllm-project/vllm-ascend/commit/74f589b50c2059e8f1145addec022fbfe1879c8a"
+    }
+  ],
+  "stats": {
+    "total": 22,
+    "additions": 7,
+    "deletions": 15
+  },
+  "files": [
+    {
+      "sha": "69c52e33f0290e73f145060319917c80562d597f",
+      "filename": "tests/ut/test_mrv2_utils.py",
+      "status": "modified",
+      "additions": 6,
+      "deletions": 6,
+      "changes": 12,
+      "blob_url": "https://github.com/vllm-project/vllm-ascend/blob/deca4670c4f654e06ca802fb000e260f2ab98232/tests%2Fut%2Ftest_mrv2_utils.py",
+      "raw_url": "https://github.com/vllm-project/vllm-ascend/raw/deca4670c4f654e06ca802fb000e260f2ab98232/tests%2Fut%2Ftest_mrv2_utils.py",
+      "contents_url": "https://api.github.com/repos/vllm-project/vllm-ascend/contents/tests%2Fut%2Ftest_mrv2_utils.py?ref=deca4670c4f654e06ca802fb000e260f2ab98232",
+      "patch": "@@ -88,6 +88,10 @@ def test_environment_override_wins(monkeypatch, env_value):\n                 kv_connector_extra_config={\"backend\": \"memcache\"},\n             )\n         ),\n+        SimpleNamespace(ec_transfer_config=object()),\n+        SimpleNamespace(\n+            model_config=SimpleNamespace(multimodal_config=SimpleNamespace(mm_encoder_only=True)),\n+        ),\n     ],\n     ids=[\n         \"empty-config\",\n@@ -117,6 +121,8 @@ def test_environment_override_wins(monkeypatch, env_value):\n         \"dynamic-eplb\",\n         \"kv-pool-connector\",\n         \"kv-pool-memcache\",\n+        \"vl-encoder-disaggregation\",\n+        \"vl-encoder-only\",\n     ],\n )\n def test_v2_is_default_outside_the_blacklist(monkeypatch, config):\n@@ -137,10 +143,6 @@ def test_v2_is_default_outside_the_blacklist(monkeypatch, config):\n         ),\n         SimpleNamespace(model_config=SimpleNamespace(runner_type=\"pooling\")),\n         SimpleNamespace(model_config=SimpleNamespace(is_pooling_model=True)),\n-        SimpleNamespace(ec_transfer_config=object()),\n-        SimpleNamespace(\n-            model_config=SimpleNamespace(multimodal_config=SimpleNamespace(mm_encoder_only=True)),\n-        ),\n         SimpleNamespace(compilation_config=SimpleNamespace(cudagraph_mm_encoder=True)),\n         SimpleNamespace(additional_config={\"draft_window_size\": 512}),\n         SimpleNamespace(additional_config={\"enable_dsa_cp\": True}),\n@@ -157,8 +159,6 @@ def test_v2_is_default_outside_the_blacklist(monkeypatch, config):\n         \"dflash2-graph\",\n         \"pooling-runner\",\n         \"pooling-model\",\n-        \"vl-encoder-disaggregation\",\n-        \"vl-encoder-only\",\n         \"vl-encoder-graph\",\n         \"draft-window-size\",\n         \"enable-dsa-cp\","
+    },
+    {
+      "sha": "c739b275869ebb651ac7671f7ca54361f5f8e804",
+      "filename": "vllm_ascend/mrv2_utils.py",
+      "status": "modified",
+      "additions": 0,
+      "deletions": 7,
+      "changes": 7,
+      "blob_url": "https://github.com/vllm-project/vllm-ascend/blob/deca4670c4f654e06ca802fb000e260f2ab98232/vllm_ascend%2Fmrv2_utils.py",
+      "raw_url": "https://github.com/vllm-project/vllm-ascend/raw/deca4670c4f654e06ca802fb000e260f2ab98232/vllm_ascend%2Fmrv2_utils.py",
+      "contents_url": "https://api.github.com/repos/vllm-project/vllm-ascend/contents/vllm_ascend%2Fmrv2_utils.py?ref=deca4670c4f654e06ca802fb000e260f2ab98232",
+      "patch": "@@ -90,12 +90,6 @@ def _v2_blacklist(vllm_config: VllmConfig) -> list[str]:\n         ):\n             reasons.append(\"pooling KV\")\n \n-    if _is_configured(getattr(vllm_config, \"ec_transfer_config\", None)):\n-        reasons.append(\"VL encoder disaggregation\")\n-    elif _is_configured(model_config):\n-        mm_config = getattr(model_config, \"multimodal_config\", None)\n-        if getattr(mm_config, \"mm_encoder_only\", False) is True:\n-            reasons.append(\"VL encoder-only\")\n     compilation_config = getattr(vllm_config, \"compilation_config\", None)\n     if _is_configured(compilation_config) and getattr(compilation_config, \"cudagraph_mm_encoder\", False) is True:\n         reasons.append(\"VL encoder graph\")\n@@ -134,7 +128,6 @@ def use_v2_model_runner(vllm_config: VllmConfig) -> bool:\n     except for these models and features, which fall back to V1:\n \n     * pooling KV (``runner_type=\"pooling\"``)\n-    * VL encoder disaggregation (``ec_transfer_config`` / encoder-only)\n     * VL encoder graph (``compilation_config.cudagraph_mm_encoder``)\n     * draft_window_size\n     * enable_dsa_cp"
+    },
+    {
+      "sha": "8ce753fd8dab76ea46533751112fe958bb6efd4f",
+      "filename": "vllm_ascend/patch/__init__.py",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 2,
+      "changes": 3,
+      "blob_url": "https://github.com/vllm-project/vllm-ascend/blob/deca4670c4f654e06ca802fb000e260f2ab98232/vllm_ascend%2Fpatch%2F__init__.py",
+      "raw_url": "https://github.com/vllm-project/vllm-ascend/raw/deca4670c4f654e06ca802fb000e260f2ab98232/vllm_ascend%2Fpatch%2F__init__.py",
+      "contents_url": "https://api.github.com/repos/vllm-project/vllm-ascend/contents/vllm_ascend%2Fpatch%2F__init__.py?ref=deca4670c4f654e06ca802fb000e260f2ab98232",
+      "patch": "@@ -782,8 +782,7 @@\n #   1. `vllm.config.vllm.VllmConfig.use_v2_model_runner`\n #    Why:\n #       Ascend uses the NPU v2 runner by default. Features that are not\n-#       V2-ready (pooling KV, VL encoder disaggregation,\n-#       draft_window_size, enable_dsa_cp, suffix\n+#       V2-ready (pooling KV, draft_window_size, suffix\n #       speculative decoding, ngram speculative decoding, draft_model\n #       speculative decoding, dflash2 graph, and p-eagle)\n #       default to v1."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+Sending build context to Docker daemon  19.23MB
+Step 1/8 : FROM hy4-codex:a5-cann9.1-20261027-candidate
+ ---> f80015ccb044
+Step 2/8 : COPY model_openbox/ /codex/model_openbox/
+ ---> 513764b35144
+Step 3/8 : COPY performance/ /codex/performance/
+ ---> 8e73c3cb3b31
+Step 4/8 : COPY node_modules/ /codex/tools/node_modules/
+ ---> 97ea9dd2f410
+Step 5/8 : COPY scripts/ /codex/scripts/
+ ---> 28b7e5a4b660
+Step 6/8 : COPY logs/resume-exclusive/ /codex/logs/resume-exclusive/
+ ---> dd15a7d95c94
+Step 7/8 : COPY IMAGE-README.zh-CN.md /codex/IMAGE-README.zh-CN.md
+ ---> 83d7bd8560d0
+Step 8/8 : LABEL hy4.excel.export="verified-fallback-sheetjs-xlsx-calc" hy4.core.source="unchanged-from-98-test-validated-candidate"
+ ---> Running in bb4bfe602f3c
+Removing intermediate container bb4bfe602f3c
+ ---> 81d4c9171a24
+Successfully built 81d4c9171a24
+Successfully tagged hy4-codex:a5-cann9.1-20261027-final-candidate

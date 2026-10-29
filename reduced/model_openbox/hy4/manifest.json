@@ -1,0 +1,412 @@
+{
+  "created_utc": "2026-10-27T14:12:31.918448+00:00",
+  "host": "177.8.21.1",
+  "workspace": "/data/x00951564/codex-hy4-20261027-oldhost-revalidation",
+  "status": "validated_with_explicit_blockers",
+  "validation_scope": "functional_smoke",
+  "weight_kind": "reduced_synthetic",
+  "model_path": "/models/Hy4-2L",
+  "model_identity": {
+    "config.json": "61500138054addf47b80d73f9a0ffe209f6797ac797f1875987d612b01e2b7cb",
+    "model.safetensors.index.json": "328102a28b49e901f60103417bff14e96bacdabc04f6cec721bda8901c36c167"
+  },
+  "source_files": {
+    "vllm/vllm/models/hy_v4/nvidia/model.py": {
+      "sha256": "bd0d31316c596dd58faf33966ac1fdd0de5974fa3bd3e3aef24e2a7cc001929f",
+      "reference_sha256": "bd0d31316c596dd58faf33966ac1fdd0de5974fa3bd3e3aef24e2a7cc001929f"
+    },
+    "vllm-ascend/vllm_ascend/patch/worker/patch_hy4_reload.py": {
+      "sha256": "73e9c256f6122a03b941a539999686ac451c43ba5136a4151379ccd25fe09005",
+      "reference_sha256": "73e9c256f6122a03b941a539999686ac451c43ba5136a4151379ccd25fe09005"
+    },
+    "vllm-ascend/vllm_ascend/distributed/weight_transfer/hccl_engine.py": {
+      "sha256": "08e60dd09cee42ecb8d03107c3cb88dadafd1336564f93adbdcc00d24cf81ecb",
+      "reference_sha256": "9f57afc8fb28df42763370ae2efdaeca99464aae479f84496f42d7f5f9fff03f"
+    },
+    "vllm-ascend/vllm_ascend/distributed/weight_transfer/npu_ipc_engine.py": {
+      "sha256": "fc51a52a9c928af956186134d45084bdeb0f96c1ed5fc66001c4e4b7eacc2473",
+      "reference_sha256": "fc51a52a9c928af956186134d45084bdeb0f96c1ed5fc66001c4e4b7eacc2473"
+    },
+    "vllm-ascend/vllm_ascend/distributed/weight_transfer/packed_tensor.py": {
+      "sha256": "fa655feb33e9fb4a08b009e12c83691b20f97ecaf75d53b72860d58ac89619a8",
+      "reference_sha256": "fa655feb33e9fb4a08b009e12c83691b20f97ecaf75d53b72860d58ac89619a8"
+    },
+    "vllm-ascend/tests/ut/models/test_hy_v4.py": {
+      "sha256": "942d8193eea485c15465e0af5c541ffb7dc2e3d421708a28be6da3ab5b348b35",
+      "reference_sha256": "942d8193eea485c15465e0af5c541ffb7dc2e3d421708a28be6da3ab5b348b35"
+    },
+    "vllm-ascend/tests/ut/distributed/weight_transfer/test_hccl_engine.py": {
+      "sha256": "5f57cc49fd516280e16828f75b34afdfdcf9c9ce394af4ef245e18884ab047b5",
+      "reference_sha256": "cfafc848d8c8f9382974b98c33fdd01c7eb143b54dab3693594eba4eee15c7d3"
+    },
+    "vllm-ascend/tests/ut/distributed/weight_transfer/test_npu_ipc_engine.py": {
+      "sha256": "6479c83da1c84c4692c56854f92323202d84b30bee4721a0aa57aeff64e992c5",
+      "reference_sha256": "6479c83da1c84c4692c56854f92323202d84b30bee4721a0aa57aeff64e992c5"
+    },
+    "vllm-ascend/tests/ut/distributed/weight_transfer/test_packed_tensor.py": {
+      "sha256": "c603f7b1237d094124b0af762c3c41a62871b907252984c71af32924663f4eb0",
+      "reference_sha256": "c603f7b1237d094124b0af762c3c41a62871b907252984c71af32924663f4eb0"
+    }
+  },
+  "authorized_devices": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "reserved_for_colleagues": [
+    0,
+    1
+  ],
+  "models": {
+    "2L": {
+      "path": "/models/Hy4-2L",
+      "identity": {
+        "config.json": "61500138054addf47b80d73f9a0ffe209f6797ac797f1875987d612b01e2b7cb",
+        "model.safetensors.index.json": "328102a28b49e901f60103417bff14e96bacdabc04f6cec721bda8901c36c167"
+      }
+    },
+    "6L": {
+      "path": "/models/Hy4-6L",
+      "identity": {
+        "config.json": "82a72ffe18a3f009e3fd7165651b94edca28e5855e4ce204a53aff6b924c73ec",
+        "model.safetensors.index.json": "a14f2aa89fbad9ec08145f0acd12d0a1f8a5c3ffedbb2c3ae3a0a59a84ef88f5"
+      }
+    }
+  },
+  "preflight": {
+    "host": "177.8.21.1",
+    "source_hashes_match": true,
+    "model_identity_match": true,
+    "torch": "2.10.0+cpu",
+    "torch_npu": "2.10.0.post4",
+    "devices": [
+      {
+        "logical_device": 0,
+        "physical_device": 6,
+        "matmul": "passed"
+      },
+      {
+        "logical_device": 1,
+        "physical_device": 7,
+        "matmul": "passed"
+      }
+    ],
+    "status": "passed"
+  },
+  "unit_tests": {
+    "passed": 98,
+    "warnings": 15,
+    "evidence": "logs/resume-exclusive/prefinalize-final-unit.log"
+  },
+  "dataset_evaluation": {
+    "enabled": false,
+    "reason": "reduced-layer functional scope; full model accuracy excluded"
+  },
+  "performance_collection": {
+    "status": "passed",
+    "profile_phase": "middle",
+    "profile_steps": 10,
+    "actual_input_tokens": 32768,
+    "actual_output_tokens": 4096,
+    "devices": [
+      2,
+      3
+    ]
+  },
+  "changed_since_reference": [
+    "vllm-ascend/tests/ut/distributed/weight_transfer/test_hccl_engine.py",
+    "vllm-ascend/vllm_ascend/distributed/weight_transfer/hccl_engine.py"
+  ],
+  "weight_scope": "reduced_checkpoints; no full-scale accuracy claim",
+  "verification_matrix": [
+    {
+      "scenario": "2L TP1 HCCL 图模式 packed，持续通信器 3 轮",
+      "status": "passed",
+      "evidence": "hccl-graph.json",
+      "note": "此前版本；完整更新逐轮严格一致"
+    },
+    {
+      "scenario": "2L TP1 HCCL 图模式，重新初始化通信器 1",
+      "status": "passed",
+      "evidence": "hccl-reinit-1.json",
+      "note": "每轮新 producer、销毁并重建通信组"
+    },
+    {
+      "scenario": "2L TP1 HCCL 图模式，重新初始化通信器 2",
+      "status": "passed",
+      "evidence": "hccl-reinit-2.json",
+      "note": "每轮新 producer、销毁并重建通信组"
+    },
+    {
+      "scenario": "2L TP1 HCCL 图模式，重新初始化通信器 3",
+      "status": "passed",
+      "evidence": "hccl-reinit-3.json",
+      "note": "每轮新 producer、销毁并重建通信组"
+    },
+    {
+      "scenario": "2L TP1 HCCL 图模式 unpacked",
+      "status": "passed",
+      "evidence": "hccl-unpacked-staged.json",
+      "note": "显式 CPU staging，实际通过 NPU/HCCL 传输"
+    },
+    {
+      "scenario": "2L TP2 IPC 图模式 packed",
+      "status": "passed",
+      "evidence": "ipc-graph.json",
+      "note": "跨多个 chunk 的完整 checkpoint 事务"
+    },
+    {
+      "scenario": "2L TP2 checkpoint 图模式，连续 3 轮",
+      "status": "passed",
+      "evidence": "checkpoint-graph.json",
+      "note": "完整 sleep2/reload/wake"
+    },
+    {
+      "scenario": "2L TP2 sink/expert 权重 A-B-A",
+      "status": "passed",
+      "evidence": "variants-graph.json",
+      "note": "修改权重后输出改变，恢复 A 后完全一致"
+    },
+    {
+      "scenario": "6L TP2 HCCL eager，缓存修复后",
+      "status": "passed",
+      "evidence": "hccl-6l-eager-cachefix.json",
+      "note": "含临时内存诊断打印；最终代码已移除打印"
+    },
+    {
+      "scenario": "6L TP2 HCCL 图模式，最终修复代码",
+      "status": "passed",
+      "evidence": "hccl-6l-graph-cachefix.json",
+      "note": "810 张量；原 TP2、8 GiB KV 配置复验"
+    },
+    {
+      "scenario": "6L TP2 checkpoint 图模式，连续 3 轮",
+      "status": "passed",
+      "evidence": "checkpoint-6l-graph.json",
+      "note": "两接口每轮 text/token/logprob 完全一致"
+    },
+    {
+      "scenario": "6L TP4 IPC 图模式 packed",
+      "status": "passed",
+      "evidence": "ipc-6l-tp4-graph.json",
+      "note": "4 个同卡 producer；810 张量；两接口严格一致"
+    },
+    {
+      "scenario": "2L TP2 图模式基线",
+      "status": "passed",
+      "evidence": "feature-baseline.json",
+      "note": "物理卡 2、3"
+    },
+    {
+      "scenario": "2L TP2 SP/FlashComm1",
+      "status": "passed",
+      "evidence": "feature-sp.json",
+      "note": "与同 TP2 基线对照；记录精确 logprob 相等与否"
+    },
+    {
+      "scenario": "2L TP1×PP2 流水线并行",
+      "status": "passed",
+      "evidence": "feature-pp.json",
+      "note": "与 TP1×PP1 对照，避免混入 TP 变化"
+    },
+    {
+      "scenario": "2L DP2×TP2，EP4 图模式",
+      "status": "passed",
+      "evidence": "feature-dp.json",
+      "note": "实际启动两个 DP engine、四个 worker"
+    },
+    {
+      "scenario": "2L DP2×TP2 双接口并发",
+      "status": "passed",
+      "evidence": "feature-dp-concurrent.json",
+      "note": "并发 4，24 次接口请求均成功"
+    },
+    {
+      "scenario": "2L TP2 R3，HTTP 双接口",
+      "status": "passed",
+      "evidence": "feature-r3.json",
+      "note": "V2 runner；解码 base64 npy，检查层数/top-k/专家范围"
+    },
+    {
+      "scenario": "2L TP2 R3，进程内 LLM",
+      "status": "passed",
+      "evidence": "feature-r3-inproc.json",
+      "note": "显式 spawn；路由数组为 uint8，形状包含 2 层、top-k 8"
+    },
+    {
+      "scenario": "2L+MTP TP2 图模式",
+      "status": "passed",
+      "evidence": "feature-mtp.json",
+      "note": "草稿 60 token、接受 0；仅功能通过，无加速结论"
+    },
+    {
+      "scenario": "pause/resume 双接口一致性",
+      "status": "passed",
+      "evidence": "pause-consistency.json",
+      "note": "在 MTP 服务上确认暂停状态并恢复，严格对比输出"
+    },
+    {
+      "scenario": "2L 多模态 32768/4096，中段 10 步采集",
+      "status": "passed",
+      "evidence": "profile-final.json",
+      "note": "两个 rank，物理卡 2、3；仅减层采集流程"
+    },
+    {
+      "scenario": "单卡算子测算 / Excel 导出",
+      "status": "passed",
+      "evidence": "hardware-efficiency-export.json",
+      "note": "公开库备用导出器生成 Excel；逐调用公式、阈值修改及文件重开重算均通过"
+    },
+    {
+      "scenario": "最终镜像，无源码挂载，6L TP2 HCCL 图模式",
+      "status": "passed",
+      "evidence": "image-hccl-6l-graph.json",
+      "note": "810 张量；双接口 text/token/logprob 严格一致；卡已释放"
+    }
+  ],
+  "baseline_special_config": {
+    "source": "inherited authorized baseline",
+    "tp": 2,
+    "ep": true,
+    "dp": 1,
+    "pp": 1,
+    "rl_config": {
+      "enabled": true
+    },
+    "graph": "FULL_DECODE_ONLY",
+    "capture_sizes": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "kv_bytes_per_worker": 8589934592,
+    "max_model_len": 2048,
+    "max_num_seqs": 8,
+    "memory_utilization_argument": 0.85,
+    "note": "Fixed KV overrides automatic utilization-based KV sizing. Profiling independently prechecked with max_model_len=36864, max_num_seqs=1, capture_sizes=[1]."
+  },
+  "environment_prerequisites": {
+    "base_image_id": "sha256:1ba11fc501306b7ef44b2dcbb7e1fea69a33bc18ca0a7a48c1ede76874a3d6cf",
+    "local_repairs": "nine source/test files; no PR opened",
+    "cann": "9.1",
+    "torch": "2.10.0+cpu",
+    "torch_npu": "2.10.0.post4",
+    "triton_ascend": "3.6.0"
+  },
+  "hardware_efficiency_excel": {
+    "feature": "hardware_efficiency_excel",
+    "status": "passed",
+    "validation_scope": "functional_smoke",
+    "original_exporter": "Original exporter unavailable; see process narrative. Only successful fallback export evidence is included.",
+    "fallback_libraries": {
+      "xlsx": "0.18.5",
+      "xlsx-calc": "0.9.2"
+    },
+    "workbook": "/codex/performance/hardware_efficiency.xlsx",
+    "workbook_sha256": "74edde27e5b74b997b064aa111ceb92a7f0d24b067efacf79d0d9a95bc9b21ce",
+    "source_csv_sha256": "9f611d8095dc83b256c66b1c38edad540bb115943fb48cf65e7d0e9857e1d514",
+    "physical_device": "2",
+    "compute_calls": 2250,
+    "excluded_calls": 130,
+    "weighted_attainment": 1.0972280024166783,
+    "checks": {
+      "all_kernel_formulas_match_json": true,
+      "summary_formulas_match_json": true,
+      "editable_parameter_recalculation": true,
+      "restored_defaults_match": true,
+      "saved_workbook_reopened_and_recalculated": true
+    },
+    "parameter_change_probe": {
+      "ceiling": 0.9,
+      "short_kernel_us": 12,
+      "weighted_attainment": 0.999004114014798
+    },
+    "note": "计算算子耗时加权的经验达成率；未计通信、空闲和重叠，不等同端到端吞吐或加速比。"
+  },
+  "image_validation": {
+    "status": "passed",
+    "created_utc": "2026-10-27T14:23:10.977Z",
+    "image_tag": "hy4-codex:a5-cann9.1-20261027-verified",
+    "image_id": "sha256:81d4c9171a24404d669f6b161c4f3abea70bb928e534126bea29d57198ecfa45",
+    "image_uncompressed_bytes": 26706248200,
+    "base_image_id": "sha256:1ba11fc501306b7ef44b2dcbb7e1fea69a33bc18ca0a7a48c1ede76874a3d6cf",
+    "source_manifest_sha256": "af15727eeeb457eec1a680903b722c882af94280f3759e1b32a31e864b0ca6e6",
+    "source_file_count": 9,
+    "runtime_versions": {
+      "torch": "2.10.0",
+      "torch-npu": "2.10.0.post4",
+      "triton-ascend": "3.6.0",
+      "torch_runtime": "2.10.0+cpu"
+    },
+    "source_mounts": false,
+    "external_mounts": [
+      {
+        "Type": "bind",
+        "Source": "/data/x00951564/models",
+        "Destination": "/models",
+        "Mode": "ro",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/usr/local/Ascend/driver",
+        "Destination": "/usr/local/Ascend/driver",
+        "Mode": "ro",
+        "RW": false,
+        "Propagation": "rprivate"
+      }
+    ],
+    "physical_inference_devices": [
+      6,
+      7
+    ],
+    "physical_producer_device": 5,
+    "npu_validation": {
+      "model": "/models/Hy4-6L",
+      "tensor_count": 810,
+      "tp": 2,
+      "graph_mode": "FULL_DECODE_ONLY",
+      "capture_sizes": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "weight_transfer": "packed HCCL with explicit CPU staging",
+      "checkpoint_manifest_sha256": "93e8d554c12a57ca6c39dc8b372a53ced4de8fc060daae57e33129e82288c970",
+      "endpoint_checks": {
+        "/v1/completions": true,
+        "/v1/chat/completions": true
+      },
+      "all_text_tokens_logprobs_exact": true,
+      "evidence": "logs/resume-exclusive/image-hccl-6l-graph.json"
+    },
+    "cpu_units": {
+      "passed": 98,
+      "warnings": 15,
+      "scope": "same frozen production source and runtime in the parent candidate; final overlay only changes reports/Excel/export helper/probe",
+      "torch_device_backend_autoload": "0 for CPU mock fixture tests only; NPU inference uses normal backend loading",
+      "evidence": "logs/resume-exclusive/image-unit.log"
+    },
+    "excel": {
+      "status": "passed",
+      "sha256": "74edde27e5b74b997b064aa111ceb92a7f0d24b067efacf79d0d9a95bc9b21ce",
+      "formula_recalculation": true
+    },
+    "archive": {
+      "path": "/mnt/share/x00951564/codex-transfer-20261027/hy4-codex-a5-cann9.1-20261027-verified.tar.gz",
+      "status": "passed",
+      "sha256": "18d57f4dd20279e6594daabdc3a03c55b209c43b8a706dad5cfaa0d723282f40",
+      "bytes": 10150827612,
+      "gzip_test": "passed",
+      "completed_utc": "2026-10-27T14:27:57.846Z"
+    },
+    "cards_released": true
+  },
+  "delivery_policy": "success_only_raw_evidence; failed/incomplete trial data excluded; limitations and failure analysis retained in prose"
+}

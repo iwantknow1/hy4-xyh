@@ -1,0 +1,8 @@
+Functional test: Hy4-2L, inference TP1 on physical NPU6, producer NPU7.
+Available HBM per NPU: approximately 91.7 GiB.
+Checkpoint: 24.80 GiB; maximum checkpoint tensor 12.00 GiB.
+Conservative receiver budget: weights ~27 GiB + pending checkpoint payload
+~25 GiB + materialized MoE ~18 GiB + transpose scratch ~12 GiB = ~82 GiB.
+KV cache is explicitly capped at 8 GiB and asleep during transfer.
+Producer raw/packed tensors fit within a 48 GiB working budget.
+No other users' NPU processes will be stopped.
