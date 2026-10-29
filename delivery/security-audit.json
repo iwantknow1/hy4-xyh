@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "audited_utc": "2026-10-29T08:01:16.833Z",
+  "checks": {
+    "exact_api_key": true,
+    "known_server_passwords": true,
+    "token_patterns": true,
+    "private_key_blocks": true,
+    "xlsx_uncompressed": true,
+    "all_local_git_blob_objects_including_old_unreachable": true
+  },
+  "counts": {
+    "working_tree_files": 717,
+    "git_blobs": 1044,
+    "expanded_archives": 1
+  },
+  "findings": [],
+  "scope": "Current checkout plus all local Git blobs, including original uploaded archive objects. Secret reference loaded into memory only; values and hashes omitted."
+}
