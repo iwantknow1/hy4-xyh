@@ -1,0 +1,88 @@
+{
+  "source_image": "hy4-codex:a5-cann9.1-four-node-run07-20261029",
+  "source_image_id": "sha256:b4f23be23aa05d77b33c5b1fa7070398986f5b40e3720c18c29289fce866322a",
+  "source_root": "/codex/tooling/skills/",
+  "scope": "Recovered actual adapted profiling and serving tools; no new service or model tests run.",
+  "files": [
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/deployment/vllm-ascend-serving/SKILL.md",
+      "sha256": "adc76bbe10113aaa75a87938164729548b2d829c75340d2788e16387a56e0ddd"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/deployment/vllm-ascend-serving/references/acceptance.md",
+      "sha256": "314a8f5e9be69f08f862d3c4bb5d2098823f9003d1f7abf220ab32d09e37fdc0"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/deployment/vllm-ascend-serving/references/behavior.md",
+      "sha256": "291faf58adaa24a14e43c948a6aa4dbb9cb7b8ecf4b7fa4acd5b413a95c3ffcf"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/deployment/vllm-ascend-serving/references/command-recipes.md",
+      "sha256": "888e3e78085dbdd202b7085ff574c22098a9560384e370fcb4c5d7478fd41314"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/deployment/vllm-ascend-serving/scripts/_common.py",
+      "sha256": "5a616acf6b006eb9a3d18762b763a3fef72d9087ec27f9542f0f44ceca3fa202"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/deployment/vllm-ascend-serving/scripts/serve_probe_npus.py",
+      "sha256": "1761be62f32f2ffaf7b0c6beceb35b772b6e9a3898454f08b7dc4c792bec4531"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/deployment/vllm-ascend-serving/scripts/serve_start.py",
+      "sha256": "fa1e16d058d8d75a2b0456b052e75a70a77f54c0ef07b440d6b6b0a94d8bdc89"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/deployment/vllm-ascend-serving/scripts/serve_status.py",
+      "sha256": "94b9938855eeaca3839594991da0c6e66e4583cabc632f0e4605f489ba9a29bc"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/deployment/vllm-ascend-serving/scripts/serve_stop.py",
+      "sha256": "84e0552481eebab3d365dbb496001ddeba86ad6bab3363a2ff7ab74166b3e24b"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/deployment/vllm-ascend-serving/scripts/workspace_output.py",
+      "sha256": "68c5cca669f6ad617cc297d8f7dec4bb61d7f9305bcbcdf83796bbeeaa75a804"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/deployment/vllm-ascend-serving/scripts/workspace_validate.py",
+      "sha256": "8c5a52143ca92d08a7ebfd0978ca4c22d5b380045344719511fd95edc4afffd9"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/performance-optimization/ascend-profiling-collection/SKILL.md",
+      "sha256": "527d58c5ea01dbb151262022d311d7bb7569b1df51d591b1a0ac233b9ac7b36c"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/performance-optimization/ascend-profiling-collection/references/acceptance.md",
+      "sha256": "f367e3a854a2778805c90552c7d319cab28a9b3741c2ba1cc75af788d115bf3f"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/performance-optimization/ascend-profiling-collection/references/behavior.md",
+      "sha256": "2fc0c46d60d0245c0232d6bd589d062359ff7abea1606ee2eba0bf3a593bea21"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/performance-optimization/ascend-profiling-collection/references/command-recipes.md",
+      "sha256": "925c72797d28c195edaf21b68bf4b2ad0eec4da5af088604f9766f027c5154f9"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/performance-optimization/ascend-profiling-collection/scripts/_common.py",
+      "sha256": "c3fb93658566fc23e2ca24f5627737d068d565228a525d262f980effe197ce74"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/performance-optimization/ascend-profiling-collection/scripts/collect_torch_profile_case.py",
+      "sha256": "4e6816b7622f2b6ee083fb19eab91681edce4bb16d0ff0a5476e4f93ee723a88"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/performance-optimization/ascend-profiling-collection/scripts/profile_control.py",
+      "sha256": "beafd0f507c47d3c0ee8f1e045edff4a5e63ba055269576cd9edaa451832fc55"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/performance-optimization/ascend-profiling-collection/scripts/run_remote_analyse.py",
+      "sha256": "10706436332303aa3f99d5a8995f7f671c26f148c5341ef227f36b105063a1d0"
+    },
+    {
+      "path": "reduced/tooling/skills/inference-model-skills/performance-optimization/ascend-profiling-collection/scripts/tests/test_collection_workloads.py",
+      "sha256": "ffc119aad72543e5d841066282ab6394421532bae106d874d744deb4cefdb332"
+    }
+  ]
+}

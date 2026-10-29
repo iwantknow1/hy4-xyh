@@ -52,6 +52,8 @@ GPQA 198/198 有效，失败 0；HallusionBench 1129/1129 有最终回答，2258
 
 已将 Ascend 侧源码推送到个人 fork 的 `hy4-v0.30.0`：[提交 b74fec8d1](https://github.com/iwantknow1/vllm-ascend-hy4/commit/b74fec8d11cd0e292813ee16ce24ac7e929b4253)。包含实测 runtime 原有的补丁加载入口；源码发布时仅调整 logger 接线。配套 vLLM sink 修复仍在本仓库单独保存，未推入另一个 vLLM 仓库。发布检查及边界见 [source-publication.json](delivery/source-publication.json)。
 
+减层 Profiling 的完整参数、核心采集器和服务依赖见 [配置与脚本索引](docs/REDUCED-PROFILING.md)。
+
 ## 归档约定
 
 本仓库先设为私有。保留成功轮次所需的主机/路径与运行记录，敏感凭据已检查和脱敏；不包含密码、SSH 私钥、裁判 API key、模型权重、容器镜像或内存 core dump。镜像约 10GB，保存于原共享存储，仓库记录镜像 ID、归档路径和 SHA256。原始日志里的绝对路径是当时运行位置，仓库对应关系见证据索引。只交付成功轮次的原始数据和日志；失败经过与未覆盖边界保留文字说明。
