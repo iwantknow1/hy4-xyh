@@ -1,0 +1,25 @@
+{
+  "repository": "https://github.com/iwantknow1/vllm-ascend-hy4",
+  "branch": "hy4-v0.30.0",
+  "base": "a74b08e3f3ec98f5f624cb4a4ab3ae07b2c217b4",
+  "commit": "b74fec8d11cd0e292813ee16ce24ac7e929b4253",
+  "publication_scope": "Ascend source only; companion vLLM sink diff remains separately archived.",
+  "files": {
+    "python": 9,
+    "documentation": 1,
+    "existing_files_exactly_matching_validated_snapshots": 7
+  },
+  "runtime_prerequisite": "Add compatibility module and its worker/__init__.py import, which were already present in the tested image but absent from donor Git. Use shared logger in the added module.",
+  "publication_checks": {
+    "ruff_version": "0.14.0",
+    "ruff_lint": "passed",
+    "ruff_format": "9 files passed",
+    "python_ast": "9 files passed",
+    "git_diff_check": "passed",
+    "logger_policy": "passed",
+    "sensitive_pattern_scan": "no findings",
+    "full_format_ci": "incomplete: timeout after 120s while installing pre-commit Ruff environment; no full-hook pass claimed"
+  },
+  "model_tests": "No additional model tests or benchmarks run, per user instruction. Existing 98-unit-test and NPU evidence is preserved unchanged in this archive.",
+  "ai_assisted": true
+}
