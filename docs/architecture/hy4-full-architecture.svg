@@ -1,0 +1,354 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="3200" viewBox="0 0 2400 3200"><defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L9,4.5 L0,9 Z" fill="#708092"/></marker><marker id="callout" markerWidth="8" markerHeight="8" refX="4" refY="4"><circle cx="4" cy="4" r="3" fill="#708092"/></marker></defs><style>text{font-family:'Microsoft YaHei','Noto Sans CJK SC','Arial',sans-serif;fill:#172433} .mono{font-family:Consolas,'DejaVu Sans Mono',monospace}</style><rect width="2400" height="3200" fill="white"/>
+<text x="1200" y="80" font-size="58" fill="#172433" text-anchor="middle" font-weight="700" style="fill:#172433">HY4 正式版 · 模型结构图</text>
+<text x="1200" y="130" font-size="28" fill="#607184" text-anchor="middle" font-weight="400" style="fill:#607184">HYV4VLForConditionalGeneration  |  全量 BF16 配置  |  78 层语言骨干 + 40 层视觉编码器</text>
+<text x="1200" y="172" font-size="23" fill="#607184" text-anchor="middle" font-weight="400" style="fill:#607184">主干数据流自下向上；虚线框为模块展开，尺寸均为逻辑维度，不代表 TP/EP 分片</text>
+<rect x="800" y="220" width="650" height="1860" rx="17" fill="#fff" stroke="#596776" stroke-width="2" stroke-dasharray="10 7"/>
+<text x="825" y="263" font-size="31" fill="#596776" text-anchor="start" font-weight="700" style="fill:#596776">LANGUAGE BACKBONE · 78 层</text>
+<rect x="915" y="295" width="420" height="65" rx="11" fill="#596776" stroke="#596776" stroke-width="1.8"/>
+<text x="1125" y="319.7" font-size="24" fill="#fff" text-anchor="middle" font-weight="600" style="fill:#fff">LM Head → logits</text>
+<text x="1125" y="352.1" font-size="24" fill="#fff" text-anchor="middle" font-weight="400" style="fill:#fff">6144 → 120832</text>
+<rect x="915" y="405" width="420" height="60" rx="11" fill="#596776" stroke="#596776" stroke-width="1.8"/>
+<text x="1125" y="443.75" font-size="25" fill="#fff" text-anchor="middle" font-weight="600" style="fill:#fff">Final RMSNorm</text>
+<polyline points="1125,405 1125,360" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="915" y="510" width="420" height="60" rx="11" fill="#f2ecfa" stroke="#7951ae" stroke-width="1.8"/>
+<text x="1125" y="548.4" font-size="24" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">iHC Head：4 通道 → 1 通道</text>
+<polyline points="1125,510 1125,465" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="825" y="625" width="600" height="770" rx="14" fill="#fcfbfe" stroke="#7951ae" stroke-width="2"/>
+<text x="1125" y="610" font-size="28" fill="#7951ae" text-anchor="middle" font-weight="700" style="fill:#7951ae">Decoder 1–77：MoE 层 × 77</text>
+<polyline points="1125,625 1125,570" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="880" y="655" width="490" height="60" rx="11" fill="#f2ecfa" stroke="#7951ae" stroke-width="1.8"/>
+<text x="1125" y="693.75" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">iHC Post（FFN）</text>
+<rect x="880" y="745" width="490" height="60" rx="11" fill="#eef7e8" stroke="#4d8836" stroke-width="1.8"/>
+<text x="1125" y="783.75" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">MoE：Top-8 / 256 + 1 shared</text>
+<polyline points="1125,745 1125,715" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="880" y="835" width="490" height="60" rx="11" fill="#596776" stroke="#596776" stroke-width="1.8"/>
+<text x="1125" y="873.75" font-size="25" fill="#fff" text-anchor="middle" font-weight="600" style="fill:#fff">RMSNorm</text>
+<polyline points="1125,835 1125,805" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="880" y="925" width="490" height="60" rx="11" fill="#f2ecfa" stroke="#7951ae" stroke-width="1.8"/>
+<text x="1125" y="963.75" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">iHC Pre（FFN）</text>
+<polyline points="1125,925 1125,895" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="880" y="1015" width="490" height="60" rx="11" fill="#f2ecfa" stroke="#7951ae" stroke-width="1.8"/>
+<text x="1125" y="1053.75" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">iHC Post（Attention）</text>
+<polyline points="1125,1015 1125,985" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="880" y="1105" width="490" height="60" rx="11" fill="#fff3e2" stroke="#c77616" stroke-width="1.8"/>
+<text x="1125" y="1143.75" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">Gated Sparse MLA / DSA</text>
+<polyline points="1125,1105 1125,1075" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="880" y="1195" width="490" height="60" rx="11" fill="#596776" stroke="#596776" stroke-width="1.8"/>
+<text x="1125" y="1233.75" font-size="25" fill="#fff" text-anchor="middle" font-weight="600" style="fill:#fff">RMSNorm</text>
+<polyline points="1125,1195 1125,1165" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="880" y="1285" width="490" height="60" rx="11" fill="#f2ecfa" stroke="#7951ae" stroke-width="1.8"/>
+<text x="1125" y="1323.75" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">iHC Pre（Attention）</text>
+<polyline points="1125,1285 1125,1255" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<text x="1125" y="1375" font-size="23" fill="#7951ae" text-anchor="middle" font-weight="400" style="fill:#7951ae">多通道残差：X ∈ [T, 4, 6144]</text>
+<rect x="825" y="1470" width="600" height="365" rx="14" fill="#fcfbfe" stroke="#7951ae" stroke-width="2"/>
+<text x="1125" y="1450" font-size="28" fill="#7951ae" text-anchor="middle" font-weight="700" style="fill:#7951ae">Decoder 0：Dense 层 × 1</text>
+<polyline points="1125,1470 1125,1395" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="870" y="1510" width="510" height="115" rx="11" fill="#eef7e8" stroke="#4d8836" stroke-width="1.8"/>
+<text x="1125" y="1543.5" font-size="24" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">iHC Pre → RMSNorm → Dense SwiGLU</text>
+<text x="1125" y="1575.9" font-size="24" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">→ iHC Post</text>
+<text x="1125" y="1608.3" font-size="24" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">FFN：6144 → 18432 → 6144</text>
+<rect x="870" y="1680" width="510" height="110" rx="11" fill="#fff3e2" stroke="#c77616" stroke-width="1.8"/>
+<text x="1125" y="1727.2" font-size="24" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">iHC Pre → RMSNorm</text>
+<text x="1125" y="1759.6000000000001" font-size="24" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">→ Gated Sparse MLA → iHC Post</text>
+<polyline points="1125,1680 1125,1625" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="890" y="1920" width="470" height="70" rx="11" fill="#f2ecfa" stroke="#7951ae" stroke-width="1.8"/>
+<text x="1125" y="1947.5249999999999" font-size="23" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">iHC Expand：复制为 4 条残差通道</text>
+<text x="1125" y="1978.5749999999998" font-size="23" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">[T, 6144] → [T, 4, 6144]</text>
+<polyline points="1125,1920 1125,1835" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="845" y="2160" width="560" height="90" rx="11" fill="#edf5fd" stroke="#2779b7" stroke-width="1.8"/>
+<text x="1125" y="2196.875" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">多模态 embedding 合并 / 占位替换</text>
+<text x="1125" y="2230.625" font-size="25" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">统一序列 [T, 6144] + MRoPE positions</text>
+<polyline points="1125,2160 1125,1990" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="50" y="220" width="690" height="760" rx="17" fill="#fff" stroke="#7951ae" stroke-width="2" stroke-dasharray="10 7"/>
+<text x="75" y="263" font-size="31" fill="#7951ae" text-anchor="start" font-weight="700" style="fill:#7951ae">iHC · 4 通道超连接</text>
+<text x="395" y="310" font-size="23" fill="#607184" text-anchor="middle" font-weight="400" style="fill:#607184">每个 Attention / FFN 子层独立包裹</text>
+<rect x="190" y="345" width="450" height="60" rx="11" fill="#f2ecfa" stroke="#7951ae" stroke-width="1.8"/>
+<text x="415" y="383.75" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">输出 X′ ∈ [T, 4, 6144]</text>
+<rect x="190" y="460" width="450" height="80" rx="11" fill="#f2ecfa" stroke="#7951ae" stroke-width="1.8"/>
+<text x="415" y="491.875" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">iHC Post：逐通道回写</text>
+<text x="415" y="525.625" font-size="25" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">X′ᵢ = Xᵢ + postᵢ · F(y)</text>
+<polyline points="415,460 415,405" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="245" y="610" width="340" height="75" rx="11" fill="#596776" stroke="#596776" stroke-width="1.8"/>
+<text x="415" y="655.9" font-size="24" fill="#fff" text-anchor="middle" font-weight="600" style="fill:#fff">F = Attention 或 FFN</text>
+<polyline points="415,610 415,540" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="190" y="755" width="450" height="80" rx="11" fill="#f2ecfa" stroke="#7951ae" stroke-width="1.8"/>
+<text x="415" y="786.875" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">iHC Pre：动态门控加权聚合</text>
+<text x="415" y="820.625" font-size="25" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">y = Σ preᵢ · Xᵢ</text>
+<polyline points="415,755 415,685" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="190" y="895" width="450" height="55" rx="11" fill="#f2ecfa" stroke="#7951ae" stroke-width="1.8"/>
+<text x="415" y="930.9" font-size="24" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">输入 X ∈ [T, 4, 6144]</text>
+<polyline points="415,895 415,835" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<polyline points="190,922 110,922 110,500 190,500" fill="none" stroke="#7951ae" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<text x="100" y="715" font-size="21" fill="#7951ae" text-anchor="middle" font-weight="400" style="fill:#7951ae">残差</text>
+<polyline points="640,795 690,795 690,500 640,500" fill="none" stroke="#7951ae" stroke-width="2.3" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<text x="690" y="705" font-size="20" fill="#7951ae" text-anchor="middle" font-weight="400" style="fill:#7951ae">post</text>
+<text x="690" y="735" font-size="20" fill="#7951ae" text-anchor="middle" font-weight="400" style="fill:#7951ae">gates</text>
+<rect x="50" y="1030" width="690" height="700" rx="17" fill="#fff" stroke="#7951ae" stroke-width="2" stroke-dasharray="10 7"/>
+<text x="75" y="1073" font-size="31" fill="#7951ae" text-anchor="start" font-weight="700" style="fill:#7951ae">Lightning Indexer · Top-K 共享</text>
+<text x="395" y="1118" font-size="23" fill="#607184" text-anchor="middle" font-weight="400" style="fill:#607184">32 heads × 128D；每次选择 Top-2048 位置</text>
+<rect x="135" y="1155" width="520" height="65" rx="11" fill="#f2ecfa" stroke="#7951ae" stroke-width="1.8"/>
+<text x="395" y="1195.55" font-size="23" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">hidden_states + MLA q_lora features</text>
+<rect x="135" y="1250" width="520" height="65" rx="11" fill="#f2ecfa" stroke="#7951ae" stroke-width="1.8"/>
+<text x="395" y="1291.25" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">轻量 Q/K 打分 → Top-K 位置选择</text>
+<polyline points="395,1220 395,1250" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="135" y="1345" width="520" height="65" rx="11" fill="#edf5fd" stroke="#2779b7" stroke-width="1.8"/>
+<text x="395" y="1385.2" font-size="22" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">full：计算索引；shared：复用最近 full 的索引</text>
+<polyline points="395,1315 395,1345" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<text x="90" y="1455" font-size="23" fill="#607184" text-anchor="start" font-weight="400" style="fill:#607184">78 层索引模式（按第 1～78 层编号）</text>
+<rect x="90" y="1480" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="136" y="1480" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="182" y="1480" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="228" y="1480" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="274" y="1480" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="320" y="1480" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="366" y="1480" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="412" y="1480" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="458" y="1480" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="504" y="1480" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="550" y="1480" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="596" y="1480" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="642" y="1480" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="90" y="1509" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="136" y="1509" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="182" y="1509" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="228" y="1509" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="274" y="1509" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="320" y="1509" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="366" y="1509" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="412" y="1509" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="458" y="1509" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="504" y="1509" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="550" y="1509" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="596" y="1509" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="642" y="1509" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="90" y="1538" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="136" y="1538" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="182" y="1538" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="228" y="1538" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="274" y="1538" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="320" y="1538" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="366" y="1538" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="412" y="1538" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="458" y="1538" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="504" y="1538" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="550" y="1538" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="596" y="1538" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="642" y="1538" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="90" y="1567" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="136" y="1567" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="182" y="1567" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="228" y="1567" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="274" y="1567" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="320" y="1567" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="366" y="1567" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="412" y="1567" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="458" y="1567" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="504" y="1567" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="550" y="1567" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="596" y="1567" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="642" y="1567" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="90" y="1596" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="136" y="1596" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="182" y="1596" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="228" y="1596" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="274" y="1596" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="320" y="1596" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="366" y="1596" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="412" y="1596" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="458" y="1596" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="504" y="1596" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="550" y="1596" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="596" y="1596" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="642" y="1596" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="90" y="1625" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="136" y="1625" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="182" y="1625" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="228" y="1625" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="274" y="1625" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="320" y="1625" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="366" y="1625" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="412" y="1625" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="458" y="1625" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="504" y="1625" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="550" y="1625" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="596" y="1625" width="34" height="18" rx="4" fill="#e9e0f4"/>
+<rect x="642" y="1625" width="34" height="18" rx="4" fill="#7951ae"/>
+<rect x="90" y="1670" width="175" height="44" rx="11" fill="#f2ecfa" stroke="#7951ae" stroke-width="1.8"/>
+<text x="177.5" y="1699.35" font-size="21" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">21 full</text>
+<rect x="285" y="1670" width="175" height="44" rx="11" fill="#fff" stroke="#7951ae" stroke-width="1.8"/>
+<text x="372.5" y="1699.35" font-size="21" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">57 shared</text>
+<text x="485" y="1698" font-size="19" fill="#607184" text-anchor="start" font-weight="400" style="fill:#607184">非全/稀疏注意力切换</text>
+<rect x="50" y="1790" width="690" height="440" rx="17" fill="#fff" stroke="#596776" stroke-width="2" stroke-dasharray="10 7"/>
+<text x="75" y="1833" font-size="31" fill="#596776" text-anchor="start" font-weight="700" style="fill:#596776">核心维度与配置</text>
+<text x="80" y="1880" font-size="22" fill="#607184" text-anchor="start" font-weight="400" style="fill:#607184">语言 hidden size</text>
+<text x="705" y="1880" font-size="22" fill="#172433" text-anchor="end" font-weight="500" style="fill:#172433">6144</text>
+<text x="80" y="1927" font-size="22" fill="#607184" text-anchor="start" font-weight="400" style="fill:#607184">Q heads / QK head dim</text>
+<text x="705" y="1927" font-size="22" fill="#172433" text-anchor="end" font-weight="500" style="fill:#172433">64 / 256（192 NoPE + 64 RoPE）</text>
+<text x="80" y="1974" font-size="22" fill="#607184" text-anchor="start" font-weight="400" style="fill:#607184">V head dim / Q LoRA rank</text>
+<text x="705" y="1974" font-size="22" fill="#172433" text-anchor="end" font-weight="500" style="fill:#172433">256 / 2048</text>
+<text x="80" y="2021" font-size="22" fill="#607184" text-anchor="start" font-weight="400" style="fill:#607184">KV latent rank</text>
+<text x="705" y="2021" font-size="22" fill="#172433" text-anchor="end" font-weight="500" style="fill:#172433">512（位置分量另 64）</text>
+<text x="80" y="2068" font-size="22" fill="#607184" text-anchor="start" font-weight="400" style="fill:#607184">Vocab / Embedding tied</text>
+<text x="705" y="2068" font-size="22" fill="#172433" text-anchor="end" font-weight="500" style="fill:#172433">120832 / false</text>
+<text x="80" y="2115" font-size="22" fill="#607184" text-anchor="start" font-weight="400" style="fill:#607184">RoPE θ / RMSNorm ε</text>
+<text x="705" y="2115" font-size="22" fill="#172433" text-anchor="end" font-weight="500" style="fill:#172433">10⁷ / 10⁻⁵</text>
+<text x="80" y="2162" font-size="22" fill="#607184" text-anchor="start" font-weight="400" style="fill:#607184">配置位置上限</text>
+<text x="705" y="2162" font-size="22" fill="#172433" text-anchor="end" font-weight="500" style="fill:#172433">1048576（1M，非实测结论）</text>
+<rect x="1510" y="220" width="840" height="725" rx="17" fill="#fff" stroke="#4d8836" stroke-width="2" stroke-dasharray="10 7"/>
+<text x="1535" y="263" font-size="31" fill="#4d8836" text-anchor="start" font-weight="700" style="fill:#4d8836">MoE / SwiGLU FFN</text>
+<rect x="1720" y="315" width="420" height="62" rx="11" fill="#eef7e8" stroke="#4d8836" stroke-width="1.8"/>
+<text x="1930" y="354.75" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">输出 [T, 6144]</text>
+<rect x="1720" y="420" width="420" height="62" rx="11" fill="#eef7e8" stroke="#4d8836" stroke-width="1.8"/>
+<text x="1930" y="459.05" font-size="23" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">路由专家加权求和 + 共享专家输出</text>
+<polyline points="1930,420 1930,377" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<text x="1930" y="298" font-size="23" fill="#4d8836" text-anchor="middle" font-weight="600" style="fill:#4d8836">256 routed experts · 每 token 激活 8 个</text>
+<rect x="1540" y="550" width="180" height="90" rx="11" fill="#eef7e8" stroke="#4d8836" stroke-width="1.8"/>
+<text x="1630" y="587.1999999999999" font-size="24" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">Expert 0</text>
+<text x="1630" y="619.5999999999999" font-size="24" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">SwiGLU</text>
+<rect x="1755" y="550" width="180" height="90" rx="11" fill="#eef7e8" stroke="#4d8836" stroke-width="1.8"/>
+<text x="1845" y="587.1999999999999" font-size="24" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">Expert …</text>
+<text x="1845" y="619.5999999999999" font-size="24" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">SwiGLU</text>
+<rect x="1970" y="550" width="180" height="90" rx="11" fill="#eef7e8" stroke="#4d8836" stroke-width="1.8"/>
+<text x="2060" y="587.1999999999999" font-size="24" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">Expert 255</text>
+<text x="2060" y="619.5999999999999" font-size="24" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">SwiGLU</text>
+<rect x="2180" y="550" width="140" height="90" rx="11" fill="#eef7e8" stroke="#4d8836" stroke-width="1.8"/>
+<text x="2250" y="587.85" font-size="22" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">1 shared</text>
+<text x="2250" y="617.5500000000001" font-size="22" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">SwiGLU</text>
+<polyline points="1630,550 1630,500 1860,500 1860,482" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<polyline points="1845,550 1845,500 1860,500 1860,482" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<polyline points="2060,550 2060,500 1860,500 1860,482" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<polyline points="2250,550 2250,450 2140,450" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="1580" y="700" width="520" height="60" rx="11" fill="#edf5fd" stroke="#2779b7" stroke-width="1.8"/>
+<text x="1840" y="738.4" font-size="24" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">Router：sigmoid + bias → Top-8</text>
+<polyline points="1845,700 1845,670 1630,670 1630,640" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<polyline points="1845,700 1845,670 1845,670 1845,640" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<polyline points="1845,700 1845,670 2060,670 2060,640" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="1710" y="810" width="440" height="58" rx="11" fill="#eef7e8" stroke="#4d8836" stroke-width="1.8"/>
+<text x="1930" y="847.75" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">输入 h ∈ [T, 6144]</text>
+<polyline points="1930,810 1930,790 1845,790 1845,760" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<polyline points="2150,838 2250,838 2250,640" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<text x="1930" y="902" font-size="21" fill="#607184" text-anchor="middle" font-weight="400" style="fill:#607184">专家：6144 → 2048 → 6144；SwiGLU = SiLU(gate) ⊙ up → down</text>
+<rect x="1510" y="1005" width="840" height="1180" rx="17" fill="#fff" stroke="#c77616" stroke-width="2" stroke-dasharray="10 7"/>
+<text x="1535" y="1048" font-size="31" fill="#c77616" text-anchor="start" font-weight="700" style="fill:#c77616">Gated Sparse MLA / DSA</text>
+<text x="1930" y="1095" font-size="23" fill="#607184" text-anchor="middle" font-weight="400" style="fill:#607184">64 Q heads；QK = 192 NoPE + 64 RoPE；V = 256</text>
+<rect x="1630" y="1140" width="490" height="65" rx="11" fill="#fff3e2" stroke="#c77616" stroke-width="1.8"/>
+<text x="1875" y="1181.6" font-size="26" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">Wₒ：64 × 256 → 6144</text>
+<circle cx="1875" cy="1285" r="25" fill="#fff3e2" stroke="#c77616" stroke-width="2"/>
+<text x="1875" y="1295" font-size="32" fill="#c77616" text-anchor="middle" font-weight="600" style="fill:#c77616">×</text>
+<polyline points="1875,1260 1875,1205" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="1540" y="1370" width="610" height="95" rx="11" fill="#fff3e2" stroke="#c77616" stroke-width="1.8"/>
+<text x="1845" y="1409.7" font-size="24" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">稀疏 Attention：选中 Top-2048 位置</text>
+<text x="1845" y="1442.1000000000001" font-size="24" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">每 head 的 learnable sink 参与 softmax</text>
+<polyline points="1875,1370 1875,1310" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<text x="1620" y="1528" font-size="23" fill="#c77616" text-anchor="end" font-weight="400" style="fill:#c77616">Q</text>
+<text x="1825" y="1528" font-size="23" fill="#c77616" text-anchor="end" font-weight="400" style="fill:#c77616">K</text>
+<text x="2005" y="1528" font-size="23" fill="#c77616" text-anchor="end" font-weight="400" style="fill:#c77616">V</text>
+<polyline points="1645,1600 1645,1465" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<polyline points="1960,1600 1960,1550 1850,1550 1850,1465" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<polyline points="1960,1550 2030,1550 2030,1465" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="1535" y="1600" width="220" height="95" rx="11" fill="#fff3e2" stroke="#c77616" stroke-width="1.8"/>
+<text x="1645" y="1640.675" font-size="21" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">Q split + MRoPE</text>
+<text x="1645" y="1669.0249999999999" font-size="21" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">192 NoPE | 64 RoPE</text>
+<rect x="1790" y="1600" width="345" height="95" rx="11" fill="#fff3e2" stroke="#c77616" stroke-width="1.8"/>
+<text x="1962.5" y="1626.5" font-size="21" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">KV up-proj / MLA 计算</text>
+<text x="1962.5" y="1654.85" font-size="21" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">K_NoPE 192 + K_RoPE 64</text>
+<text x="1962.5" y="1683.2" font-size="21" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">V 256 / head</text>
+<rect x="1790" y="1755" width="345" height="70" rx="11" fill="#fff0f1" stroke="#b65e66" stroke-width="1.8"/>
+<text x="1962.5" y="1782.8500000000001" font-size="22" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">latent KV cache：512 + 64</text>
+<text x="1962.5" y="1812.5500000000002" font-size="22" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">KV latent + K_RoPE</text>
+<polyline points="1960,1755 1960,1695" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="1535" y="1780" width="220" height="65" rx="11" fill="#fff3e2" stroke="#c77616" stroke-width="1.8"/>
+<text x="1645" y="1819.85" font-size="21" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">Q_b：2048 → 64×256</text>
+<polyline points="1645,1780 1645,1695" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="1535" y="1895" width="220" height="55" rx="11" fill="#596776" stroke="#596776" stroke-width="1.8"/>
+<text x="1645" y="1930.55" font-size="23" fill="#fff" text-anchor="middle" font-weight="600" style="fill:#fff">RMSNorm</text>
+<polyline points="1645,1895 1645,1845" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="1790" y="1895" width="345" height="65" rx="11" fill="#fff3e2" stroke="#c77616" stroke-width="1.8"/>
+<text x="1962.5" y="1920.3500000000001" font-size="22" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">split：latent RMSNorm</text>
+<text x="1962.5" y="1950.0500000000002" font-size="22" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">位置分量使用 MRoPE</text>
+<polyline points="1960,1895 1960,1825" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="1535" y="2000" width="220" height="65" rx="11" fill="#fff3e2" stroke="#c77616" stroke-width="1.8"/>
+<text x="1645" y="2039.85" font-size="21" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">Q_a：6144 → 2048</text>
+<polyline points="1645,2000 1645,1950" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="1790" y="2000" width="345" height="65" rx="11" fill="#fff3e2" stroke="#c77616" stroke-width="1.8"/>
+<text x="1962.5" y="2040.2" font-size="22" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">KV_a：6144 → 512+64</text>
+<polyline points="1960,2000 1960,1960" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="2155" y="1700" width="165" height="75" rx="11" fill="#fff3e2" stroke="#c77616" stroke-width="1.8"/>
+<text x="2237.5" y="1731" font-size="20" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">Sigmoid</text>
+<text x="2237.5" y="1758" font-size="20" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">elementwise</text>
+<rect x="2155" y="1885" width="165" height="95" rx="11" fill="#fff3e2" stroke="#c77616" stroke-width="1.8"/>
+<text x="2237.5" y="1912.5" font-size="20" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">Gate Linear</text>
+<text x="2237.5" y="1939.5" font-size="20" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">6144</text>
+<text x="2237.5" y="1966.5" font-size="20" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">→ 64×256</text>
+<polyline points="2237,1885 2237,1775" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<polyline points="2237,1700 2237,1285 1900,1285" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="1660" y="2110" width="520" height="50" rx="11" fill="#fff3e2" stroke="#c77616" stroke-width="1.8"/>
+<text x="1920" y="2143.05" font-size="23" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">输入 hidden_states [T, 6144]</text>
+<polyline points="1730,2110 1730,2090 1645,2090 1645,2065" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<polyline points="1960,2110 1960,2065" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<polyline points="2100,2110 2237,2110 2237,1980" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<polyline points="1370,775 1480,775 1480,590 1510,590" fill="none" stroke="#4d8836" stroke-width="2.3" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<polyline points="1370,1135 1470,1135 1470,1250 1510,1250" fill="none" stroke="#c77616" stroke-width="2.3" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<polyline points="880,1320 765,1320 765,605 740,605" fill="none" stroke="#7951ae" stroke-width="2.3" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<rect x="50" y="2330" width="1395" height="700" rx="17" fill="#fff" stroke="#118b99" stroke-width="2" stroke-dasharray="10 7"/>
+<text x="75" y="2373" font-size="31" fill="#118b99" text-anchor="start" font-weight="700" style="fill:#118b99">输入与多模态前端 · Vision + Text</text>
+<rect x="95" y="2450" width="650" height="120" rx="11" fill="#e9f7f8" stroke="#118b99" stroke-width="1.8"/>
+<text x="420" y="2486" font-size="24" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">RMSNorm + 2×2 Patch Merger / Adapter</text>
+<text x="420" y="2518.4" font-size="24" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">Conv2D(1536→6144, k=2, s=2) → GELU</text>
+<text x="420" y="2550.8" font-size="24" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">→ Conv2D(6144→6144, k=1)</text>
+<rect x="95" y="2635" width="650" height="125" rx="11" fill="#e9f7f8" stroke="#118b99" stroke-width="1.8"/>
+<text x="420" y="2660.6499999999996" font-size="22" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">Vision Transformer × 40</text>
+<text x="420" y="2690.3499999999995" font-size="22" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">LayerNorm → MHA → residual</text>
+<text x="420" y="2720.0499999999997" font-size="22" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">LayerNorm → MLP → residual</text>
+<text x="420" y="2749.7499999999995" font-size="22" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">hidden=1536；16 heads × 96D；MLP=6144</text>
+<polyline points="420,2635 420,2570" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="95" y="2825" width="650" height="80" rx="11" fill="#e9f7f8" stroke="#118b99" stroke-width="1.8"/>
+<text x="420" y="2857.2000000000003" font-size="24" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">Patch Embedding：16×16 Conv</text>
+<text x="420" y="2889.6000000000004" font-size="24" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">+ 可插值 learned position embedding</text>
+<polyline points="420,2825 420,2760" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="195" y="2950" width="450" height="52" rx="11" fill="#e9f7f8" stroke="#118b99" stroke-width="1.8"/>
+<text x="420" y="2984.75" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">图像 / 视频帧 · RGB</text>
+<polyline points="420,2950 420,2905" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<polyline points="420,2450 420,2280 1000,2280 1000,2250" fill="none" stroke="#118b99" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<text x="420" y="2310" font-size="23" fill="#118b99" text-anchor="middle" font-weight="400" style="fill:#118b99">视觉 tokens：[Nᵥ, 6144]</text>
+<rect x="885" y="2525" width="475" height="85" rx="11" fill="#596776" stroke="#596776" stroke-width="1.8"/>
+<text x="1122.5" y="2559.0499999999997" font-size="26" fill="#fff" text-anchor="middle" font-weight="600" style="fill:#fff">Token Embedding</text>
+<text x="1122.5" y="2594.1499999999996" font-size="26" fill="#fff" text-anchor="middle" font-weight="400" style="fill:#fff">120832 × 6144</text>
+<polyline points="1125,2525 1125,2250" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="885" y="2700" width="475" height="70" rx="11" fill="#596776" stroke="#596776" stroke-width="1.8"/>
+<text x="1122.5" y="2743.75" font-size="25" fill="#fff" text-anchor="middle" font-weight="600" style="fill:#fff">Tokenizer + 模态占位 token</text>
+<polyline points="1125,2700 1125,2610" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="965" y="2890" width="315" height="65" rx="11" fill="#596776" stroke="#596776" stroke-width="1.8"/>
+<text x="1122.5" y="2931.95" font-size="27" fill="#fff" text-anchor="middle" font-weight="600" style="fill:#fff">文本输入</text>
+<polyline points="1125,2890 1125,2770" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<text x="1125" y="2985" font-size="22" fill="#607184" text-anchor="middle" font-weight="400" style="fill:#607184">文本与视觉按占位位置合并</text>
+<rect x="1510" y="2250" width="840" height="780" rx="17" fill="#fff" stroke="#2779b7" stroke-width="2" stroke-dasharray="10 7"/>
+<text x="1535" y="2293" font-size="31" fill="#2779b7" text-anchor="start" font-weight="700" style="fill:#2779b7">MTP · 1 个预测层（草稿分支）</text>
+<rect x="1690" y="2360" width="480" height="65" rx="11" fill="#edf5fd" stroke="#2779b7" stroke-width="1.8"/>
+<text x="1930" y="2401.25" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">Draft logits / 候选 token</text>
+<rect x="1690" y="2470" width="480" height="65" rx="11" fill="#edf5fd" stroke="#2779b7" stroke-width="1.8"/>
+<text x="1930" y="2511.25" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">Final RMSNorm + LM Head</text>
+<polyline points="1930,2470 1930,2425" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="1620" y="2580" width="620" height="90" rx="11" fill="#edf5fd" stroke="#2779b7" stroke-width="1.8"/>
+<text x="1930" y="2616.875" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">1 × MTP Decoder Block</text>
+<text x="1930" y="2650.625" font-size="25" fill="#172433" text-anchor="middle" font-weight="400" style="fill:#172433">当前实现不启用 iHC</text>
+<polyline points="1930,2580 1930,2535" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="1620" y="2730" width="620" height="65" rx="11" fill="#edf5fd" stroke="#2779b7" stroke-width="1.8"/>
+<text x="1930" y="2771.25" font-size="25" fill="#172433" text-anchor="middle" font-weight="600" style="fill:#172433">Concat → EH Linear：12288 → 6144</text>
+<polyline points="1930,2730 1930,2670" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<rect x="1550" y="2845" width="350" height="55" rx="11" fill="#596776" stroke="#596776" stroke-width="1.8"/>
+<text x="1725" y="2880.55" font-size="23" fill="#fff" text-anchor="middle" font-weight="600" style="fill:#fff">RMSNorm（h）</text>
+<rect x="1960" y="2845" width="350" height="55" rx="11" fill="#596776" stroke="#596776" stroke-width="1.8"/>
+<text x="2135" y="2880.55" font-size="23" fill="#fff" text-anchor="middle" font-weight="600" style="fill:#fff">RMSNorm（e）</text>
+<polyline points="1725,2845 1725,2795" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<polyline points="2135,2845 2135,2795" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<text x="1725" y="2960" font-size="23" fill="#2779b7" text-anchor="middle" font-weight="400" style="fill:#2779b7">主模型 hidden state</text>
+<text x="2135" y="2960" font-size="23" fill="#2779b7" text-anchor="middle" font-weight="400" style="fill:#2779b7">后续 token embedding</text>
+<polyline points="1725,2930 1725,2900" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<polyline points="2135,2930 2135,2900" fill="none" stroke="#708092" stroke-width="2.3"  marker-end="url(#arrow)"/>
+<text x="1930" y="3000" font-size="22" fill="#607184" text-anchor="middle" font-weight="400" style="fill:#607184">MTP 层数 ≠ 推测 token 数；该分支不计入 78 层主干</text>
+<line x1="50" y1="3080" x2="2350" y2="3080" stroke="#d8e0e8" stroke-width="2"/>
+<text x="60" y="3120" font-size="23" fill="#607184" text-anchor="start" font-weight="400" style="fill:#607184">配置依据：正式 BF16 config.json；实现依据：HY4 language / iHC / MTP 与 Ascend HY4-VL wrapper。</text>
+<text x="60" y="3155" font-size="22" fill="#607184" text-anchor="start" font-weight="400" style="fill:#607184">说明：full/shared 是索引计算/复用模式，78 层主干均配置为 sparse attention；1M 为模型配置上限，未作长序列实测声明。</text>
+<text x="2340" y="3190" font-size="20" fill="#607184" text-anchor="end" font-weight="400" style="fill:#607184">HY4 architecture · 2026-10-30</text>
+</svg>

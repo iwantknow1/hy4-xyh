@@ -2,6 +2,8 @@
 
 本仓库保存 2026-10-27 至 2026-10-29 的 HY4 A5 开箱记录：减层功能验证、问题修复与回归、Profiling/Excel、四机官方全量 BF16 模型精度，以及镜像复用材料。包含 Codex 辅助完成的脚本、修改和文档；这是证据归档仓库，不是 vLLM/vLLM-Ascend 上游代码合入或 PR。
 
+[正式版模型结构图与说明](docs/architecture/README.md) · [高清 PNG](docs/architecture/hy4-full-architecture.png) · [可编辑 SVG](docs/architecture/hy4-full-architecture.svg)
+
 ## 结果与范围
 
 | 项目 | 结果 | 证据 |
