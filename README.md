@@ -61,3 +61,7 @@ GPQA 198/198 有效，失败 0；HallusionBench 1129/1129 有最终回答，2258
 本仓库先设为私有。保留成功轮次所需的主机/路径与运行记录，敏感凭据已检查和脱敏；不包含密码、SSH 私钥、裁判 API key、模型权重、容器镜像或内存 core dump。镜像约 10GB，保存于原共享存储，仓库记录镜像 ID、归档路径和 SHA256。原始日志里的绝对路径是当时运行位置，仓库对应关系见证据索引。只交付成功轮次的原始数据和日志；失败经过与未覆盖边界保留文字说明。
 
 文件哈希清单：[SHA256SUMS](delivery/SHA256SUMS)；归档检查：[validation.json](delivery/validation.json)；脱敏/排除记录：[sanitization.json](delivery/sanitization.json)。未对移植后的源码或修改后的脚本重新宣称 NPU 验证。
+
+## BF16 权重模型算子功能支持分析
+
+[报告、Excel 与 CSV](analysis/bf16-model-operator-support/README.md)：依据成功减层 Profiling 离线分析全部已采集任务，包含 AI_CPU、FP32/整数路径；数据类型不作为模型功能支持的筛选条件。

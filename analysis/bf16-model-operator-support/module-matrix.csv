@@ -1,0 +1,15 @@
+﻿module,model_functional_status,calls,bf16_io_calls,engines,evidence,kernels,summed_duration_us
+投影 GEMM,已观测执行（成功的BF16权重模型轮次）,380,320,"AI_CORE, MIX_AIC","bf16_io_observed, no_bf16_io_observed",aclnnMatmul_MatMulV3Common_MatMulV3,18715.639
+MoE Grouped GEMM,已观测执行（成功的BF16权重模型轮次）,40,40,AI_CORE,bf16_io_observed,aclnnGroupedMatmulV5_GroupedMatmul_GroupedMatmul,2453.388
+RMSNorm,已观测执行（成功的BF16权重模型轮次）,140,140,AI_VECTOR_CORE,bf16_io_observed,RmsNorm,465.451
+稀疏注意力,已观测执行（成功的BF16权重模型轮次）,40,40,MIX_AIC,bf16_io_observed,SparseFlashAttention,2939.387
+Lightning Indexer,已观测执行（成功的BF16权重模型轮次）,40,40,MIX_AIC,bf16_io_observed,LightningIndexer,3858.205
+RoPE / KV cache,已观测执行（成功的BF16权重模型轮次）,80,80,AI_VECTOR_CORE,bf16_io_observed,KvRmsNormRopeCache; ScatterPaCache,238.927
+RoPE API,已观测执行（成功的BF16权重模型轮次）,80,80,AI_VECTOR_CORE,bf16_io_observed,aclnnRotaryPositionEmbedding_RotaryPositionEmbedding_RotaryPositionEmbedding; aclnnRotaryPositionEmbedding_SliceAiCore_Slice,267.99399999999997
+SwiGLU,已观测执行（成功的BF16权重模型轮次）,60,60,AI_VECTOR_CORE,bf16_io_observed,SwiGlu,187.864
+MoE Dispatch / Combine,已观测执行（成功的BF16权重模型轮次）,40,40,"AI_VECTOR_CORE, MIX_AIV",bf16_io_observed,MoeDistributeCombineV3; MoeDistributeDispatchV3,1219.755
+Embedding,已观测执行（成功的BF16权重模型轮次）,20,20,AI_VECTOR_CORE,bf16_io_observed,aclnnEmbedding_GatherV2AiCore_GatherV2,72.598
+Index（AI_CPU，功能支持）,已观测执行（成功的BF16权重模型轮次）,80,80,AI_CPU,bf16_io_observed,aclnnIndex_IndexAiCpu_Index,9518.421
+iHC Triton（dtype 未报告）,已观测执行（成功的BF16权重模型轮次）,240,0,AI_VECTOR_CORE,dtype_unreported,_ihc_post_kernel; _ihc_pre_stage1; _ihc_pre_stage2,1293.533
+RoPE Triton（dtype 未报告）,已观测执行（成功的BF16权重模型轮次）,80,0,AI_VECTOR_CORE,dtype_unreported,_triton_rope_siso,215.945
+MoE Router（FP32 路径）,已观测执行（成功的BF16权重模型轮次）,20,0,AI_VECTOR_CORE,no_bf16_io_observed,MoeGatingTopK,119.916

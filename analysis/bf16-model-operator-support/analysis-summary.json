@@ -1,0 +1,124 @@
+{
+  "aggregate": {
+    "calls": 4760,
+    "unique_kernel_names": 89,
+    "unique_cann_or_custom_types": 56,
+    "summed_kernel_duration_us": 95489.457,
+    "evidence_calls": {
+      "no_bf16_io_observed": 2360,
+      "bf16_io_observed": 1900,
+      "dtype_unreported": 500
+    },
+    "engine_calls": {
+      "AI_VECTOR_CORE": 3840,
+      "AI_CPU": 220,
+      "COMMUNICATION": 40,
+      "MIX_AIC": 240,
+      "AI_CORE": 360,
+      "MIX_AIV": 60
+    },
+    "engine_summed_duration_us": {
+      "AI_VECTOR_CORE": 25388.018,
+      "AI_CPU": 18782.407,
+      "COMMUNICATION": 21687.846,
+      "MIX_AIC": 8949.384,
+      "AI_CORE": 19872.656,
+      "MIX_AIV": 809.146
+    },
+    "bf16_io_accelerator_calls": 1820,
+    "bf16_io_device_cpu_calls": 80,
+    "unreported_compute_calls": 320
+  },
+  "per_rank": {
+    "0": {
+      "calls": 2380,
+      "unique_kernel_names": 89,
+      "unique_cann_or_custom_types": 56,
+      "summed_kernel_duration_us": 51585.745,
+      "evidence_calls": {
+        "no_bf16_io_observed": 1180,
+        "bf16_io_observed": 950,
+        "dtype_unreported": 250
+      },
+      "engine_calls": {
+        "AI_VECTOR_CORE": 1920,
+        "AI_CPU": 110,
+        "COMMUNICATION": 20,
+        "MIX_AIC": 120,
+        "AI_CORE": 180,
+        "MIX_AIV": 30
+      },
+      "engine_summed_duration_us": {
+        "AI_VECTOR_CORE": 12934.222,
+        "AI_CPU": 9857.002,
+        "COMMUNICATION": 14127.211,
+        "MIX_AIC": 4452.68,
+        "AI_CORE": 9803.778,
+        "MIX_AIV": 410.852
+      },
+      "bf16_io_accelerator_calls": 910,
+      "bf16_io_device_cpu_calls": 40,
+      "unreported_compute_calls": 160
+    },
+    "1": {
+      "calls": 2380,
+      "unique_kernel_names": 89,
+      "unique_cann_or_custom_types": 56,
+      "summed_kernel_duration_us": 43903.712,
+      "evidence_calls": {
+        "no_bf16_io_observed": 1180,
+        "bf16_io_observed": 950,
+        "dtype_unreported": 250
+      },
+      "engine_calls": {
+        "AI_VECTOR_CORE": 1920,
+        "AI_CPU": 110,
+        "COMMUNICATION": 20,
+        "MIX_AIC": 120,
+        "AI_CORE": 180,
+        "MIX_AIV": 30
+      },
+      "engine_summed_duration_us": {
+        "AI_VECTOR_CORE": 12453.796,
+        "AI_CPU": 8925.405,
+        "COMMUNICATION": 7560.635,
+        "MIX_AIC": 4496.704,
+        "AI_CORE": 10068.878,
+        "MIX_AIV": 398.294
+      },
+      "bf16_io_accelerator_calls": 910,
+      "bf16_io_device_cpu_calls": 40,
+      "unreported_compute_calls": 160
+    }
+  },
+  "bf16_types": [
+    "Cast",
+    "ClipByValueV2",
+    "ConcatD",
+    "Fill",
+    "ForeachAddList",
+    "GatherV2",
+    "GroupedMatmul",
+    "Index",
+    "KvRmsNormRopeCache",
+    "LightningIndexer",
+    "MaskedFill",
+    "MatMulV3",
+    "MoeDistributeCombineV3",
+    "MoeDistributeDispatchV3",
+    "Mul",
+    "RmsNorm",
+    "RotaryPositionEmbedding",
+    "ScatterPaCache",
+    "SelectV2",
+    "Sigmoid",
+    "Slice",
+    "SparseFlashAttention",
+    "SwiGlu",
+    "Tile",
+    "TransposeBatchMatMul",
+    "ViewCopy"
+  ],
+  "dtype_shape_rows": 272,
+  "operator_summary_rows": 98
+}
